@@ -24,22 +24,15 @@ package Game;
  * @author iamsp
  *
  */
-public class PlayFarkle
-{
+public class PlayFarkle {
 
 	/****************************************************
 	 * Method : Main
 	 *
 	 * Purpose : run a game of Farkle
 	 *
-	 * Parameters : type - description number_of_elements - the number of elements
-	 * in the type
-	 *
-	 * Returns : What does it return
-	 *
 	 ****************************************************/
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
