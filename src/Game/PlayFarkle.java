@@ -1,11 +1,11 @@
 /********************************************************
  *
- *  Project :  <Name of project|assignment>
- *  File    :  <Name of source code file>
- *  Name    :  Ashton Chatelain
- *  Date    :  <Date created (project due date)>
+ *  Project :  Farkle
+ *  File    :  PlayFarkle
+ *  Name    :  Ashton Chatelain, Sam Smith
+ *  Date    :  8/27/2018
  *
- *  Description : (Narrative description, not code)
+ *  Description : Manage the game of Farkle
  *
  *    1) What is the purpose of the code; what problem does the code solve.
  *
@@ -15,13 +15,11 @@
  *
  *    4) What methods are implemented (optional).
  *
- *  Changes :  <Description|date of modifications>
- *
  ********************************************************/
 package Game;
 
 /**
- * @author iamsp
+ * @author Ashton Chatelain
  *
  */
 public class PlayFarkle {
