@@ -31,6 +31,8 @@ public class gameState {
 	public void game() {
 		this.dice = rollDice(dice);
 		while (!winCondition()) {
+			// start turn by rolling dice
+			this.dice = rollDice(dice);
 			// TODO manage turns.
 			resetTurn();
 		}
@@ -69,6 +71,81 @@ public class gameState {
 		return false;
 		// TODO code win condition
 
+	}
+
+	/**
+	 * @return the dice
+	 */
+	public int[] getDice() {
+		return dice;
+	}
+
+	/**
+	 * @param dice
+	 *            the dice to set
+	 */
+	public void setDice(int[] dice) {
+		this.dice = dice;
+	}
+
+	/**
+	 * @return the playerScore
+	 */
+	public int getPlayerScore() {
+		return playerScore;
+	}
+
+	/**
+	 * @param playerScore
+	 *            the playerScore to set
+	 */
+	public void setPlayerScore(int playerScore) {
+		this.playerScore = playerScore;
+	}
+
+	/**
+	 * @return the computerScore
+	 */
+	public int getComputerScore() {
+		return computerScore;
+	}
+
+	/**
+	 * @param computerScore
+	 *            the computerScore to set
+	 */
+	public void setComputerScore(int computerScore) {
+		this.computerScore = computerScore;
+	}
+
+	/**
+	 * @return the runningScore
+	 */
+	public int getRunningScore() {
+		return runningScore;
+	}
+
+	/**
+	 * @param runningScore
+	 *            the runningScore to set
+	 */
+	public void setRunningScore(int runningScore) {
+		this.runningScore = runningScore;
+	}
+
+	/**
+	 * @return the turn
+	 */
+	public String getTurn() {
+		return turn;
+	}
+
+	/**
+	 * @param turn
+	 *            the turn to set
+	 */
+	public void setTurn(String turn) {
+		this.turn = turn;
 	}
 
 }
