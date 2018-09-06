@@ -26,17 +26,27 @@ public class gameState {
 	private int playerScore = 0;
 	private int computerScore = 0;
 	private int runningScore = 0;
-	private String turn = "User";
+	private boolean computerTurn = true;
 
 	public void game() {
 		this.dice = rollDice(dice);
 		while (!winCondition()) {
+			// TODO manager turns
+
 			// start turn by rolling dice
 			this.dice = rollDice(dice);
-			// TODO manage turns.
+			if (scoring.scoreDice(dice) == 0) {
+				// TODO farkle message
+				resetTurn();
+			}
+			// TODO player selects dice and they are scored each time
+			if (computerTurn) {
+				computer.computerTurn(dice);
+			}
+
 			resetTurn();
 		}
-
+		// TODO game over here
 	}
 
 	private int bankPoints(int[] dice) {
@@ -136,16 +146,16 @@ public class gameState {
 	/**
 	 * @return the turn
 	 */
-	public String getTurn() {
-		return turn;
+	public boolean getTurn() {
+		return computerTurn;
 	}
 
 	/**
 	 * @param turn
 	 *            the turn to set
 	 */
-	public void setTurn(String turn) {
-		this.turn = turn;
+	public void setTurn(boolean turn) {
+		this.computerTurn = turn;
 	}
 
 }
