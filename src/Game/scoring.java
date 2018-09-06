@@ -28,11 +28,9 @@ import java.util.Arrays;
  */
 public class scoring {
 	// accept an array of dice and out put best score
-	int score = 0;
-	int[] dice = new int[6];
 
-	public int scoreDice(int[] diceRecieved) {
-		// TODO score the dice
+	public static int scoreDice(int[] diceRecieved) {
+		int score = 0;
 		Arrays.sort(diceRecieved);
 
 		// stores number of times each number is rolled
@@ -60,7 +58,6 @@ public class scoring {
 				multiRollArray[5]++;
 				break;
 			default:
-				System.out.println("die locked");
 				break;
 			}
 		}
@@ -132,6 +129,16 @@ public class scoring {
 		}
 		if (pairCount == 3) {
 			score = 1500;
+		}
+
+		if (score < 300) {
+			for (int m = 0; m < 6; m++) {
+				if (diceRecieved[m] == 1) {
+					score = score + 100;
+				} else if (diceRecieved[m] == 5) {
+					score = score + 50;
+				}
+			}
 		}
 
 		return score;
