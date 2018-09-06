@@ -79,7 +79,7 @@ public class scoring {
 			}
 			if (multiRollArray[j] == 3) {
 
-				switch (multiRollArray[j]) {
+				switch (j) {
 				case 0:
 					score = 300;
 					break;
@@ -90,7 +90,7 @@ public class scoring {
 					score = 300;
 					break;
 				case 3:
-					score = 500;
+					score = 400;
 					break;
 				case 4:
 					score = 500;
