@@ -1,21 +1,17 @@
 /********************************************************
  *
- *  Project :  <Name of project|assignment>
- *  File    :  <Name of source code file>
- *  Name    :  Ashton Chatelain
- *  Date    :  <Date created (project due date)>
+ *  Project :  Farkle
+ *  File    :  scoring.java
+ *  Name    :  Ashton Chatelain Sam SMith
+ *  Date    :  
  *
  *  Description : (Narrative description, not code)
  *
- *    1) What is the purpose of the code; what problem does the code solve.
+ *    1) This class takes an int array and returns an int that is the best point value
  *
- *    2) What data-structures are used.
+ *    2) It uses the array and loops through to check for scoring criteria
  *
  *    3) What algorithms, techniques, etc. are used in implementing the data structures.
- *
- *    4) What methods are implemented (optional).
- *
- *  Changes :  <Description|date of modifications>
  *
  ********************************************************/
 package Game;
@@ -68,6 +64,8 @@ public class scoring {
 				score = 3000;
 			} else if (multiRollArray[j] == 5) {
 				score = 2000;
+				// check for singles
+				score = checkSingles(j, diceRecieved, score);
 			} else if (multiRollArray[j] == 4) {
 				score = 1000;
 				// check for a double for an extra 500 points
@@ -76,36 +74,56 @@ public class scoring {
 						score = score + 500;
 					}
 				}
+				if (score < 1500) {
+					score = checkSingles(j, diceRecieved, score);
+				}
 			}
 			if (multiRollArray[j] == 3) {
+				// check for ones and fives.
+				if (j != 0) {
+					for (int m = 0; m < 6; m++) {
+						if (diceRecieved[m] == 1) {
+							score = score + 100;
+						}
+					}
+				} else if (j != 4) {
+					for (int m = 0; m < 6; m++) {
+						if (diceRecieved[m] == 5) {
+							score = score + 50;
+						}
+					}
+				}
 
 				switch (j) {
 				case 0:
-					score = 300;
+					score += 300;
 					break;
 				case 1:
-					score = 200;
+					score += 200;
 					break;
 				case 2:
-					score = 300;
+					score += 300;
 					break;
 				case 3:
-					score = 400;
+					score += 400;
 					break;
 				case 4:
-					score = 500;
+					score += 500;
 					break;
 				case 5:
-					score = 600;
+					score += 600;
 					break;
 
 				}
+
 			}
 		}
 
 		// check for 1-6 straight.
 		if (diceRecieved[0] == 1 && diceRecieved[1] == 2 && diceRecieved[2] == 3 && diceRecieved[3] == 4
-				&& diceRecieved[4] == 5 && diceRecieved[5] == 6) {
+				&& diceRecieved[4] == 5 && diceRecieved[5] == 6)
+
+		{
 			score = 1500;
 
 		}
@@ -130,7 +148,7 @@ public class scoring {
 		if (pairCount == 3) {
 			score = 1500;
 		}
-
+		// check for ones and fives.
 		if (score < 300) {
 			for (int m = 0; m < 6; m++) {
 				if (diceRecieved[m] == 1) {
@@ -141,6 +159,21 @@ public class scoring {
 			}
 		}
 
+		return score;
+
+	}
+
+	private static int checkSingles(int j, int[] diceRecieved, int score) {
+		// TODO Auto-generated method stub
+		if (j != 0 && j != 4) {
+			for (int n = 0; n < 6; n++) {
+				if (diceRecieved[n] == 5) {
+					score += 50;
+				} else if (diceRecieved[n] == 1) {
+					score += 100;
+				}
+			}
+		}
 		return score;
 
 	}

@@ -73,7 +73,36 @@ class scoringTest {
 		assertEquals(500, scoring.scoreDice(array));
 
 		// test array with triple SIXES
-		array = new int[] { 1, 1, 6, -1, 6, 6 };
+		array = new int[] { -1, -1, 6, -1, 6, 6 };
+		assertEquals(600, scoring.scoreDice(array));
+
+	}
+
+	@Test
+	void testsingles() {
+		// test 2 ONES
+		int[] array = new int[] { 1, 1, -1, -1, -1, -1 };
+		assertEquals(200, scoring.scoreDice(array));
+		// Test single ONE
+		array = new int[] { 1, -1, -1, -1, -1, -1 };
+		assertEquals(100, scoring.scoreDice(array));
+		// test single five
+		array = new int[] { 5, -1, -1, -1, -1, -1 };
+		assertEquals(50, scoring.scoreDice(array));
+		// test two fives
+		array = new int[] { 5, 5, -1, -1, -1, -1 };
+		assertEquals(100, scoring.scoreDice(array));
+
+	}
+
+	@Test
+	void testcombos() {
+		// test combination of 5s and 1s
+		int[] array = new int[] { 1, 1, 5, -1, -1, -1 };
+		assertEquals(250, scoring.scoreDice(array));
+		array = new int[] { 1, 1, 5, -1, 5, -1 };
+		assertEquals(300, scoring.scoreDice(array));
+		array = new int[] { 1, -1, 5, -1, 5, 5 };
 		assertEquals(600, scoring.scoreDice(array));
 
 	}
