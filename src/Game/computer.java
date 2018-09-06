@@ -12,18 +12,29 @@
  *    2) What data-structures are used.
  *
  *    3) What algorithms, techniques, etc. are used in implementing the data structures.
- *
- *    4) What methods are implemented (optional).
- *
- *  Changes :  <Description|date of modifications>
- *
+
  ********************************************************/
 package Game;
+
+import java.util.Arrays;
 
 /**
  * @author Ashton
  *
  */
 public class computer {
+	public static void computerTurn(int[] dice) {
+		Arrays.sort(dice);
+
+	}
+
+	private static void toBank() {
+		// TODO decide to bank if allowed
+
+	}
+
+	private static void lockDice() {
+		// TODO decide to lock die
+	}
 
 }
