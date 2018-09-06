@@ -79,7 +79,9 @@ public class scoring {
 						score = score + 500;
 					}
 				}
-			} else if (multiRollArray[j] == 3) {
+			}
+			if (multiRollArray[j] == 3) {
+
 				switch (multiRollArray[j]) {
 				case 0:
 					score = 300;
@@ -101,13 +103,24 @@ public class scoring {
 					break;
 
 				}
-				// TODO add check for two triplets
 			}
 		}
+
+		// check for 1-6 straight.
 		if (diceRecieved[0] == 1 && diceRecieved[1] == 2 && diceRecieved[2] == 3 && diceRecieved[3] == 4
 				&& diceRecieved[4] == 5 && diceRecieved[5] == 6) {
 			score = 1500;
 
+		}
+		// check for two triplets
+		int tripCount = 0;
+		for (int k = 0; k < 6; k++) {
+			if (multiRollArray[k] == 3) {
+				tripCount++;
+			}
+		}
+		if (tripCount == 2) {
+			score = 2500;
 		}
 
 		// check for 3 pair
