@@ -29,9 +29,17 @@ public class gameState {
 	private boolean computerTurn = true;
 
 	public void game() {
+		System.out.println("rolling the dice");
 		this.dice = rollDice(dice);
+		System.out.println("dice are the following:");
+		System.out.println(dice);
 		while (!winCondition()) {
-			// TODO manager turns
+
+			// TODO manage turns
+			if (computerTurn) {
+				System.out.println("computer plays");
+			} else
+				System.out.println("player turn");
 
 			// start turn by rolling dice
 			this.dice = rollDice(dice);

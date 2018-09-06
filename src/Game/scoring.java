@@ -174,6 +174,9 @@ public class scoring {
 				}
 			}
 		}
+		if (score == 0) {
+			System.out.println("FARKLE!");
+		}
 		return score;
 
 	}
