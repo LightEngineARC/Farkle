@@ -22,15 +22,14 @@ package Game;
  */
 public class gameState {
 
-	private int[] dice;
-	private int playerScore = 0;
-	private int computerScore = 0;
-	private int runningScore = 0;
-	private boolean computerTurn = true;
-
-	public void game() {
+	public static void game() {
+		int[] dice = { 0, 0, 0, 0, 0, 0 };
+		int playerScore = 0;
+		int computerScore = 0;
+		int runningScore = 0;
+		boolean computerTurn = true;
 		System.out.println("rolling the dice");
-		this.dice = rollDice(dice);
+		dice = rollDice(dice);
 		System.out.println("dice are the following:");
 		System.out.println(dice);
 		while (!winCondition()) {
@@ -42,17 +41,17 @@ public class gameState {
 				System.out.println("player turn");
 
 			// start turn by rolling dice
-			this.dice = rollDice(dice);
+			dice = rollDice(dice);
 			if (scoring.scoreDice(dice) == 0) {
-				// TODO farkle message
-				resetTurn();
+				System.out.println("FARKLE");
+				computerTurn = resetTurn(computerTurn);
 			}
 			// TODO player selects dice and they are scored each time
 			if (computerTurn) {
 				computer.computerTurn(dice);
 			}
 
-			resetTurn();
+			computerTurn = resetTurn(computerTurn);
 		}
 		// TODO game over here
 	}
@@ -64,8 +63,11 @@ public class gameState {
 
 	}
 
-	private void resetTurn() {
-		// TODO reset GUI and advance game state
+	private static boolean resetTurn(boolean computerTurns) {
+		if (computerTurns) {
+			return false;
+		} else
+			return true;
 
 	}
 
@@ -76,7 +78,7 @@ public class gameState {
 	}
 
 	// returns array with random numbers if the current number is not -1
-	private int[] rollDice(int[] dice2) {
+	private static int[] rollDice(int[] dice2) {
 		for (int i = 0; i < 6; i++) {
 			if (dice2[i] != -1) {
 				dice2[i] = (int) (Math.random() * 5 + 1);
@@ -85,85 +87,10 @@ public class gameState {
 		return dice2;
 	}
 
-	public boolean winCondition() {
+	public static boolean winCondition() {
 		return false;
 		// TODO code win condition
 
-	}
-
-	/**
-	 * @return the dice
-	 */
-	public int[] getDice() {
-		return dice;
-	}
-
-	/**
-	 * @param dice
-	 *            the dice to set
-	 */
-	public void setDice(int[] dice) {
-		this.dice = dice;
-	}
-
-	/**
-	 * @return the playerScore
-	 */
-	public int getPlayerScore() {
-		return playerScore;
-	}
-
-	/**
-	 * @param playerScore
-	 *            the playerScore to set
-	 */
-	public void setPlayerScore(int playerScore) {
-		this.playerScore = playerScore;
-	}
-
-	/**
-	 * @return the computerScore
-	 */
-	public int getComputerScore() {
-		return computerScore;
-	}
-
-	/**
-	 * @param computerScore
-	 *            the computerScore to set
-	 */
-	public void setComputerScore(int computerScore) {
-		this.computerScore = computerScore;
-	}
-
-	/**
-	 * @return the runningScore
-	 */
-	public int getRunningScore() {
-		return runningScore;
-	}
-
-	/**
-	 * @param runningScore
-	 *            the runningScore to set
-	 */
-	public void setRunningScore(int runningScore) {
-		this.runningScore = runningScore;
-	}
-
-	/**
-	 * @return the turn
-	 */
-	public boolean getTurn() {
-		return computerTurn;
-	}
-
-	/**
-	 * @param turn
-	 *            the turn to set
-	 */
-	public void setTurn(boolean turn) {
-		this.computerTurn = turn;
 	}
 
 }
