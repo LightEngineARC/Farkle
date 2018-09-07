@@ -294,10 +294,10 @@ public class GameGUI extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				//TODO change to properly check whose turn it is
-				txtRunning.setText("0");
 				if (!aGame.isComputerTurn())
 				{
 					aGame.setPlayerScore(aGame.getPlayerScore() + aGame.getRunningScore());
+					txtRunning.setText("0");
 				}
 			}
 		});
