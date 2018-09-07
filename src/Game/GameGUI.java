@@ -1,30 +1,28 @@
 package Game;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.Font;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.Dimension;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.SystemColor;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class GameGUI extends JFrame
-{
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+public class GameGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtRunning;
@@ -34,18 +32,13 @@ public class GameGUI extends JFrame
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args)
-	{
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				try
-				{
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
 					GameGUI frame = new GameGUI();
 					frame.setVisible(true);
-				} catch (Exception e)
-				{
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -55,9 +48,8 @@ public class GameGUI extends JFrame
 	/**
 	 * Create the frame.
 	 */
-	public GameGUI()
-	{	
-		
+	public GameGUI() {
+
 		/**
 		 * Builds GUI
 		 */
@@ -208,11 +200,9 @@ public class GameGUI extends JFrame
 		 */
 		gameState aGame = new gameState();
 		aGame.rollDice();
-		for (int i = 0; i < dieLabels.length; i++)
-		{
+		for (int i = 0; i < dieLabels.length; i++) {
 
-			switch (aGame.getDiceAtIndex(i))
-			{
+			switch (aGame.getDiceAtIndex(i)) {
 			case 1:
 				dieLabels[i].setIcon(die1);
 				break;
@@ -241,22 +231,17 @@ public class GameGUI extends JFrame
 		/**
 		 * Rolls Dice
 		 */
-		btnRoll.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
+		btnRoll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				// rolls dice and sets icon to respective dice
-				
-				//TODO check to see if dice is "rollable"
-				if (aGame.getRunningScore() > 0 && !aGame.isComputerTurn())
-				{
+
+				// TODO check to see if dice is "rollable"
+				if (aGame.getRunningScore() > 0 && !aGame.isComputerTurn()) {
 
 					aGame.rollDice();
-					for (int i = 0; i < dieLabels.length; i++)
-					{
+					for (int i = 0; i < dieLabels.length; i++) {
 
-						switch (aGame.getDiceAtIndex(i))
-						{
+						switch (aGame.getDiceAtIndex(i)) {
 						case 1:
 							dieLabels[i].setIcon(die1);
 							break;
@@ -289,86 +274,61 @@ public class GameGUI extends JFrame
 		/**
 		 * Banks Score for Player or Computer
 		 */
-		btnBank.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				//TODO change to properly check whose turn it is
+		btnBank.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO change to properly check whose turn it is
 				txtRunning.setText("0");
-				if (!aGame.isComputerTurn())
-				{
+				if (!aGame.isComputerTurn()) {
 					aGame.setPlayerScore(aGame.getPlayerScore() + aGame.getRunningScore());
 				}
 			}
 		});
 
-		lblDie1.addMouseListener(new MouseAdapter()
-		{
+		lblDie1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				//TODO set to check if dice is "clickable" or "locked"
-				if(true)
-				{
-					switch(aGame.getDiceAtIndex(0))
-					{
-					case 1: 
-						if(lblDie1.getIcon().toString().equals(die1.toString()))
-						{
+			public void mouseClicked(MouseEvent e) {
+				// TODO set to check if dice is "clickable" or "locked"
+				if (true) {
+					switch (aGame.getDiceAtIndex(0)) {
+					case 1:
+						if (lblDie1.getIcon().toString().equals(die1.toString())) {
 							lblDie1.setIcon(die1b);
-						}
-						else
-						{
+						} else {
 							lblDie1.setIcon(die1);
 						}
 						break;
-					case 2: 
-						if(lblDie1.getIcon().toString().equals(die2.toString()))
-						{
+					case 2:
+						if (lblDie1.getIcon().toString().equals(die2.toString())) {
 							lblDie1.setIcon(die2b);
-						}
-						else
-						{
+						} else {
 							lblDie1.setIcon(die2);
 						}
 						break;
-					case 3: 
-						if(lblDie1.getIcon().toString().equals(die3.toString()))
-						{
+					case 3:
+						if (lblDie1.getIcon().toString().equals(die3.toString())) {
 							lblDie1.setIcon(die3b);
-						}
-						else
-						{
+						} else {
 							lblDie1.setIcon(die3);
 						}
 						break;
-					case 4: 
-						if(lblDie1.getIcon().toString().equals(die4.toString()))
-						{
+					case 4:
+						if (lblDie1.getIcon().toString().equals(die4.toString())) {
 							lblDie1.setIcon(die4b);
-						}
-						else
-						{
+						} else {
 							lblDie1.setIcon(die4);
 						}
 						break;
-					case 5: 
-						if(lblDie1.getIcon().toString().equals(die5.toString()))
-						{
+					case 5:
+						if (lblDie1.getIcon().toString().equals(die5.toString())) {
 							lblDie1.setIcon(die5b);
-						}
-						else
-						{
+						} else {
 							lblDie1.setIcon(die5);
 						}
 						break;
-					case 6: 
-						if(lblDie1.getIcon().toString().equals(die6.toString()))
-						{
+					case 6:
+						if (lblDie1.getIcon().toString().equals(die6.toString())) {
 							lblDie1.setIcon(die6b);
-						}
-						else
-						{
+						} else {
 							lblDie1.setIcon(die6);
 						}
 						break;
@@ -378,73 +338,51 @@ public class GameGUI extends JFrame
 			}
 		});
 
-		lblDie2.addMouseListener(new MouseAdapter()
-		{
+		lblDie2.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e)
-			{
+			public void mouseClicked(MouseEvent e) {
 				// TODO set to check if dice is "clickable" or "locked"
-				if(true)
-				{
-					switch(aGame.getDiceAtIndex(1))
-					{
-					case 1: 
-						if(lblDie2.getIcon().toString().equals(die1.toString()))
-						{
+				if (true) {
+					switch (aGame.getDiceAtIndex(1)) {
+					case 1:
+						if (lblDie2.getIcon().toString().equals(die1.toString())) {
 							lblDie2.setIcon(die1b);
-						}
-						else
-						{
+						} else {
 							lblDie2.setIcon(die1);
 						}
 						break;
-					case 2: 
-						if(lblDie2.getIcon().toString().equals(die2.toString()))
-						{
+					case 2:
+						if (lblDie2.getIcon().toString().equals(die2.toString())) {
 							lblDie2.setIcon(die2b);
-						}
-						else
-						{
+						} else {
 							lblDie2.setIcon(die2);
 						}
 						break;
-					case 3: 
-						if(lblDie2.getIcon().toString().equals(die3.toString()))
-						{
+					case 3:
+						if (lblDie2.getIcon().toString().equals(die3.toString())) {
 							lblDie2.setIcon(die3b);
-						}
-						else
-						{
+						} else {
 							lblDie2.setIcon(die3);
 						}
 						break;
-					case 4: 
-						if(lblDie2.getIcon().toString().equals(die4.toString()))
-						{
+					case 4:
+						if (lblDie2.getIcon().toString().equals(die4.toString())) {
 							lblDie2.setIcon(die4b);
-						}
-						else
-						{
+						} else {
 							lblDie2.setIcon(die4);
 						}
 						break;
-					case 5: 
-						if(lblDie2.getIcon().toString().equals(die5.toString()))
-						{
+					case 5:
+						if (lblDie2.getIcon().toString().equals(die5.toString())) {
 							lblDie2.setIcon(die5b);
-						}
-						else
-						{
+						} else {
 							lblDie2.setIcon(die5);
 						}
 						break;
-					case 6: 
-						if(lblDie2.getIcon().toString().equals(die6.toString()))
-						{
+					case 6:
+						if (lblDie2.getIcon().toString().equals(die6.toString())) {
 							lblDie2.setIcon(die6b);
-						}
-						else
-						{
+						} else {
 							lblDie2.setIcon(die6);
 						}
 						break;
@@ -454,73 +392,51 @@ public class GameGUI extends JFrame
 			}
 		});
 
-		lblDie3.addMouseListener(new MouseAdapter()
-		{
+		lblDie3.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e)
-			{
+			public void mouseClicked(MouseEvent e) {
 				// TODO set to check if dice is "clickable" or "locked"
-				if(true)
-				{
-					switch(aGame.getDiceAtIndex(2))
-					{
-					case 1: 
-						if(lblDie3.getIcon().toString().equals(die1.toString()))
-						{
+				if (true) {
+					switch (aGame.getDiceAtIndex(2)) {
+					case 1:
+						if (lblDie3.getIcon().toString().equals(die1.toString())) {
 							lblDie3.setIcon(die1b);
-						}
-						else
-						{
+						} else {
 							lblDie3.setIcon(die1);
 						}
 						break;
-					case 2: 
-						if(lblDie3.getIcon().toString().equals(die2.toString()))
-						{
+					case 2:
+						if (lblDie3.getIcon().toString().equals(die2.toString())) {
 							lblDie3.setIcon(die2b);
-						}
-						else
-						{
+						} else {
 							lblDie3.setIcon(die2);
 						}
 						break;
-					case 3: 
-						if(lblDie3.getIcon().toString().equals(die3.toString()))
-						{
+					case 3:
+						if (lblDie3.getIcon().toString().equals(die3.toString())) {
 							lblDie3.setIcon(die3b);
-						}
-						else
-						{
+						} else {
 							lblDie3.setIcon(die3);
 						}
 						break;
-					case 4: 
-						if(lblDie3.getIcon().toString().equals(die4.toString()))
-						{
+					case 4:
+						if (lblDie3.getIcon().toString().equals(die4.toString())) {
 							lblDie3.setIcon(die4b);
-						}
-						else
-						{
+						} else {
 							lblDie3.setIcon(die4);
 						}
 						break;
-					case 5: 
-						if(lblDie3.getIcon().toString().equals(die5.toString()))
-						{
+					case 5:
+						if (lblDie3.getIcon().toString().equals(die5.toString())) {
 							lblDie3.setIcon(die5b);
-						}
-						else
-						{
+						} else {
 							lblDie3.setIcon(die5);
 						}
 						break;
-					case 6: 
-						if(lblDie3.getIcon().toString().equals(die6.toString()))
-						{
+					case 6:
+						if (lblDie3.getIcon().toString().equals(die6.toString())) {
 							lblDie3.setIcon(die6b);
-						}
-						else
-						{
+						} else {
 							lblDie3.setIcon(die6);
 						}
 						break;
@@ -530,73 +446,51 @@ public class GameGUI extends JFrame
 			}
 		});
 
-		lblDie4.addMouseListener(new MouseAdapter()
-		{
+		lblDie4.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e)
-			{
+			public void mouseClicked(MouseEvent e) {
 				// TODO set to check if dice is "clickable" or "locked"
-				if(true)
-				{
-					switch(aGame.getDiceAtIndex(3))
-					{
-					case 1: 
-						if(lblDie4.getIcon().toString().equals(die1.toString()))
-						{
+				if (true) {
+					switch (aGame.getDiceAtIndex(3)) {
+					case 1:
+						if (lblDie4.getIcon().toString().equals(die1.toString())) {
 							lblDie4.setIcon(die1b);
-						}
-						else
-						{
+						} else {
 							lblDie4.setIcon(die1);
 						}
 						break;
-					case 2: 
-						if(lblDie4.getIcon().toString().equals(die2.toString()))
-						{
+					case 2:
+						if (lblDie4.getIcon().toString().equals(die2.toString())) {
 							lblDie4.setIcon(die2b);
-						}
-						else
-						{
+						} else {
 							lblDie4.setIcon(die2);
 						}
 						break;
-					case 3: 
-						if(lblDie4.getIcon().toString().equals(die3.toString()))
-						{
+					case 3:
+						if (lblDie4.getIcon().toString().equals(die3.toString())) {
 							lblDie4.setIcon(die3b);
-						}
-						else
-						{
+						} else {
 							lblDie4.setIcon(die3);
 						}
 						break;
-					case 4: 
-						if(lblDie4.getIcon().toString().equals(die4.toString()))
-						{
+					case 4:
+						if (lblDie4.getIcon().toString().equals(die4.toString())) {
 							lblDie4.setIcon(die4b);
-						}
-						else
-						{
+						} else {
 							lblDie4.setIcon(die4);
 						}
 						break;
-					case 5: 
-						if(lblDie4.getIcon().toString().equals(die5.toString()))
-						{
+					case 5:
+						if (lblDie4.getIcon().toString().equals(die5.toString())) {
 							lblDie4.setIcon(die5b);
-						}
-						else
-						{
+						} else {
 							lblDie4.setIcon(die5);
 						}
 						break;
-					case 6: 
-						if(lblDie4.getIcon().toString().equals(die6.toString()))
-						{
+					case 6:
+						if (lblDie4.getIcon().toString().equals(die6.toString())) {
 							lblDie4.setIcon(die6b);
-						}
-						else
-						{
+						} else {
 							lblDie4.setIcon(die6);
 						}
 						break;
@@ -606,73 +500,51 @@ public class GameGUI extends JFrame
 			}
 		});
 
-		lblDie5.addMouseListener(new MouseAdapter()
-		{
+		lblDie5.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e)
-			{
+			public void mouseClicked(MouseEvent e) {
 				// TODO set to check if dice is "clickable" or "locked"
-				if(true)
-				{
-					switch(aGame.getDiceAtIndex(4))
-					{
-					case 1: 
-						if(lblDie5.getIcon().toString().equals(die1.toString()))
-						{
+				if (true) {
+					switch (aGame.getDiceAtIndex(4)) {
+					case 1:
+						if (lblDie5.getIcon().toString().equals(die1.toString())) {
 							lblDie5.setIcon(die1b);
-						}
-						else
-						{
+						} else {
 							lblDie5.setIcon(die1);
 						}
 						break;
-					case 2: 
-						if(lblDie5.getIcon().toString().equals(die2.toString()))
-						{
+					case 2:
+						if (lblDie5.getIcon().toString().equals(die2.toString())) {
 							lblDie5.setIcon(die2b);
-						}
-						else
-						{
+						} else {
 							lblDie5.setIcon(die2);
 						}
 						break;
-					case 3: 
-						if(lblDie5.getIcon().toString().equals(die3.toString()))
-						{
+					case 3:
+						if (lblDie5.getIcon().toString().equals(die3.toString())) {
 							lblDie5.setIcon(die3b);
-						}
-						else
-						{
+						} else {
 							lblDie5.setIcon(die3);
 						}
 						break;
-					case 4: 
-						if(lblDie5.getIcon().toString().equals(die4.toString()))
-						{
+					case 4:
+						if (lblDie5.getIcon().toString().equals(die4.toString())) {
 							lblDie5.setIcon(die4b);
-						}
-						else
-						{
+						} else {
 							lblDie5.setIcon(die4);
 						}
 						break;
-					case 5: 
-						if(lblDie5.getIcon().toString().equals(die5.toString()))
-						{
+					case 5:
+						if (lblDie5.getIcon().toString().equals(die5.toString())) {
 							lblDie5.setIcon(die5b);
-						}
-						else
-						{
+						} else {
 							lblDie5.setIcon(die5);
 						}
 						break;
-					case 6: 
-						if(lblDie5.getIcon().toString().equals(die6.toString()))
-						{
+					case 6:
+						if (lblDie5.getIcon().toString().equals(die6.toString())) {
 							lblDie5.setIcon(die6b);
-						}
-						else
-						{
+						} else {
 							lblDie5.setIcon(die6);
 						}
 						break;
@@ -682,73 +554,51 @@ public class GameGUI extends JFrame
 			}
 		});
 
-		lblDie6.addMouseListener(new MouseAdapter()
-		{
+		lblDie6.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e)
-			{
+			public void mouseClicked(MouseEvent e) {
 				// TODO set to check if dice is "clickable" or "locked"
-				if(true)
-				{
-					switch(aGame.getDiceAtIndex(5))
-					{
-					case 1: 
-						if(lblDie6.getIcon().toString().equals(die1.toString()))
-						{
+				if (true) {
+					switch (aGame.getDiceAtIndex(5)) {
+					case 1:
+						if (lblDie6.getIcon().toString().equals(die1.toString())) {
 							lblDie6.setIcon(die1b);
-						}
-						else
-						{
+						} else {
 							lblDie6.setIcon(die1);
 						}
 						break;
-					case 2: 
-						if(lblDie6.getIcon().toString().equals(die2.toString()))
-						{
+					case 2:
+						if (lblDie6.getIcon().toString().equals(die2.toString())) {
 							lblDie6.setIcon(die2b);
-						}
-						else
-						{
+						} else {
 							lblDie6.setIcon(die2);
 						}
 						break;
-					case 3: 
-						if(lblDie6.getIcon().toString().equals(die3.toString()))
-						{
+					case 3:
+						if (lblDie6.getIcon().toString().equals(die3.toString())) {
 							lblDie6.setIcon(die3b);
-						}
-						else
-						{
+						} else {
 							lblDie6.setIcon(die3);
 						}
 						break;
-					case 4: 
-						if(lblDie6.getIcon().toString().equals(die4.toString()))
-						{
+					case 4:
+						if (lblDie6.getIcon().toString().equals(die4.toString())) {
 							lblDie6.setIcon(die4b);
-						}
-						else
-						{
+						} else {
 							lblDie6.setIcon(die4);
 						}
 						break;
-					case 5: 
-						if(lblDie6.getIcon().toString().equals(die5.toString()))
-						{
+					case 5:
+						if (lblDie6.getIcon().toString().equals(die5.toString())) {
 							lblDie6.setIcon(die5b);
-						}
-						else
-						{
+						} else {
 							lblDie6.setIcon(die5);
 						}
 						break;
-					case 6: 
-						if(lblDie6.getIcon().toString().equals(die6.toString()))
-						{
+					case 6:
+						if (lblDie6.getIcon().toString().equals(die6.toString())) {
 							lblDie6.setIcon(die6b);
-						}
-						else
-						{
+						} else {
 							lblDie6.setIcon(die6);
 						}
 						break;
@@ -757,5 +607,26 @@ public class GameGUI extends JFrame
 				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
+	}
+
+	/**
+	 * ************************************************** Method : theToggler
+	 *
+	 * Purpose : Toggles dice when clicked
+	 *
+	 * Parameters : type - description number_of_elements - the number of elements
+	 * in the type
+	 *
+	 * Returns : void
+	 * 
+	 * @return void
+	 *
+	 ***************************************************
+	 */
+
+	public static void theToggler(gameState aGame, int index) {
+		aGame.toggleDice(index);
+		aGame.setRunningScore(scoring.scoreDice(aGame.diceToggle));
+
 	}
 }
