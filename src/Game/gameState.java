@@ -91,10 +91,10 @@ public class gameState {
 			}
 			computerTurn = resetTurn(computerTurn);
 		}
-		// TODO player selects dice and they are scored each time
-		if (computerTurn) {
-			computer.computerTurn();
-		}
+		/*
+		 * TODO player selects dice and they are scored each time if (computerTurn) {
+		 * computer.computerTurn(); }
+		 */
 
 		computerTurn = resetTurn(computerTurn);
 		System.out.println("rolling the dice again!");
@@ -167,8 +167,6 @@ public class gameState {
 		return dice;
 	}
 
-	
-	
 	/**
 	 * @param dice
 	 *            the dice to set

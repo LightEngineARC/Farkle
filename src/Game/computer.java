@@ -32,12 +32,6 @@ public class computer {
 		this.dice = dice;
 	}
 
-	public void computerTurn() {
-		while (!toBank()) {
-			chooseDice();
-		}
-	}
-
 	public int[] chooseDice() {
 
 		// TODO decide which dice to lock
@@ -84,17 +78,32 @@ public class computer {
 
 	}
 
-	private boolean toBank() {
+	public boolean toBank(int runningTotal, int[] rolledDice) {
+		int diceUsed = 0;
+		for (int i = 0; i < 6; i++) {
+			if (rolledDice[i] < 1) {
+				diceUsed++;
+			}
+		}
 		if (this.score == 0) {
+			if (runningTotal >= 500) {
+				return true;
+			}
+		}
+		if (diceUsed >= 3) {
+			int decide = 0;
+			decide = (int) (Math.random() * 2);
+			if (decide > 0) {
+				return true;
+			} else
+				return false;
 		}
 
 		return false;
-		// TODO decide to bank if allowed
 
 	}
 
 	public boolean isItLocked(int index) {
-		// TODO decide to lock die
 		if (this.diceToLock[index] == 1) {
 			return true;
 		} else

@@ -56,12 +56,8 @@ public class GameGUI extends JFrame
 	 * Create the frame.
 	 */
 	public GameGUI()
-	{
-		/**
-		 * Start a Game state
-		 */
-		gameState aGame = new gameState();
-
+	{	
+		
 		/**
 		 * Builds GUI
 		 */
@@ -208,6 +204,41 @@ public class GameGUI extends JFrame
 		JLabel[] dieLabels = { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
+		 * Start a Game state
+		 */
+		gameState aGame = new gameState();
+		aGame.rollDice();
+		for (int i = 0; i < dieLabels.length; i++)
+		{
+
+			switch (aGame.getDiceAtIndex(i))
+			{
+			case 1:
+				dieLabels[i].setIcon(die1);
+				break;
+			case 2:
+				dieLabels[i].setIcon(die2);
+				break;
+			case 3:
+				dieLabels[i].setIcon(die3);
+				break;
+			case 4:
+				dieLabels[i].setIcon(die4);
+				break;
+			case 5:
+				dieLabels[i].setIcon(die5);
+				break;
+			case 6:
+				dieLabels[i].setIcon(die6);
+				break;
+			default:
+				dieLabels[i].setIcon(die1);
+				break;
+
+			}
+
+		}
+		/**
 		 * Rolls Dice
 		 */
 		btnRoll.addActionListener(new ActionListener()
@@ -217,7 +248,7 @@ public class GameGUI extends JFrame
 				// rolls dice and sets icon to respective dice
 				
 				//TODO check to see if dice is "rollable"
-				if (true)
+				if (aGame.getRunningScore() > 0)
 				{
 
 					aGame.rollDice();
@@ -263,7 +294,8 @@ public class GameGUI extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				//TODO change to properly check whose turn it is
-				if (true)
+				txtRunning.setText("0");
+				if (!aGame.isComputerTurn())
 				{
 					aGame.setPlayerScore(aGame.getPlayerScore() + aGame.getRunningScore());
 				} else
