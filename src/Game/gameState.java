@@ -122,7 +122,7 @@ public class gameState {
 	}
 
 	// returns array with random numbers if the current number is not -1
-	private int[] rollDice() {
+	public int[] rollDice() {
 		for (int i = 0; i < 6; i++) {
 			if (dice[i] != -1) {
 				dice[i] = (int) (Math.random() * 6 + 1);
@@ -153,6 +153,8 @@ public class gameState {
 		return dice;
 	}
 
+	
+	
 	/**
 	 * @param dice
 	 *            the dice to set

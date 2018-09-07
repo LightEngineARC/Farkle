@@ -57,6 +57,8 @@ public class GameGUI extends JFrame
 	 */
 	public GameGUI()
 	{
+		gameState aGame = new gameState();
+
 		setMinimumSize(new Dimension(1000, 550));
 		setTitle("Farkle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -199,6 +201,8 @@ public class GameGUI extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				
+				aGame.rollDice();
+				aGame.getDice();
 			}
 		});
 
@@ -215,7 +219,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				
+				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -224,7 +228,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				
+				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -233,7 +237,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				
+				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -242,7 +246,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				
+				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -251,7 +255,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				
+				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -260,7 +264,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				
+				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 	}
