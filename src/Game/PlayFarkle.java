@@ -31,9 +31,10 @@ public class PlayFarkle {
 	 *
 	 ****************************************************/
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO launch GUI here
 		System.out.println("starting a new game of farkle");
-		gameState.game();
+		gameState aGame = new gameState();
+		aGame.game();
 	}
 
 }

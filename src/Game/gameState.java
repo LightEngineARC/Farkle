@@ -22,26 +22,41 @@ package Game;
  */
 public class gameState {
 
-	public static void game() {
-		int[] dice = { 0, 0, 0, 0, 0, 0 };
-		int playerScore = 0;
-		int computerScore = 0;
-		int runningScore = 0;
-		boolean computerTurn = true;
-		System.out.println("rolling the dice");
-		dice = rollDice(dice);
+	int[] dice = { 0, 0, 0, 0, 0, 0 };
+
+	int playerScore = 0;
+	int computerScore = 0;
+	int runningScore = 0;
+	boolean computerTurn = true;
+
+	public gameState() {
+		this.dice = this.rollDice();
+		this.playerScore = 0;
+		this.computerScore = 0;
+
+	}
+
+	public void game() {
+
+		System.out.println("rolling the first dice");
+		this.dice = rollDice();
 		System.out.println("dice are the following:");
-		System.out.println(dice);
+		System.out.println(this.printDice());
+
 		while (!winCondition()) {
 
 			// TODO manage turns
+
+			this.dice = rollDice();
+			System.out.println("dice are the following:");
+			System.out.println(this.printDice());
 			if (computerTurn) {
 				System.out.println("computer plays");
 			} else
 				System.out.println("player turn");
 
 			// start turn by rolling dice
-			dice = rollDice(dice);
+			dice = rollDice();
 			if (scoring.scoreDice(dice) == 0) {
 				System.out.println("FARKLE");
 				computerTurn = resetTurn(computerTurn);
@@ -52,6 +67,7 @@ public class gameState {
 			}
 
 			computerTurn = resetTurn(computerTurn);
+			System.out.println("rolling the dice again!");
 		}
 		// TODO game over here
 	}
@@ -63,7 +79,7 @@ public class gameState {
 
 	}
 
-	private static boolean resetTurn(boolean computerTurns) {
+	private boolean resetTurn(boolean computerTurns) {
 		if (computerTurns) {
 			return false;
 		} else
@@ -78,18 +94,27 @@ public class gameState {
 	}
 
 	// returns array with random numbers if the current number is not -1
-	private static int[] rollDice(int[] dice2) {
+	private int[] rollDice() {
 		for (int i = 0; i < 6; i++) {
-			if (dice2[i] != -1) {
-				dice2[i] = (int) (Math.random() * 5 + 1);
+			if (dice[i] != -1) {
+				dice[i] = (int) (Math.random() * 6 + 1);
 			}
 		}
-		return dice2;
+		return dice;
 	}
 
-	public static boolean winCondition() {
+	public boolean winCondition() {
 		return false;
 		// TODO code win condition
+
+	}
+
+	public String printDice() {
+		String theDice = "";
+		for (int i = 0; i < 6; i++) {
+			theDice = theDice + " " + dice[i] + "\n";
+		}
+		return theDice;
 
 	}
 
