@@ -310,6 +310,7 @@ public class GameGUI extends JFrame
 				//TODO set to check if dice is "clickable" or "locked"
 				if(true)
 				{
+					theToggler();
 					switch(aGame.getDiceAtIndex(0))
 					{
 					case 1: 
@@ -386,6 +387,7 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if(true)
 				{
+					theToggler();
 					switch(aGame.getDiceAtIndex(1))
 					{
 					case 1: 
@@ -462,6 +464,7 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if(true)
 				{
+					theToggler();
 					switch(aGame.getDiceAtIndex(2))
 					{
 					case 1: 
@@ -538,6 +541,7 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if(true)
 				{
+					theToggler();
 					switch(aGame.getDiceAtIndex(3))
 					{
 					case 1: 
@@ -614,6 +618,7 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if(true)
 				{
+					theToggler();
 					switch(aGame.getDiceAtIndex(4))
 					{
 					case 1: 
@@ -690,6 +695,7 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if(true)
 				{
+					theToggler();
 					switch(aGame.getDiceAtIndex(5))
 					{
 					case 1: 
