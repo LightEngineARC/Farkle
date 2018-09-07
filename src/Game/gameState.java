@@ -30,7 +30,7 @@ public class gameState {
 	int playerScore = 0;
 	int computerScore = 0;
 	int runningScore = 0;
-	boolean computerTurn = true;
+	boolean computerTurn = false;
 	computer computer;
 	Scanner scanner = new Scanner(System.in);
 
