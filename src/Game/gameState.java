@@ -38,7 +38,7 @@ public class gameState {
 		this.dice = this.rollDice();
 		this.playerScore = 0;
 		this.computerScore = 0;
-		computer = new computer(dice);
+		computer = new computer(dice, this.computerScore);
 
 	}
 
@@ -154,6 +154,10 @@ public class gameState {
 		}
 		return theDice;
 
+	}
+
+	public int getDiceAtIndex(int index) {
+		return this.dice[index];
 	}
 
 	/**
