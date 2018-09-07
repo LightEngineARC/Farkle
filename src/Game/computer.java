@@ -16,8 +16,6 @@
  ********************************************************/
 package Game;
 
-import java.util.Arrays;
-
 /**
  * @author Ashton
  *
@@ -25,13 +23,14 @@ import java.util.Arrays;
 public class computer {
 
 	int[] dice = { 0, 0, 0, 0, 0, 0 };
+	private int score;
 
-	public computer(int[] dice) {
+	public computer(int[] dice, int score) {
+		this.score = score;
 		this.dice = dice;
 	}
 
 	public void computerTurn() {
-		Arrays.sort(this.dice);
 		while (!toBank()) {
 
 			chooseDice();

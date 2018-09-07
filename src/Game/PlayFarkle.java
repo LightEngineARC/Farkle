@@ -32,9 +32,9 @@ public class PlayFarkle {
 	 ****************************************************/
 	public static void main(String[] args) {
 		// TODO launch GUI here
-		System.out.println("starting a new game of farkle");
-		gameState aGame = new gameState();
-		aGame.game();
+		// System.out.println("starting a new game of farkle");
+		// gameState aGame = new gameState();
+		// aGame.game();
 	}
 
 }
