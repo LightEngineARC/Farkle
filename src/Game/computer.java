@@ -34,13 +34,11 @@ public class computer {
 
 	public void computerTurn() {
 		while (!toBank()) {
-
 			chooseDice();
 		}
-
 	}
 
-	private int[] chooseDice() {
+	public int[] chooseDice() {
 
 		// TODO decide which dice to lock
 		for (int i = 0; i < 6; i++) {
@@ -49,6 +47,7 @@ public class computer {
 			}
 			switch (this.dice[i]) {
 			case 1:
+				sets[0]++;
 				break;
 			case 2:
 				sets[1]++;
@@ -60,14 +59,18 @@ public class computer {
 				sets[3]++;
 				break;
 			case 5:
+				sets[4]++;
 				break;
 			case 6:
 				sets[5]++;
+			default:
+				break;
 			}
-			for (int j = 0; j < 6; j++) {
+			for (int j = 0; j < 6; j++) {// loop through sets and look for values greater than 2
 				if (sets[j] > 2) {
-					for (int k = 0; k < 6; k++) {
-						if (diceToLock[k] == j + 1) {
+					System.out.println("sets at " + j + " > 2");
+					for (int k = 0; k < 6; k++) {// loop through dice and check if the value of dice == int j +1
+						if (dice[k] == (j + 1)) {
 							diceToLock[k] = 1;
 						}
 					}
