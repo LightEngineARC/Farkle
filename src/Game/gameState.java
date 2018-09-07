@@ -243,4 +243,11 @@ public class gameState {
 		this.computerTurn = computerTurn;
 	}
 
+	public void toggleDice(int index) {
+		if (dice[index] != -1) {
+			diceToggle[index] = dice[index];
+		} else
+			diceToggle[index] = -1;
+	}
+
 }
