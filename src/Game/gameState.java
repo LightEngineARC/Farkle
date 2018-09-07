@@ -142,8 +142,16 @@ public class gameState {
 	}
 
 	public boolean winCondition() {
+		if (computerTurn) {
+			if (computerScore >= 10000) {
+				return true;
+			}
+		} else {
+			if (playerScore >= 10000) {
+				return true;
+			}
+		}
 		return false;
-		// TODO code win condition
 
 	}
 
