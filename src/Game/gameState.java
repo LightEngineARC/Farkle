@@ -16,6 +16,8 @@
  ********************************************************/
 package Game;
 
+import java.util.Scanner;
+
 /**
  * @author Ashton
  *
@@ -23,12 +25,14 @@ package Game;
 public class gameState {
 
 	int[] dice = { 0, 0, 0, 0, 0, 0 };
+	int[] diceToggle = { -1, -1, -1, -1, -1, -1 };
 
 	int playerScore = 0;
 	int computerScore = 0;
 	int runningScore = 0;
 	boolean computerTurn = true;
 	computer computer;
+	Scanner scanner = new Scanner(System.in);
 
 	public gameState() {
 		this.dice = this.rollDice();
@@ -42,23 +46,35 @@ public class gameState {
 
 		System.out.println("rolling the first dice");
 		this.dice = rollDice();
-		System.out.println("dice are the following:");
-		System.out.println(this.printDice());
-
 		while (!winCondition()) {
-
 			// TODO manage turns
+			// start turn by rolling dice
 
-			this.dice = rollDice();
 			System.out.println("dice are the following:");
 			System.out.println(this.printDice());
 			if (computerTurn) {
 				System.out.println("computer plays");
-			} else
-				System.out.println("player turn");
+				this.dice = rollDice();
+				// TODO add computer turn logic here
 
-			// start turn by rolling dice
-			dice = rollDice();
+			} else {
+
+				// TODO player turn logic here
+
+				System.out.println("player turn! enter the indeces of the die you want to toggle, or -1 to bank");
+				this.dice = rollDice();
+				int input = -1;
+				do {
+
+					input = scanner.nextInt();
+					diceToggle[input] = dice[input];
+					System.out.println("selection is worth " + scoring.scoreDice(this.diceToggle) + " points");
+
+				} while (input > -1 && runningScore > 0);
+				bankPoints(this.diceToggle);
+
+			}
+
 			if (scoring.scoreDice(dice) == 0) {
 				System.out.println("FARKLE");
 				computerTurn = resetTurn(computerTurn);
@@ -71,13 +87,23 @@ public class gameState {
 			computerTurn = resetTurn(computerTurn);
 			System.out.println("rolling the dice again!");
 		}
-		// TODO game over here
+
 	}
 
-	private int bankPoints(int[] dice) {
+	// TODO game over here
+
+	private void bankPoints(int[] dice) {
 		// TODO get dice that have been clicked
 		// TODO score dice
-		return scoring.scoreDice(dice);
+		if (computerTurn) {
+			if (computerScore > 500 || scoring.scoreDice(dice) > 500) {
+				computerScore = +scoring.scoreDice(dice);
+			}
+		} else {
+			if (playerScore > 500 || scoring.scoreDice(dice) > 500) {
+				playerScore = +scoring.scoreDice(dice);
+			}
+		}
 
 	}
 
