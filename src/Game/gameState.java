@@ -59,35 +59,45 @@ public class gameState {
 
 			} else {
 
-				// TODO player turn logic here
+				// TODO PLAYER TURN logic here
 
 				System.out.println("player turn! enter the indeces of the die you want to toggle, or -1 to bank");
 				this.dice = rollDice();
+
+				if (scoring.scoreDice(dice) == 0) {
+					System.out.println("farkle!");
+					break;
+				}
+
 				int input = -1;
 				do {
 
 					input = scanner.nextInt();
-					diceToggle[input] = dice[input];
-					System.out.println("selection is worth " + scoring.scoreDice(this.diceToggle) + " points");
+					if (input != -1) {
+						diceToggle[input] = dice[input];
+					} else {
+						bankPoints(diceToggle);
+						computerTurn = true;
+					}
 
-				} while (input > -1 && runningScore > 0);
+					System.out.println("selection is worth " + scoring.scoreDice(this.diceToggle) + " points");
+					if (scoring.scoreDice(dice) == 0) {
+						computerTurn = true;
+					}
+
+				} while (!computerTurn);
 				bankPoints(this.diceToggle);
 
 			}
-
-			if (scoring.scoreDice(dice) == 0) {
-				System.out.println("FARKLE");
-				computerTurn = resetTurn(computerTurn);
-			}
-			// TODO player selects dice and they are scored each time
-			if (computerTurn) {
-				computer.computerTurn();
-			}
-
 			computerTurn = resetTurn(computerTurn);
-			System.out.println("rolling the dice again!");
+		}
+		// TODO player selects dice and they are scored each time
+		if (computerTurn) {
+			computer.computerTurn();
 		}
 
+		computerTurn = resetTurn(computerTurn);
+		System.out.println("rolling the dice again!");
 	}
 
 	// TODO game over here
