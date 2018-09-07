@@ -28,11 +28,13 @@ public class gameState {
 	int computerScore = 0;
 	int runningScore = 0;
 	boolean computerTurn = true;
+	computer computer;
 
 	public gameState() {
 		this.dice = this.rollDice();
 		this.playerScore = 0;
 		this.computerScore = 0;
+		computer = new computer(dice);
 
 	}
 
@@ -63,7 +65,7 @@ public class gameState {
 			}
 			// TODO player selects dice and they are scored each time
 			if (computerTurn) {
-				computer.computerTurn(dice);
+				computer.computerTurn();
 			}
 
 			computerTurn = resetTurn(computerTurn);
@@ -116,6 +118,81 @@ public class gameState {
 		}
 		return theDice;
 
+	}
+
+	/**
+	 * @return the dice
+	 */
+	public int[] getDice() {
+		return dice;
+	}
+
+	/**
+	 * @param dice
+	 *            the dice to set
+	 */
+	public void setDice(int[] dice) {
+		this.dice = dice;
+	}
+
+	/**
+	 * @return the playerScore
+	 */
+	public int getPlayerScore() {
+		return playerScore;
+	}
+
+	/**
+	 * @param playerScore
+	 *            the playerScore to set
+	 */
+	public void setPlayerScore(int playerScore) {
+		this.playerScore = playerScore;
+	}
+
+	/**
+	 * @return the computerScore
+	 */
+	public int getComputerScore() {
+		return computerScore;
+	}
+
+	/**
+	 * @param computerScore
+	 *            the computerScore to set
+	 */
+	public void setComputerScore(int computerScore) {
+		this.computerScore = computerScore;
+	}
+
+	/**
+	 * @return the runningScore
+	 */
+	public int getRunningScore() {
+		return runningScore;
+	}
+
+	/**
+	 * @param runningScore
+	 *            the runningScore to set
+	 */
+	public void setRunningScore(int runningScore) {
+		this.runningScore = runningScore;
+	}
+
+	/**
+	 * @return the computerTurn
+	 */
+	public boolean isComputerTurn() {
+		return computerTurn;
+	}
+
+	/**
+	 * @param computerTurn
+	 *            the computerTurn to set
+	 */
+	public void setComputerTurn(boolean computerTurn) {
+		this.computerTurn = computerTurn;
 	}
 
 }

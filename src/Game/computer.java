@@ -23,17 +23,35 @@ import java.util.Arrays;
  *
  */
 public class computer {
-	public static void computerTurn(int[] dice) {
-		Arrays.sort(dice);
+
+	int[] dice = { 0, 0, 0, 0, 0, 0 };
+
+	public computer(int[] dice) {
+		this.dice = dice;
+	}
+
+	public void computerTurn() {
+		Arrays.sort(this.dice);
+		while (!toBank()) {
+
+			chooseDice();
+		}
 
 	}
 
-	private static void toBank() {
+	private void chooseDice() {
+		// TODO decide which dice to lock
+
+	}
+
+	private boolean toBank() {
+
+		return false;
 		// TODO decide to bank if allowed
 
 	}
 
-	private static void lockDice() {
+	private void lockDice() {
 		// TODO decide to lock die
 	}
 
