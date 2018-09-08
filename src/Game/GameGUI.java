@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -187,18 +186,30 @@ public class GameGUI extends JFrame
 		/**
 		 * Makes Icons for different Die
 		 */
-//		Icon die1 = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png"));
-//		Icon die1b = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1b.png"));
-//		Icon die2 = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png"));
-//		Icon die2b = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2b.png"));
-//		Icon die3 = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png"));
-//		Icon die3b = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3b.png"));
-//		Icon die4 = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png"));
-//		Icon die4b = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4b.png"));
-//		Icon die5 = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png"));
-//		Icon die5b = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5b.png"));
-//		Icon die6 = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png"));
-//		Icon die6b = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6b.png"));
+		// Icon die1 = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png"));
+		// Icon die1b = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1b.png"));
+		// Icon die2 = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png"));
+		// Icon die2b = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2b.png"));
+		// Icon die3 = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png"));
+		// Icon die3b = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3b.png"));
+		// Icon die4 = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png"));
+		// Icon die4b = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4b.png"));
+		// Icon die5 = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png"));
+		// Icon die5b = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5b.png"));
+		// Icon die6 = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png"));
+		// Icon die6b = new
+		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6b.png"));
 
 		JLabel[] dieLabels =
 		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
@@ -244,9 +255,9 @@ public class GameGUI extends JFrame
 		{
 			txtRunning.setText("Farkle!");
 			aGame.setRunningScore(0);
-//			int[] z = {1,2,3,4,5,6};
-//			aGame.setDice(z);
-//			aGame.rollDice();
+			// int[] z = {1,2,3,4,5,6};
+			// aGame.setDice(z);
+			// aGame.rollDice();
 		}
 		/**
 		 * Rolls Dice
@@ -277,22 +288,28 @@ public class GameGUI extends JFrame
 						switch (aGame.getDiceAtIndex(i))
 						{
 						case 1:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
+							dieLabels[i]
+									.setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
 							break;
 						case 2:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
+							dieLabels[i]
+									.setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
 							break;
 						case 3:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
+							dieLabels[i]
+									.setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
 							break;
 						case 4:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
+							dieLabels[i]
+									.setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
 							break;
 						case 5:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
+							dieLabels[i]
+									.setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
 							break;
 						case 6:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
+							dieLabels[i]
+									.setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
 							break;
 						case -1:
 							break;
@@ -307,7 +324,8 @@ public class GameGUI extends JFrame
 					{
 						txtRunning.setText("Farkle!");
 						aGame.setRunningScore(0);
-						int[] z = {1,2,3,4,5,6};
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 					}
@@ -331,7 +349,8 @@ public class GameGUI extends JFrame
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
-						int[] z = {1,2,3,4,5,6};
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 					}
@@ -345,13 +364,16 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (aGame.getDiceAtIndex(0) != -1)
+				int index = 0;
+				if (aGame.getDiceAtIndex(index) != -1)
 				{
-					txtRunning.setText("" + (theToggler(aGame, 0) + aGame.getRunningScore()));
-					
+					int toggleScore = theToggler(aGame, index);
+					System.out.println("toggle score = " + toggleScore);
+					System.out.println(aGame.printDice());
+					txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 					lblDie1.setIcon(new ImageIcon(GameGUI.class
-							.getResource(changeIcon(aGame.getDiceAtIndex(0), lblDie1.getIcon().toString()))));
+							.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie1.getIcon().toString()))));
 				}
 			}
 		});
@@ -362,15 +384,16 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (aGame.getDiceAtIndex(1) != -1)
+				int index = 1;
+				if (aGame.getDiceAtIndex(index) != -1)
 				{
-					txtRunning.setText("" + (theToggler(aGame, 1) + aGame.getRunningScore()));
+					int toggleScore = theToggler(aGame, index);
+					System.out.println("toggle score = " + toggleScore);
+					System.out.println(aGame.printDice());
+					txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-					
 					lblDie2.setIcon(new ImageIcon(GameGUI.class
-							.getResource(changeIcon(aGame.getDiceAtIndex(1), lblDie2.getIcon().toString()))));
-					
-
+							.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie2.getIcon().toString()))));
 				}
 			}
 		});
@@ -381,12 +404,16 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (aGame.getDiceAtIndex(2) != -1)
+				int index = 2;
+				if (aGame.getDiceAtIndex(index) != -1)
 				{
-					txtRunning.setText("" + (theToggler(aGame, 2) + aGame.getRunningScore()));
+					int toggleScore = theToggler(aGame, index);
+					System.out.println("toggle score = " + toggleScore);
+					System.out.println(aGame.printDice());
+					txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 					lblDie3.setIcon(new ImageIcon(GameGUI.class
-							.getResource(changeIcon(aGame.getDiceAtIndex(2), lblDie3.getIcon().toString()))));
+							.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie3.getIcon().toString()))));
 				}
 			}
 		});
@@ -397,12 +424,16 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (aGame.getDiceAtIndex(3) != -1)
+				int index = 3;
+				if (aGame.getDiceAtIndex(index) != -1)
 				{
-					txtRunning.setText("" + (theToggler(aGame, 3) + aGame.getRunningScore()));
+					int toggleScore = theToggler(aGame, index);
+					System.out.println("toggle score = " + toggleScore);
+					System.out.println(aGame.printDice());
+					txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 					lblDie4.setIcon(new ImageIcon(GameGUI.class
-							.getResource(changeIcon(aGame.getDiceAtIndex(3), lblDie4.getIcon().toString()))));
+							.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie4.getIcon().toString()))));
 				}
 			}
 		});
@@ -413,13 +444,16 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (aGame.getDiceAtIndex(4) != -1)
+				int index = 4;
+				if (aGame.getDiceAtIndex(index) != -1)
 				{
-					txtRunning.setText("" + (theToggler(aGame, 4) + aGame.getRunningScore()));
+					int toggleScore = theToggler(aGame, index);
+					System.out.println("toggle score = " + toggleScore);
+					System.out.println(aGame.printDice());
+					txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 					lblDie5.setIcon(new ImageIcon(GameGUI.class
-							.getResource(changeIcon(aGame.getDiceAtIndex(4), lblDie5.getIcon().toString()))));
-
+							.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie5.getIcon().toString()))));
 				}
 			}
 		});
@@ -430,18 +464,34 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (aGame.getDiceAtIndex(5) != -1)
+				int index = 5;
+				if (aGame.getDiceAtIndex(index) != -1)
 				{
-					txtRunning.setText("" + (theToggler(aGame, 5) + aGame.getRunningScore()));
+					int toggleScore = theToggler(aGame, index);
+					System.out.println("toggle score = " + toggleScore);
+					System.out.println(aGame.printDice());
+					txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 					lblDie6.setIcon(new ImageIcon(GameGUI.class
-							.getResource(changeIcon(aGame.getDiceAtIndex(5), lblDie6.getIcon().toString()))));
+							.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie6.getIcon().toString()))));
 				}
 
 			}
 		});
 	}
 
+	/**
+	 * 
+	 * Method : Toggler
+	 *
+	 * Purpose : toggles the selected die in the toggle array to the value of the
+	 * die in the same index of the dice array
+	 *
+	 * Parameters : gameState, int
+	 *
+	 * Returns : the score of the dice in the toggle array
+	 *
+	 */
 	public static int theToggler(gameState aGame, int index)
 	{
 		aGame.toggleDice(index);
