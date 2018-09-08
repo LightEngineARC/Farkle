@@ -297,6 +297,7 @@ public class GameGUI extends JFrame
 				if (!aGame.isComputerTurn())
 				{
 					aGame.setPlayerScore(aGame.getPlayerScore() + aGame.getRunningScore());
+					txtPlayer.setText("" + aGame.getPlayerScore());
 					txtRunning.setText("0");
 				}
 			}
