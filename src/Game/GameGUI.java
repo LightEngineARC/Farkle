@@ -319,11 +319,11 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if (true)
 				{
-					theToggler(aGame, 0);
+					txtRunning.setText("" + (theToggler(aGame, 0) + aGame.getRunningScore()));
+
 					lblDie1.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(0), lblDie1.getIcon().toString()))));
 				}
-				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -335,11 +335,11 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if (true)
 				{
-					theToggler(aGame, 1);
+					txtRunning.setText("" + (theToggler(aGame, 1) + aGame.getRunningScore()));
+
 					lblDie2.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(1), lblDie2.getIcon().toString()))));
 				}
-				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -351,11 +351,11 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if (true)
 				{
-					theToggler(aGame, 2);
+					txtRunning.setText("" + (theToggler(aGame, 2) + aGame.getRunningScore()));
+
 					lblDie3.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(2), lblDie3.getIcon().toString()))));
 				}
-				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -367,11 +367,11 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if (true)
 				{
-					theToggler(aGame, 3);
+					txtRunning.setText("" + (theToggler(aGame, 3) + aGame.getRunningScore()));
+
 					lblDie4.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(3), lblDie4.getIcon().toString()))));
 				}
-				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -383,12 +383,12 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if (true)
 				{
-					theToggler(aGame, 4);
+					txtRunning.setText("" + (theToggler(aGame, 4) + aGame.getRunningScore()));
+
 					lblDie5.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(4), lblDie5.getIcon().toString()))));
 
 				}
-				txtRunning.setText("" + aGame.getRunningScore());
 			}
 		});
 
@@ -400,19 +400,20 @@ public class GameGUI extends JFrame
 				// TODO set to check if dice is "clickable" or "locked"
 				if (true)
 				{
-					theToggler(aGame, 5);
+					txtRunning.setText("" + (theToggler(aGame, 5) + aGame.getRunningScore()));
+
 					lblDie6.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(5), lblDie6.getIcon().toString()))));
 				}
-				txtRunning.setText("" + aGame.getRunningScore());
+
 			}
 		});
 	}
 
-	public static void theToggler(gameState aGame, int index)
+	public static int theToggler(gameState aGame, int index)
 	{
 		aGame.toggleDice(index);
-		aGame.setRunningScore(scoring.scoreDice(aGame.diceToggle));
+		return scoring.scoreDice(aGame.getDiceToggle());
 
 	}
 

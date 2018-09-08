@@ -289,9 +289,23 @@ public class gameState
 	{
 		if (dice[index] != -1)
 		{
-			diceToggle[index] = dice[index];
-		} else
-			diceToggle[index] = -1;
+			if (diceToggle[index] == -1)
+			{
+				diceToggle[index] = dice[index];
+			} else
+			{
+				diceToggle[index] = -1;
+			}
+		}
+
+	}
+
+	/**
+	 * @return the diceToggle
+	 */
+	public int[] getDiceToggle()
+	{
+		return diceToggle;
 	}
 
 }
