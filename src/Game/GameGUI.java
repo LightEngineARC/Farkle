@@ -312,7 +312,7 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 0);
-					lblDie6.setIcon(new ImageIcon(GameGUI.class
+					lblDie1.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(0), lblDie1.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
@@ -328,7 +328,7 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 1);
-					lblDie6.setIcon(new ImageIcon(GameGUI.class
+					lblDie2.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(1), lblDie2.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
@@ -344,7 +344,7 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 2);
-					lblDie6.setIcon(new ImageIcon(GameGUI.class
+					lblDie3.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(2), lblDie3.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
@@ -360,7 +360,7 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 3);
-					lblDie6.setIcon(new ImageIcon(GameGUI.class
+					lblDie4.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(3), lblDie4.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
@@ -376,7 +376,7 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 4);
-					lblDie6.setIcon(new ImageIcon(GameGUI.class
+					lblDie5.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(4), lblDie5.getIcon().toString()))));
 
 				}
