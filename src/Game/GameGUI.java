@@ -484,7 +484,8 @@ public class GameGUI extends JFrame
 			}
 			break;
 		default:
-			return ret;
+				ret = dieString;
+			break;
 		}
 		return ret;
 
