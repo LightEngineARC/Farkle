@@ -292,6 +292,9 @@ public class GameGUI extends JFrame
 					if (scoring.scoreDice(aGame.getDice()) == 0)
 					{
 						txtRunning.setText("Farkle!");
+						int[] z = {1,2,3,4,5,6};
+						aGame.setDice(z);
+						aGame.rollDice();
 					}
 				}
 			}
@@ -313,6 +316,9 @@ public class GameGUI extends JFrame
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
+						int[] z = {1,2,3,4,5,6};
+						aGame.setDice(z);
+						aGame.rollDice();
 					}
 				}
 			}
