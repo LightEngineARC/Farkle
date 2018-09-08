@@ -250,7 +250,9 @@ public class GameGUI extends JFrame
 				// TODO check to see if dice is "rollable"
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
+					// add score of selected dice
 					aGame.setRunningScore(aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()));
+					// super lock dice
 					for (int j = 0; j < 6; j++)
 					{
 						if (aGame.getToggleDiceAtIndex(j) != -1)
@@ -490,7 +492,7 @@ public class GameGUI extends JFrame
 			}
 			break;
 		default:
-				ret = dieString;
+			ret = dieString;
 			break;
 		}
 		return ret;
