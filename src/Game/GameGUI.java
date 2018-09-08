@@ -411,8 +411,6 @@ public class GameGUI extends JFrame
 					if (aGame.getDiceAtIndex(index) != -1)
 					{
 						int toggleScore = theToggler(aGame, index);
-						System.out.println("toggle score = " + toggleScore);
-						System.out.println(aGame.printDice());
 						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 						lblDie1.setIcon(new ImageIcon(GameGUI.class
@@ -434,8 +432,6 @@ public class GameGUI extends JFrame
 					if (aGame.getDiceAtIndex(index) != -1)
 					{
 						int toggleScore = theToggler(aGame, index);
-						System.out.println("toggle score = " + toggleScore);
-						System.out.println(aGame.printDice());
 						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 						lblDie2.setIcon(new ImageIcon(GameGUI.class
@@ -457,8 +453,6 @@ public class GameGUI extends JFrame
 					if (aGame.getDiceAtIndex(index) != -1)
 					{
 						int toggleScore = theToggler(aGame, index);
-						System.out.println("toggle score = " + toggleScore);
-						System.out.println(aGame.printDice());
 						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 						lblDie3.setIcon(new ImageIcon(GameGUI.class
@@ -480,8 +474,6 @@ public class GameGUI extends JFrame
 					if (aGame.getDiceAtIndex(index) != -1)
 					{
 						int toggleScore = theToggler(aGame, index);
-						System.out.println("toggle score = " + toggleScore);
-						System.out.println(aGame.printDice());
 						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 						lblDie4.setIcon(new ImageIcon(GameGUI.class
@@ -503,8 +495,6 @@ public class GameGUI extends JFrame
 					if (aGame.getDiceAtIndex(index) != -1)
 					{
 						int toggleScore = theToggler(aGame, index);
-						System.out.println("toggle score = " + toggleScore);
-						System.out.println(aGame.printDice());
 						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 						lblDie5.setIcon(new ImageIcon(GameGUI.class
@@ -526,8 +516,6 @@ public class GameGUI extends JFrame
 					if (aGame.getDiceAtIndex(index) != -1)
 					{
 						int toggleScore = theToggler(aGame, index);
-						System.out.println("toggle score = " + toggleScore);
-						System.out.println(aGame.printDice());
 						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
 						lblDie6.setIcon(new ImageIcon(GameGUI.class
