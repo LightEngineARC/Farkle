@@ -69,6 +69,11 @@ public class gameState
 			}
 		}
 		this.computerTurn = false;
+		this.diceToggle = new int[]
+		{ -1, -1, -1, -1, -1, -1 };
+		this.dice = new int[]
+		{ 0, 0, 0, 0, 0, 0 };
+		this.rollDice();
 
 	}
 
