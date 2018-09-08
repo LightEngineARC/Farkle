@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -255,9 +256,10 @@ public class GameGUI extends JFrame
 					{
 						if (aGame.getToggleDiceAtIndex(j) != -1)
 						{
-							aGame.setDiceAtIndex(j, -1);
+							aGame.setDiceAtIndex(j) = -1;
 						}
 					}
+
 					aGame.rollDice();
 					for (int i = 0; i < dieLabels.length; i++)
 					{

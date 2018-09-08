@@ -199,7 +199,21 @@ public class gameState
 	{
 		return this.dice[index];
 	}
+	
+	public int getToggleDiceAtIndex(int index)
+	{
+		return this.diceToggle[index];
+	}
+	
+	public void setToggleDiceAtIndex(int index, int number)
+	{
+		this.diceToggle[index] = number;
+	}
 
+	public void setDiceAtIndex(int index, int number)
+	{
+		this.dice[index] = number;
+	}
 	/**
 	 * @return the dice
 	 */

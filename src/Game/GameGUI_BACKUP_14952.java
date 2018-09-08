@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -250,14 +251,18 @@ public class GameGUI extends JFrame
 				// TODO check to see if dice is "rollable"
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
+<<<<<<< HEAD
 					aGame.setRunningScore(aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()));
 					for (int j = 0; j < 6; j++)
 					{
 						if (aGame.getToggleDiceAtIndex(j) != -1)
 						{
-							aGame.setDiceAtIndex(j, -1);
+							aGame.setDiceAtIndex(j) = -1;
 						}
 					}
+
+=======
+>>>>>>> 638ec91fff9d81d1a27d516649eaf36f39f1f7fb
 					aGame.rollDice();
 					for (int i = 0; i < dieLabels.length; i++)
 					{

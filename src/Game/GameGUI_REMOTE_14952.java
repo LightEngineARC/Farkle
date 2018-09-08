@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -200,8 +201,7 @@ public class GameGUI extends JFrame
 		Icon die6 = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png"));
 		Icon die6b = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6b.png"));
 
-		JLabel[] dieLabels =
-		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		JLabel[] dieLabels = { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
@@ -250,14 +250,6 @@ public class GameGUI extends JFrame
 				// TODO check to see if dice is "rollable"
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
-					aGame.setRunningScore(aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()));
-					for (int j = 0; j < 6; j++)
-					{
-						if (aGame.getToggleDiceAtIndex(j) != -1)
-						{
-							aGame.setDiceAtIndex(j, -1);
-						}
-					}
 					aGame.rollDice();
 					for (int i = 0; i < dieLabels.length; i++)
 					{
@@ -289,7 +281,7 @@ public class GameGUI extends JFrame
 						}
 
 					}
-					if (scoring.scoreDice(aGame.getDice()) == 0)
+					if(scoring.scoreDice(aGame.getDice()) == 0)
 					{
 						txtRunning.setText("Farkle!");
 					}
