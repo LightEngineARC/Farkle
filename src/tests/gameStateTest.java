@@ -37,4 +37,20 @@ class gameStateTest
 		assertEquals(dice[5], aGame.getDiceToggle()[5]);
 	}
 
+	@Test
+	void testGetDiceAtIndex()
+	{
+		int[] dice =
+		{ -1, 1, 2, 3, 6, -1 };
+		gameState aGame = new gameState();
+		aGame.setDice(dice);
+		assertEquals(-1, aGame.getDiceAtIndex(0));
+		assertEquals(1, aGame.getDiceAtIndex(1));
+		assertEquals(2, aGame.getDiceAtIndex(2));
+		assertEquals(3, aGame.getDiceAtIndex(3));
+		assertEquals(6, aGame.getDiceAtIndex(4));
+		assertEquals(-1, aGame.getDiceAtIndex(5));
+
+	}
+
 }
