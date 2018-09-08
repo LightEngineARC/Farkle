@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -200,8 +201,7 @@ public class GameGUI extends JFrame
 		Icon die6 = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png"));
 		Icon die6b = new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6b.png"));
 
-		JLabel[] dieLabels =
-		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		JLabel[] dieLabels = { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
@@ -248,7 +248,7 @@ public class GameGUI extends JFrame
 				// rolls dice and sets icon to respective dice
 
 				// TODO check to see if dice is "rollable"
-				if (aGame.getRunningScore() > 0 && !aGame.isComputerTurn())
+				if (!aGame.isComputerTurn())
 				{
 
 					aGame.rollDice();
@@ -282,6 +282,10 @@ public class GameGUI extends JFrame
 						}
 
 					}
+					if(scoring.scoreDice(aGame.getDice()) == 0)
+					{
+						txtRunning.setText("Farkle!");
+					}
 				}
 			}
 		});
@@ -296,9 +300,13 @@ public class GameGUI extends JFrame
 				// TODO change to properly check whose turn it is
 				if (!aGame.isComputerTurn())
 				{
-					aGame.setPlayerScore(aGame.getPlayerScore() + aGame.getRunningScore());
-					txtPlayer.setText("" + aGame.getPlayerScore());
-					txtRunning.setText("0");
+					if (aGame.getRunningScore() >= 500 || aGame.getPlayerScore() > 0)
+					{
+						aGame.setPlayerScore(aGame.getPlayerScore() + aGame.getRunningScore());
+						txtPlayer.setText("" + aGame.getPlayerScore());
+						txtRunning.setText("0");
+						aGame.setRunningScore(0);
+					}
 				}
 			}
 		});
