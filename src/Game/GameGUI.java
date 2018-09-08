@@ -269,11 +269,12 @@ public class GameGUI extends JFrame
 				// rolls dice and sets icon to respective dice
 
 				// TODO check to see if dice is "rollable"
+
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
 					// add score of selected dice
 					aGame.setRunningScore(aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()));
-					// super lock dice
+					// super lock dice for new roll
 					for (int j = 0; j < 6; j++)
 					{
 						if (aGame.getToggleDiceAtIndex(j) != -1)
@@ -281,7 +282,34 @@ public class GameGUI extends JFrame
 							aGame.setDiceAtIndex(j, -1);
 						}
 					}
+
+					// if all dice are locked reset dice toggle and roll
+					boolean full = true;
+					for (int t = 0; t < 6; t++)
+					{
+
+						if (aGame.getDiceAtIndex(t) > -1)
+						{
+							full = false;
+						}
+
+					}
+					if (full)
+					{
+						aGame.setDiceToggle(new int[]
+						{ -1, -1, -1, -1, -1, -1 });
+						aGame.setDice(new int[]
+						{ 0, 0, 0, 0, 0, 0 });
+					}
 					aGame.rollDice();
+					for (int k = 0; k < 6; k++)
+					{
+						if (aGame.getToggleDiceAtIndex(k) > 0)
+						{
+							aGame.setDiceAtIndex(k, -1);
+							aGame.setToggleDiceAtIndex(k, -1);
+						}
+					}
 					for (int i = 0; i < dieLabels.length; i++)
 					{
 
@@ -320,6 +348,7 @@ public class GameGUI extends JFrame
 						}
 
 					}
+					// checking dice array score after roll.
 					if (scoring.scoreDice(aGame.getDice()) == 0)
 					{
 						txtRunning.setText("Farkle!");
@@ -328,6 +357,7 @@ public class GameGUI extends JFrame
 						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
+
 					}
 				}
 			}

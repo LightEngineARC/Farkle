@@ -253,4 +253,13 @@ public class gameState
 		return diceToggle;
 	}
 
+	/**
+	 * @param diceToggle
+	 *            the diceToggle to set
+	 */
+	public void setDiceToggle(int[] diceToggle)
+	{
+		this.diceToggle = diceToggle;
+	}
+
 }
