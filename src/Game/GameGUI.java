@@ -533,6 +533,13 @@ public class GameGUI extends JFrame
 		});
 	}
 
+	public static void computerTurn(gameState aGame)
+	{
+		while (aGame.computerTurn)
+			aGame.computerTurn();
+
+	}
+
 	/**
 	 * 
 	 * Method : Toggler

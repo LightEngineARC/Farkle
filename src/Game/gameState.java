@@ -57,8 +57,11 @@ public class gameState
 	 */
 	public void computerTurn()
 	{
-		computer.setDice(dice);
-		computer.chooseDice();
+		if (computerTurn && scoring.scoreDice(this.dice) != 0)
+		{
+			computer.setDice(dice);
+			computer.chooseDice();
+		}
 
 	}
 
