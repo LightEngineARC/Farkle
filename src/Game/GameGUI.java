@@ -248,7 +248,7 @@ public class GameGUI extends JFrame
 				// rolls dice and sets icon to respective dice
 
 				// TODO check to see if dice is "rollable"
-				if (!aGame.isComputerTurn())
+				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
 
 					aGame.rollDice();
