@@ -240,6 +240,14 @@ public class GameGUI extends JFrame
 			}
 
 		}
+		if (scoring.scoreDice(aGame.getDice()) == 0)
+		{
+			txtRunning.setText("Farkle!");
+			aGame.setRunningScore(0);
+//			int[] z = {1,2,3,4,5,6};
+//			aGame.setDice(z);
+//			aGame.rollDice();
+		}
 		/**
 		 * Rolls Dice
 		 */
@@ -257,7 +265,7 @@ public class GameGUI extends JFrame
 					// super lock dice
 					for (int j = 0; j < 6; j++)
 					{
-						if (aGame.getToggleDiceAtIndex(j) == -1)
+						if (aGame.getToggleDiceAtIndex(j) != -1)
 						{
 							aGame.setDiceAtIndex(j, -1);
 						}
@@ -298,6 +306,7 @@ public class GameGUI extends JFrame
 					if (scoring.scoreDice(aGame.getDice()) == 0)
 					{
 						txtRunning.setText("Farkle!");
+						aGame.setRunningScore(0);
 						int[] z = {1,2,3,4,5,6};
 						aGame.setDice(z);
 						aGame.rollDice();
@@ -339,6 +348,7 @@ public class GameGUI extends JFrame
 				if (aGame.getDiceAtIndex(0) != -1)
 				{
 					txtRunning.setText("" + (theToggler(aGame, 0) + aGame.getRunningScore()));
+					
 
 					lblDie1.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(0), lblDie1.getIcon().toString()))));
@@ -356,8 +366,11 @@ public class GameGUI extends JFrame
 				{
 					txtRunning.setText("" + (theToggler(aGame, 1) + aGame.getRunningScore()));
 
+					
 					lblDie2.setIcon(new ImageIcon(GameGUI.class
 							.getResource(changeIcon(aGame.getDiceAtIndex(1), lblDie2.getIcon().toString()))));
+					
+
 				}
 			}
 		});
