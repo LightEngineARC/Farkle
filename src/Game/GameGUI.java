@@ -386,6 +386,7 @@ public class GameGUI extends JFrame
 						aGame.setDice(z);
 						aGame.rollDice();
 					}
+					aGame.setComputerTurn(true);
 				}
 			}
 		});

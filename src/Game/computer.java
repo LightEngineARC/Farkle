@@ -45,7 +45,7 @@ public class computer
 		{
 			if (this.dice[i] == 1 || this.dice[i] == 5)
 			{
-				diceToLock[i] = 1;
+				diceToLock[i] = this.dice[i];
 			}
 			switch (this.dice[i])
 			{
@@ -73,13 +73,12 @@ public class computer
 			{// loop through sets and look for values greater than 2
 				if (sets[j] > 2)
 				{
-					System.out.println("sets at " + j + " > 2");
 					for (int k = 0; k < 6; k++)
 					{// loop through dice and check if the value of dice == int j +1
 						if (dice[k] == (j + 1))
 						{
-							diceToLock[k] = 1;
-							System.out.println("Computer chooses die #" + k);
+							diceToLock[k] = this.dice[k];
+							System.out.println("computer locks a " + this.dice[k]);
 						}
 					}
 
@@ -137,6 +136,15 @@ public class computer
 			return true;
 		} else
 			return false;
+	}
+
+	/**
+	 * @param dice
+	 *            the dice to set
+	 */
+	public void setDice(int[] dice)
+	{
+		this.dice = dice;
 	}
 
 }

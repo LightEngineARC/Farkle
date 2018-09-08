@@ -46,6 +46,22 @@ public class gameState
 
 	}
 
+	/**
+	 * Method : computerTurn
+	 *
+	 * Purpose : give the machines a chance at victory
+	 *
+	 * Parameters : none.
+	 *
+	 * Returns : void
+	 */
+	public void computerTurn()
+	{
+		computer.setDice(dice);
+		computer.chooseDice();
+
+	}
+
 	private void bankPoints(int[] dice)
 	{
 		// TODO get dice that have been clicked

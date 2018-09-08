@@ -12,7 +12,8 @@ import Game.computer;
  * @author iamsp
  *
  */
-class computerTest {
+class computerTest
+{
 
 	/****************************************************
 	 * Method : NAME
@@ -26,7 +27,8 @@ class computerTest {
 	 *
 	 ****************************************************/
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() throws Exception
+	{
 	}
 
 	/****************************************************
@@ -41,29 +43,34 @@ class computerTest {
 	 *
 	 ****************************************************/
 	@AfterEach
-	void tearDown() throws Exception {
+	void tearDown() throws Exception
+	{
 	}
 
 	/**
 	 * Test method for {@link Game.computer#computerTurn()}.
 	 */
 	@Test
-	void chooseDice() {
-		int[] dice = { 1, 1, 2, 2, 2, 5 };
+	void chooseDice()
+	{
+		int[] dice =
+		{ 1, 1, 2, 2, 2, 5 };
 		computer comp = new computer(dice, 0);
 		dice = comp.chooseDice();
 		assertEquals(dice[0], 1);
 		assertEquals(dice[1], 1);
-		assertEquals(dice[2], 1);
-		assertEquals(dice[3], 1);
-		assertEquals(dice[4], 1);
-		assertEquals(dice[5], 1);
+		assertEquals(dice[2], 2);
+		assertEquals(dice[3], 2);
+		assertEquals(dice[4], 2);
+		assertEquals(dice[5], 5);
 
 	}
 
 	@Test
-	void chooseDiceNoScore() {
-		int[] dice = { 2, 3, 4, 6, 2, 4 };
+	void chooseDiceNoScore()
+	{
+		int[] dice =
+		{ 2, 3, 4, 6, 2, 4 };
 		computer comp = new computer(dice, 0);
 		dice = comp.chooseDice();
 		assertEquals(dice[0], -1);
@@ -76,16 +83,18 @@ class computerTest {
 	}
 
 	@Test
-	void chooseDiceBigSet() {
-		int[] dice = { 2, 2, 2, 3, 3, 3 };
+	void chooseDiceBigSet()
+	{
+		int[] dice =
+		{ 2, 2, 2, 3, 3, 3 };
 		computer comp = new computer(dice, 0);
 		dice = comp.chooseDice();
-		assertEquals(dice[0], 1);
-		assertEquals(dice[1], 1);
-		assertEquals(dice[2], 1);
-		assertEquals(dice[3], 1);
-		assertEquals(dice[4], 1);
-		assertEquals(dice[5], 1);
+		assertEquals(dice[0], 2);
+		assertEquals(dice[1], 2);
+		assertEquals(dice[2], 2);
+		assertEquals(dice[3], 3);
+		assertEquals(dice[4], 3);
+		assertEquals(dice[5], 3);
 
 	}
 
