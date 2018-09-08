@@ -59,9 +59,16 @@ public class gameState
 	{
 		if (computerTurn && scoring.scoreDice(this.dice) != 0)
 		{
-			computer.setDice(dice);
-			computer.chooseDice();
+			System.out.println("computer turn beginning");
+			computer.setDice(dice);// give computer the dice
+			diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
+			if (computer.toBank(runningScore, dice))// decide to bank
+			{
+				System.out.println("computer banks it's points");
+				computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
+			}
 		}
+		this.computerTurn = false;
 
 	}
 
