@@ -2,8 +2,6 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Game.gameState;
@@ -11,16 +9,6 @@ import Game.scoring;
 
 class gameStateTest
 {
-
-	@BeforeEach
-	void setUp() throws Exception
-	{
-	}
-
-	@AfterEach
-	void tearDown() throws Exception
-	{
-	}
 
 	@Test
 	void testToggleDice()
@@ -38,7 +26,15 @@ class gameStateTest
 	@Test
 	void testGetDiceToggle()
 	{
-		// fail("Not yet implemented");
+		int[] dice =
+		{ -1, -1, -1, -1, -1, -1 };
+		gameState aGame = new gameState();
+		assertEquals(dice[0], aGame.getDiceToggle()[0]);
+		assertEquals(dice[1], aGame.getDiceToggle()[1]);
+		assertEquals(dice[2], aGame.getDiceToggle()[2]);
+		assertEquals(dice[3], aGame.getDiceToggle()[3]);
+		assertEquals(dice[4], aGame.getDiceToggle()[4]);
+		assertEquals(dice[5], aGame.getDiceToggle()[5]);
 	}
 
 }

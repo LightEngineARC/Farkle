@@ -430,7 +430,7 @@ public class GameGUI extends JFrame
 		switch (die)
 		{
 		case 1:
-			if (dieString.endsWith("/Game/images/die-red-1.png"))
+			if (dieString.contains("1."))
 			{
 				ret = "/Game/images/die-red-1b.png";
 			} else
@@ -439,7 +439,7 @@ public class GameGUI extends JFrame
 			}
 			break;
 		case 2:
-			if (dieString.endsWith("/Game/images/die-red-2.png"))
+			if (dieString.contains("2."))
 			{
 				ret = "/Game/images/die-red-2b.png";
 			} else
@@ -448,7 +448,7 @@ public class GameGUI extends JFrame
 			}
 			break;
 		case 3:
-			if (dieString.endsWith("/Game/images/die-red-3.png"))
+			if (dieString.contains("3."))
 			{
 				ret = "/Game/images/die-red-3b.png";
 			} else
@@ -457,7 +457,7 @@ public class GameGUI extends JFrame
 			}
 			break;
 		case 4:
-			if (dieString.endsWith("/Game/images/die-red-4.png"))
+			if (dieString.contains("4."))
 			{
 				ret = "/Game/images/die-red-4b.png";
 			} else
@@ -466,7 +466,7 @@ public class GameGUI extends JFrame
 			}
 			break;
 		case 5:
-			if (dieString.endsWith("/Game/images/die-red-5.png"))
+			if (dieString.contains("5."))
 			{
 				ret = "/Game/images/die-red-5b.png";
 			} else
@@ -475,7 +475,7 @@ public class GameGUI extends JFrame
 			}
 			break;
 		case 6:
-			if (dieString.endsWith("/Game/images/die-red-6.png"))
+			if (dieString.contains("6."))
 			{
 				ret = "/Game/images/die-red-6b.png";
 			} else
