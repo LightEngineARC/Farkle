@@ -79,6 +79,7 @@ public class computer
 						if (dice[k] == (j + 1))
 						{
 							diceToLock[k] = 1;
+							System.out.println("Computer chooses die #" + k);
 						}
 					}
 
