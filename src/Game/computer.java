@@ -94,12 +94,12 @@ public class computer
 
 	}
 
-	public boolean toBank(int runningTotal, int[] rolledDice, int score)
+	public boolean toBank(int runningScore, int[] rolledDice, int computerScore)
 	{
 		int diceUsed = 0;
-		if (this.score == 0)
+		if (computerScore == 0)
 		{
-			if (runningTotal >= 500)
+			if (runningScore >= 500)
 			{
 				System.out.println("computer now has the points to bank");
 				return true;
@@ -119,17 +119,13 @@ public class computer
 		}
 		if (diceUsed >= 3)
 		{
-			int decide = 0;
-			decide = (int) (Math.random() * 2);
-			if (decide > 0)
-			{
-				System.out.println("computer decides to bank");
-				return true;
-			} else
-			{
-				System.out.println("computer decides to risk a roll");
-				return false;
-			}
+
+			/*
+			 * int decide = 0; decide = (int) (Math.random() * 2); if (decide > 0) {
+			 * System.out.println("computer decides to bank"); return true; } else {
+			 * System.out.println("computer decides to risk a roll"); return false; }
+			 */
+			return true;
 
 		}
 		System.out.println("Computer decided to roll");
