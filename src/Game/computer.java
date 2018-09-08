@@ -94,21 +94,27 @@ public class computer
 
 	}
 
-	public boolean toBank(int runningTotal, int[] rolledDice)
+	public boolean toBank(int runningTotal, int[] rolledDice, int score)
 	{
 		int diceUsed = 0;
+		if (this.score == 0)
+		{
+			if (runningTotal >= 500)
+			{
+				System.out.println("computer now has the points to bank");
+				return true;
+			} else
+			{
+				System.out.println("Computer doen't have the points to bank");
+				return false;
+			}
+
+		}
 		for (int i = 0; i < 6; i++)
 		{
 			if (rolledDice[i] > 1)
 			{
 				diceUsed++;
-			}
-		}
-		if (this.score == 0)
-		{
-			if (runningTotal >= 500)
-			{
-				return true;
 			}
 		}
 		if (diceUsed >= 3)

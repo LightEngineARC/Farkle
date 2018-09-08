@@ -62,7 +62,7 @@ public class gameState
 			System.out.println("computer turn beginning");
 			computer.setDice(dice);// give computer the dice
 			diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
-			if (computer.toBank(runningScore, dice))// decide to bank
+			if (computer.toBank(runningScore, dice, this.computerScore))// decide to bank
 			{
 				System.out.println("computer banks it's points");
 				computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
