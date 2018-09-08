@@ -255,6 +255,7 @@ public class GameGUI extends JFrame
 		{
 			txtRunning.setText("Farkle!");
 			aGame.setRunningScore(0);
+			aGame.setComputerTurn(true);
 			// int[] z = {1,2,3,4,5,6};
 			// aGame.setDice(z);
 			// aGame.rollDice();
@@ -357,6 +358,7 @@ public class GameGUI extends JFrame
 						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
+						aGame.setComputerTurn(true);
 
 					}
 				}
