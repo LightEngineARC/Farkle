@@ -257,7 +257,7 @@ public class GameGUI extends JFrame
 					// super lock dice
 					for (int j = 0; j < 6; j++)
 					{
-						if (aGame.getToggleDiceAtIndex(j) != -1)
+						if (aGame.getToggleDiceAtIndex(j) == -1)
 						{
 							aGame.setDiceAtIndex(j, -1);
 						}
@@ -336,7 +336,7 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (true)
+				if (aGame.getDiceAtIndex(0) != -1)
 				{
 					txtRunning.setText("" + (theToggler(aGame, 0) + aGame.getRunningScore()));
 
@@ -352,7 +352,7 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (true)
+				if (aGame.getDiceAtIndex(1) != -1)
 				{
 					txtRunning.setText("" + (theToggler(aGame, 1) + aGame.getRunningScore()));
 
@@ -368,7 +368,7 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (true)
+				if (aGame.getDiceAtIndex(2) != -1)
 				{
 					txtRunning.setText("" + (theToggler(aGame, 2) + aGame.getRunningScore()));
 
@@ -384,7 +384,7 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (true)
+				if (aGame.getDiceAtIndex(3) != -1)
 				{
 					txtRunning.setText("" + (theToggler(aGame, 3) + aGame.getRunningScore()));
 
@@ -400,7 +400,7 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (true)
+				if (aGame.getDiceAtIndex(4) != -1)
 				{
 					txtRunning.setText("" + (theToggler(aGame, 4) + aGame.getRunningScore()));
 
@@ -417,7 +417,7 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (true)
+				if (aGame.getDiceAtIndex(5) != -1)
 				{
 					txtRunning.setText("" + (theToggler(aGame, 5) + aGame.getRunningScore()));
 
@@ -495,8 +495,10 @@ public class GameGUI extends JFrame
 				ret = "/Game/images/die-red-6.png";
 			}
 			break;
-		default:
+		case -1:
 			ret = dieString;
+			break;
+		default:
 			break;
 		}
 		return ret;
