@@ -311,63 +311,8 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 0);
-					switch (aGame.getDiceAtIndex(0))
-					{
-					case 1:
-						if (lblDie1.getIcon().toString().equals(die1.toString()))
-						{
-							lblDie1.setIcon(die1b);
-						} else
-						{
-							lblDie1.setIcon(die1);
-						}
-						break;
-					case 2:
-						if (lblDie1.getIcon().toString().equals(die2.toString()))
-						{
-							lblDie1.setIcon(die2b);
-						} else
-						{
-							lblDie1.setIcon(die2);
-						}
-						break;
-					case 3:
-						if (lblDie1.getIcon().toString().equals(die3.toString()))
-						{
-							lblDie1.setIcon(die3b);
-						} else
-						{
-							lblDie1.setIcon(die3);
-						}
-						break;
-					case 4:
-						if (lblDie1.getIcon().toString().equals(die4.toString()))
-						{
-							lblDie1.setIcon(die4b);
-						} else
-						{
-							lblDie1.setIcon(die4);
-						}
-						break;
-					case 5:
-						if (lblDie1.getIcon().toString().equals(die5.toString()))
-						{
-							lblDie1.setIcon(die5b);
-						} else
-						{
-							lblDie1.setIcon(die5);
-						}
-						break;
-					case 6:
-						if (lblDie1.getIcon().toString().equals(die6.toString()))
-						{
-							lblDie1.setIcon(die6b);
-						} else
-						{
-							lblDie1.setIcon(die6);
-						}
-						break;
-					}
+					lblDie6.setIcon(new ImageIcon(GameGUI.class
+							.getResource(changeIcon(aGame.getDiceAtIndex(0), lblDie1.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
 			}
@@ -382,63 +327,8 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 1);
-					switch (aGame.getDiceAtIndex(1))
-					{
-					case 1:
-						if (lblDie2.getIcon().toString().equals(die1.toString()))
-						{
-							lblDie2.setIcon(die1b);
-						} else
-						{
-							lblDie2.setIcon(die1);
-						}
-						break;
-					case 2:
-						if (lblDie2.getIcon().toString().equals(die2.toString()))
-						{
-							lblDie2.setIcon(die2b);
-						} else
-						{
-							lblDie2.setIcon(die2);
-						}
-						break;
-					case 3:
-						if (lblDie2.getIcon().toString().equals(die3.toString()))
-						{
-							lblDie2.setIcon(die3b);
-						} else
-						{
-							lblDie2.setIcon(die3);
-						}
-						break;
-					case 4:
-						if (lblDie2.getIcon().toString().equals(die4.toString()))
-						{
-							lblDie2.setIcon(die4b);
-						} else
-						{
-							lblDie2.setIcon(die4);
-						}
-						break;
-					case 5:
-						if (lblDie2.getIcon().toString().equals(die5.toString()))
-						{
-							lblDie2.setIcon(die5b);
-						} else
-						{
-							lblDie2.setIcon(die5);
-						}
-						break;
-					case 6:
-						if (lblDie2.getIcon().toString().equals(die6.toString()))
-						{
-							lblDie2.setIcon(die6b);
-						} else
-						{
-							lblDie2.setIcon(die6);
-						}
-						break;
-					}
+					lblDie6.setIcon(new ImageIcon(GameGUI.class
+							.getResource(changeIcon(aGame.getDiceAtIndex(1), lblDie2.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
 			}
@@ -453,63 +343,8 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 2);
-					switch (aGame.getDiceAtIndex(2))
-					{
-					case 1:
-						if (lblDie3.getIcon().toString().equals(die1.toString()))
-						{
-							lblDie3.setIcon(die1b);
-						} else
-						{
-							lblDie3.setIcon(die1);
-						}
-						break;
-					case 2:
-						if (lblDie3.getIcon().toString().equals(die2.toString()))
-						{
-							lblDie3.setIcon(die2b);
-						} else
-						{
-							lblDie3.setIcon(die2);
-						}
-						break;
-					case 3:
-						if (lblDie3.getIcon().toString().equals(die3.toString()))
-						{
-							lblDie3.setIcon(die3b);
-						} else
-						{
-							lblDie3.setIcon(die3);
-						}
-						break;
-					case 4:
-						if (lblDie3.getIcon().toString().equals(die4.toString()))
-						{
-							lblDie3.setIcon(die4b);
-						} else
-						{
-							lblDie3.setIcon(die4);
-						}
-						break;
-					case 5:
-						if (lblDie3.getIcon().toString().equals(die5.toString()))
-						{
-							lblDie3.setIcon(die5b);
-						} else
-						{
-							lblDie3.setIcon(die5);
-						}
-						break;
-					case 6:
-						if (lblDie3.getIcon().toString().equals(die6.toString()))
-						{
-							lblDie3.setIcon(die6b);
-						} else
-						{
-							lblDie3.setIcon(die6);
-						}
-						break;
-					}
+					lblDie6.setIcon(new ImageIcon(GameGUI.class
+							.getResource(changeIcon(aGame.getDiceAtIndex(2), lblDie3.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
 			}
@@ -524,63 +359,8 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 3);
-					switch (aGame.getDiceAtIndex(3))
-					{
-					case 1:
-						if (lblDie4.getIcon().toString().equals(die1.toString()))
-						{
-							lblDie4.setIcon(die1b);
-						} else
-						{
-							lblDie4.setIcon(die1);
-						}
-						break;
-					case 2:
-						if (lblDie4.getIcon().toString().equals(die2.toString()))
-						{
-							lblDie4.setIcon(die2b);
-						} else
-						{
-							lblDie4.setIcon(die2);
-						}
-						break;
-					case 3:
-						if (lblDie4.getIcon().toString().equals(die3.toString()))
-						{
-							lblDie4.setIcon(die3b);
-						} else
-						{
-							lblDie4.setIcon(die3);
-						}
-						break;
-					case 4:
-						if (lblDie4.getIcon().toString().equals(die4.toString()))
-						{
-							lblDie4.setIcon(die4b);
-						} else
-						{
-							lblDie4.setIcon(die4);
-						}
-						break;
-					case 5:
-						if (lblDie4.getIcon().toString().equals(die5.toString()))
-						{
-							lblDie4.setIcon(die5b);
-						} else
-						{
-							lblDie4.setIcon(die5);
-						}
-						break;
-					case 6:
-						if (lblDie4.getIcon().toString().equals(die6.toString()))
-						{
-							lblDie4.setIcon(die6b);
-						} else
-						{
-							lblDie4.setIcon(die6);
-						}
-						break;
-					}
+					lblDie6.setIcon(new ImageIcon(GameGUI.class
+							.getResource(changeIcon(aGame.getDiceAtIndex(3), lblDie4.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
 			}
@@ -595,63 +375,9 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 4);
-					switch (aGame.getDiceAtIndex(4))
-					{
-					case 1:
-						if (lblDie5.getIcon().toString().equals(die1.toString()))
-						{
-							lblDie5.setIcon(die1b);
-						} else
-						{
-							lblDie5.setIcon(die1);
-						}
-						break;
-					case 2:
-						if (lblDie5.getIcon().toString().equals(die2.toString()))
-						{
-							lblDie5.setIcon(die2b);
-						} else
-						{
-							lblDie5.setIcon(die2);
-						}
-						break;
-					case 3:
-						if (lblDie5.getIcon().toString().equals(die3.toString()))
-						{
-							lblDie5.setIcon(die3b);
-						} else
-						{
-							lblDie5.setIcon(die3);
-						}
-						break;
-					case 4:
-						if (lblDie5.getIcon().toString().equals(die4.toString()))
-						{
-							lblDie5.setIcon(die4b);
-						} else
-						{
-							lblDie5.setIcon(die4);
-						}
-						break;
-					case 5:
-						if (lblDie5.getIcon().toString().equals(die5.toString()))
-						{
-							lblDie5.setIcon(die5b);
-						} else
-						{
-							lblDie5.setIcon(die5);
-						}
-						break;
-					case 6:
-						if (lblDie5.getIcon().toString().equals(die6.toString()))
-						{
-							lblDie5.setIcon(die6b);
-						} else
-						{
-							lblDie5.setIcon(die6);
-						}
-						break;
-					}
+					lblDie6.setIcon(new ImageIcon(GameGUI.class
+							.getResource(changeIcon(aGame.getDiceAtIndex(4), lblDie5.getIcon().toString()))));
+
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
 			}
@@ -666,63 +392,8 @@ public class GameGUI extends JFrame
 				if (true)
 				{
 					theToggler(aGame, 5);
-					switch (aGame.getDiceAtIndex(5))
-					{
-					case 1:
-						if (lblDie6.getIcon().toString().equals(die1.toString()))
-						{
-							lblDie6.setIcon(die1b);
-						} else
-						{
-							lblDie6.setIcon(die1);
-						}
-						break;
-					case 2:
-						if (lblDie6.getIcon().toString().equals(die2.toString()))
-						{
-							lblDie6.setIcon(die2b);
-						} else
-						{
-							lblDie6.setIcon(die2);
-						}
-						break;
-					case 3:
-						if (lblDie6.getIcon().toString().equals(die3.toString()))
-						{
-							lblDie6.setIcon(die3b);
-						} else
-						{
-							lblDie6.setIcon(die3);
-						}
-						break;
-					case 4:
-						if (lblDie6.getIcon().toString().equals(die4.toString()))
-						{
-							lblDie6.setIcon(die4b);
-						} else
-						{
-							lblDie6.setIcon(die4);
-						}
-						break;
-					case 5:
-						if (lblDie6.getIcon().toString().equals(die5.toString()))
-						{
-							lblDie6.setIcon(die5b);
-						} else
-						{
-							lblDie6.setIcon(die5);
-						}
-						break;
-					case 6:
-						if (lblDie6.getIcon().toString().equals(die6.toString()))
-						{
-							lblDie6.setIcon(die6b);
-						} else
-						{
-							lblDie6.setIcon(die6);
-						}
-						break;
-					}
+					lblDie6.setIcon(new ImageIcon(GameGUI.class
+							.getResource(changeIcon(aGame.getDiceAtIndex(5), lblDie6.getIcon().toString()))));
 				}
 				txtRunning.setText("" + aGame.getRunningScore());
 			}
@@ -736,4 +407,69 @@ public class GameGUI extends JFrame
 
 	}
 
+	public static String changeIcon(int die, String dieString)
+	{
+		String ret = "";
+		switch (die)
+		{
+		case 1:
+			if (dieString.endsWith("/Game/images/die-red-1.png"))
+			{
+				ret = "/Game/images/die-red-1b.png";
+			} else
+			{
+				ret = "/Game/images/die-red-1.png";
+			}
+			break;
+		case 2:
+			if (dieString.endsWith("/Game/images/die-red-2.png"))
+			{
+				ret = "/Game/images/die-red-2b.png";
+			} else
+			{
+				ret = "/Game/images/die-red-2.png";
+			}
+			break;
+		case 3:
+			if (dieString.endsWith("/Game/images/die-red-3.png"))
+			{
+				ret = "/Game/images/die-red-3b.png";
+			} else
+			{
+				ret = "/Game/images/die-red-3.png";
+			}
+			break;
+		case 4:
+			if (dieString.endsWith("/Game/images/die-red-4.png"))
+			{
+				ret = "/Game/images/die-red-4b.png";
+			} else
+			{
+				ret = "/Game/images/die-red-4.png";
+			}
+			break;
+		case 5:
+			if (dieString.endsWith("/Game/images/die-red-5.png"))
+			{
+				ret = "/Game/images/die-red-5b.png";
+			} else
+			{
+				ret = "/Game/images/die-red-5.png";
+			}
+			break;
+		case 6:
+			if (dieString.endsWith("/Game/images/die-red-6.png"))
+			{
+				ret = "/Game/images/die-red-6b.png";
+			} else
+			{
+				ret = "/Game/images/die-red-6.png";
+			}
+			break;
+		default:
+			return ret;
+		}
+		return ret;
+
+	}
 }
