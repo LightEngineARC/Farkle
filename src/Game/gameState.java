@@ -39,7 +39,7 @@ public class gameState
 
 	public gameState()
 	{
-		this.dice = this.rollDice();
+		rollDice();
 		this.playerScore = 0;
 		this.computerScore = 0;
 		computer = new computer(dice, this.computerScore);
@@ -84,7 +84,7 @@ public class gameState
 	}
 
 	// returns array with random numbers if the current number is not -1
-	public int[] rollDice()
+	public void rollDice()
 	{
 		for (int i = 0; i < 6; i++)
 		{
@@ -93,7 +93,6 @@ public class gameState
 				dice[i] = (int) (Math.random() * 6 + 1);
 			}
 		}
-		return dice;
 	}
 
 	public boolean winCondition()
