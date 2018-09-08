@@ -46,6 +46,7 @@ public class computer
 			if (this.dice[i] == 1 || this.dice[i] == 5)
 			{
 				diceToLock[i] = this.dice[i];
+				System.out.println("computer chooses a " + this.dice[i]);
 			}
 			switch (this.dice[i])
 			{
@@ -73,6 +74,7 @@ public class computer
 			{// loop through sets and look for values greater than 2
 				if (sets[j] > 2)
 				{
+					System.out.println("computer found a set of " + (j + 1) + "'s");
 					for (int k = 0; k < 6; k++)
 					{// loop through dice and check if the value of dice == int j +1
 						if (dice[k] == (j + 1))
@@ -86,6 +88,7 @@ public class computer
 			}
 
 		}
+		System.out.println("computer has finished checking this set");
 
 		return this.diceToLock;
 
@@ -96,7 +99,7 @@ public class computer
 		int diceUsed = 0;
 		for (int i = 0; i < 6; i++)
 		{
-			if (rolledDice[i] < 1)
+			if (rolledDice[i] > 1)
 			{
 				diceUsed++;
 			}
@@ -118,7 +121,7 @@ public class computer
 				return true;
 			} else
 			{
-				System.out.println("computer decidesto risk a roll");
+				System.out.println("computer decides to risk a roll");
 				return false;
 			}
 
@@ -127,15 +130,6 @@ public class computer
 
 		return false;
 
-	}
-
-	public boolean isItLocked(int index)
-	{
-		if (this.diceToLock[index] == 1)
-		{
-			return true;
-		} else
-			return false;
 	}
 
 	/**
