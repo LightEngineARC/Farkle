@@ -10,7 +10,7 @@
  *    1) What is the purpose of the code; what problem does the code solve.
  *
  *    2) What data-structures are used.
- *
+ * 
  *    3) What algorithms, techniques, etc. are used in implementing the data structures.
  *
  ********************************************************/
@@ -45,75 +45,6 @@ public class gameState
 		computer = new computer(dice, this.computerScore);
 
 	}
-
-	public void game()
-	{
-
-		System.out.println("rolling the first dice");
-		this.dice = rollDice();
-		while (!winCondition())
-		{
-			// TODO manage turns
-			// start turn by rolling dice
-
-			System.out.println("dice are the following:");
-			System.out.println(this.printDice());
-			if (computerTurn)
-			{
-				System.out.println("computer plays");
-				this.dice = rollDice();
-				// TODO add computer turn logic here
-
-			} else
-			{
-
-				// TODO PLAYER TURN logic here
-
-				System.out.println("player turn! enter the indeces of the die you want to toggle, or -1 to bank");
-				this.dice = rollDice();
-
-				if (scoring.scoreDice(dice) == 0)
-				{
-					System.out.println("farkle!");
-					break;
-				}
-
-				int input = -1;
-				do
-				{
-
-					input = scanner.nextInt();
-					if (input != -1)
-					{
-						diceToggle[input] = dice[input];
-					} else
-					{
-						bankPoints(diceToggle);
-						computerTurn = true;
-					}
-
-					System.out.println("selection is worth " + scoring.scoreDice(this.diceToggle) + " points");
-					if (scoring.scoreDice(dice) == 0)
-					{
-						computerTurn = true;
-					}
-
-				} while (!computerTurn);
-				bankPoints(this.diceToggle);
-
-			}
-			computerTurn = resetTurn(computerTurn);
-		}
-		/*
-		 * TODO player selects dice and they are scored each time if (computerTurn) {
-		 * computer.computerTurn(); }
-		 */
-
-		computerTurn = resetTurn(computerTurn);
-		System.out.println("rolling the dice again!");
-	}
-
-	// TODO game over here
 
 	private void bankPoints(int[] dice)
 	{
@@ -199,12 +130,12 @@ public class gameState
 	{
 		return this.dice[index];
 	}
-	
+
 	public int getToggleDiceAtIndex(int index)
 	{
 		return this.diceToggle[index];
 	}
-	
+
 	public void setToggleDiceAtIndex(int index, int number)
 	{
 		this.diceToggle[index] = number;
@@ -214,6 +145,7 @@ public class gameState
 	{
 		this.dice[index] = number;
 	}
+
 	/**
 	 * @return the dice
 	 */
