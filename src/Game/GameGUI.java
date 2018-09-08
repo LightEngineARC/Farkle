@@ -211,7 +211,8 @@ public class GameGUI extends JFrame
 		// Icon die6b = new
 		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6b.png"));
 
-		JLabel[] dieLabels = { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		JLabel[] dieLabels =
+		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
@@ -295,8 +296,10 @@ public class GameGUI extends JFrame
 					}
 					if (full)
 					{
-						aGame.setDiceToggle(new int[] { -1, -1, -1, -1, -1, -1 });
-						aGame.setDice(new int[] { 0, 0, 0, 0, 0, 0 });
+						aGame.setDiceToggle(new int[]
+						{ -1, -1, -1, -1, -1, -1 });
+						aGame.setDice(new int[]
+						{ 0, 0, 0, 0, 0, 0 });
 					}
 					aGame.rollDice();
 					for (int k = 0; k < 6; k++)
@@ -350,7 +353,8 @@ public class GameGUI extends JFrame
 					{
 						txtRunning.setText("Farkle!");
 						aGame.setRunningScore(0);
-						int[] z = { 1, 2, 3, 4, 5, 6 };
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 
@@ -369,13 +373,16 @@ public class GameGUI extends JFrame
 				// TODO change to properly check whose turn it is
 				if (!aGame.isComputerTurn())
 				{
-					if (aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) >= 500 || aGame.getPlayerScore() > 0)
+					if (aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) >= 500
+							|| aGame.getPlayerScore() > 0)
 					{
-						aGame.setPlayerScore(aGame.getPlayerScore() + scoring.scoreDice(aGame.getDiceToggle()));
+						aGame.setPlayerScore(aGame.getPlayerScore() + aGame.getRunningScore()
+								+ scoring.scoreDice(aGame.getDiceToggle()));
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
-						int[] z = { 1, 2, 3, 4, 5, 6 };
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 					}
