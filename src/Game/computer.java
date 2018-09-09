@@ -46,7 +46,7 @@ public class computer
 			if (this.dice[i] == 1 || this.dice[i] == 5)
 			{
 				diceToLock[i] = this.dice[i];
-				System.out.println("computer chooses a " + this.dice[i]);
+				System.out.println("computer found a " + this.dice[i]);
 			}
 			switch (this.dice[i])
 			{
@@ -88,7 +88,7 @@ public class computer
 			}
 
 		}
-		System.out.println("computer has finished checking this set");
+		System.out.println("computer has finished checking this set \ncomputer rolls");
 
 		return this.diceToLock;
 
