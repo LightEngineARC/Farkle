@@ -211,8 +211,7 @@ public class GameGUI extends JFrame
 		// Icon die6b = new
 		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6b.png"));
 
-		JLabel[] dieLabels =
-		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		JLabel[] dieLabels = { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
@@ -265,7 +264,7 @@ public class GameGUI extends JFrame
 		aGame.computerTurn();
 		txtComputer.setText("" + aGame.getComputerScore());
 		txtRunning.setText("0");
-		
+
 		for (int i = 0; i < dieLabels.length; i++)
 		{
 
@@ -336,10 +335,8 @@ public class GameGUI extends JFrame
 					}
 					if (full)
 					{
-						aGame.setDiceToggle(new int[]
-						{ -1, -1, -1, -1, -1, -1 });
-						aGame.setDice(new int[]
-						{ 0, 0, 0, 0, 0, 0 });
+						aGame.setDiceToggle(new int[] { -1, -1, -1, -1, -1, -1 });
+						aGame.setDice(new int[] { 0, 0, 0, 0, 0, 0 });
 					}
 					aGame.rollDice();
 					for (int k = 0; k < 6; k++)
@@ -393,38 +390,43 @@ public class GameGUI extends JFrame
 					{
 						txtRunning.setText("Farkle!");
 						aGame.setRunningScore(0);
-						int[] z =
-						{ 1, 2, 3, 4, 5, 6 };
+						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 						aGame.setComputerTurn(true);
 						aGame.computerTurn();
-						
+
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
-						
+
 						for (int i = 0; i < dieLabels.length; i++)
 						{
 
 							switch (aGame.getDiceAtIndex(i))
 							{
 							case 1:
-								dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
 								break;
 							case 2:
-								dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
 								break;
 							case 3:
-								dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
 								break;
 							case 4:
-								dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
 								break;
 							case 5:
-								dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
 								break;
 							case 6:
-								dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
 								break;
 							case -1:
 								break;
@@ -459,48 +461,56 @@ public class GameGUI extends JFrame
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
-						int[] z =
-						{ 1, 2, 3, 4, 5, 6 };
+						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 					}
-					aGame.setComputerTurn(true);
-					aGame.computerTurn();
-					
-					txtComputer.setText("" + aGame.getComputerScore());
-					txtRunning.setText("0");
-					
-					for (int i = 0; i < dieLabels.length; i++)
+					if (aGame.getPlayerScore() != 0)
 					{
+						aGame.setComputerTurn(true);
+						aGame.computerTurn();
 
-						switch (aGame.getDiceAtIndex(i))
+						txtComputer.setText("" + aGame.getComputerScore());
+						txtRunning.setText("0");
+
+						for (int i = 0; i < dieLabels.length; i++)
 						{
-						case 1:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
-							break;
-						case 2:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
-							break;
-						case 3:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
-							break;
-						case 4:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
-							break;
-						case 5:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
-							break;
-						case 6:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
-							break;
-						case -1:
-							break;
-						default:
-							dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("")));
-							break;
+
+							switch (aGame.getDiceAtIndex(i))
+							{
+							case 1:
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
+								break;
+							case 2:
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
+								break;
+							case 3:
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
+								break;
+							case 4:
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
+								break;
+							case 5:
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
+								break;
+							case 6:
+								dieLabels[i].setIcon(
+										new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
+								break;
+							case -1:
+								break;
+							default:
+								dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("")));
+								break;
+
+							}
 
 						}
-
 					}
 				}
 			}
