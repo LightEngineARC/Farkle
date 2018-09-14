@@ -184,8 +184,8 @@ public class GameGUI extends JFrame
 		lblRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlTop.add(lblRunning);
 
-		GameGUI.dieLabels = new JLabel[] {lblDie1,lblDie2,lblDie3,lblDie4,lblDie5,lblDie6};
-		
+		GameGUI.dieLabels = new JLabel[]
+		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
@@ -370,16 +370,20 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (!aGame.isComputerTurn())
+				if (!aGame.winCondition())
 				{
-					int index = 0;
-					if (aGame.getDiceAtIndex(index) != -1)
+					if (!aGame.isComputerTurn())
 					{
-						int toggleScore = theToggler(aGame, index);
-						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
+						int index = 0;
+						if (aGame.getDiceAtIndex(index) != -1)
+						{
+							int toggleScore = theToggler(aGame, index);
+							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-						lblDie1.setIcon(new ImageIcon(GameGUI.class
-								.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie1.getIcon().toString()))));
+							lblDie1.setIcon(new ImageIcon(GameGUI.class
+									.getResource(
+											changeIcon(aGame.getDiceAtIndex(index), lblDie1.getIcon().toString()))));
+						}
 					}
 				}
 			}
@@ -391,16 +395,20 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (!aGame.isComputerTurn())
+				if (!aGame.winCondition())
 				{
-					int index = 1;
-					if (aGame.getDiceAtIndex(index) != -1)
+					if (!aGame.isComputerTurn())
 					{
-						int toggleScore = theToggler(aGame, index);
-						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
+						int index = 1;
+						if (aGame.getDiceAtIndex(index) != -1)
+						{
+							int toggleScore = theToggler(aGame, index);
+							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-						lblDie2.setIcon(new ImageIcon(GameGUI.class
-								.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie2.getIcon().toString()))));
+							lblDie2.setIcon(new ImageIcon(GameGUI.class
+									.getResource(
+											changeIcon(aGame.getDiceAtIndex(index), lblDie2.getIcon().toString()))));
+						}
 					}
 				}
 			}
@@ -412,16 +420,20 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (!aGame.isComputerTurn())
+				if (!aGame.winCondition())
 				{
-					int index = 2;
-					if (aGame.getDiceAtIndex(index) != -1)
+					if (!aGame.isComputerTurn())
 					{
-						int toggleScore = theToggler(aGame, index);
-						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
+						int index = 2;
+						if (aGame.getDiceAtIndex(index) != -1)
+						{
+							int toggleScore = theToggler(aGame, index);
+							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-						lblDie3.setIcon(new ImageIcon(GameGUI.class
-								.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie3.getIcon().toString()))));
+							lblDie3.setIcon(new ImageIcon(GameGUI.class
+									.getResource(
+											changeIcon(aGame.getDiceAtIndex(index), lblDie3.getIcon().toString()))));
+						}
 					}
 				}
 			}
@@ -433,16 +445,20 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (!aGame.isComputerTurn())
+				if (!aGame.winCondition())
 				{
-					int index = 3;
-					if (aGame.getDiceAtIndex(index) != -1)
+					if (!aGame.isComputerTurn())
 					{
-						int toggleScore = theToggler(aGame, index);
-						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
+						int index = 3;
+						if (aGame.getDiceAtIndex(index) != -1)
+						{
+							int toggleScore = theToggler(aGame, index);
+							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-						lblDie4.setIcon(new ImageIcon(GameGUI.class
-								.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie4.getIcon().toString()))));
+							lblDie4.setIcon(new ImageIcon(GameGUI.class
+									.getResource(
+											changeIcon(aGame.getDiceAtIndex(index), lblDie4.getIcon().toString()))));
+						}
 					}
 				}
 			}
@@ -454,16 +470,20 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (!aGame.isComputerTurn())
+				if (!aGame.winCondition())
 				{
-					int index = 4;
-					if (aGame.getDiceAtIndex(index) != -1)
+					if (!aGame.isComputerTurn())
 					{
-						int toggleScore = theToggler(aGame, index);
-						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
+						int index = 4;
+						if (aGame.getDiceAtIndex(index) != -1)
+						{
+							int toggleScore = theToggler(aGame, index);
+							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-						lblDie5.setIcon(new ImageIcon(GameGUI.class
-								.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie5.getIcon().toString()))));
+							lblDie5.setIcon(new ImageIcon(GameGUI.class
+									.getResource(
+											changeIcon(aGame.getDiceAtIndex(index), lblDie5.getIcon().toString()))));
+						}
 					}
 				}
 			}
@@ -475,19 +495,23 @@ public class GameGUI extends JFrame
 			public void mouseClicked(MouseEvent e)
 			{
 				// TODO set to check if dice is "clickable" or "locked"
-				if (!aGame.isComputerTurn())
+				if (!aGame.winCondition())
 				{
-					int index = 5;
-					if (aGame.getDiceAtIndex(index) != -1)
+					if (!aGame.isComputerTurn())
 					{
-						int toggleScore = theToggler(aGame, index);
-						txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
+						int index = 5;
+						if (aGame.getDiceAtIndex(index) != -1)
+						{
+							int toggleScore = theToggler(aGame, index);
+							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-						lblDie6.setIcon(new ImageIcon(GameGUI.class
-								.getResource(changeIcon(aGame.getDiceAtIndex(index), lblDie6.getIcon().toString()))));
+							lblDie6.setIcon(new ImageIcon(GameGUI.class
+									.getResource(
+											changeIcon(aGame.getDiceAtIndex(index), lblDie6.getIcon().toString()))));
+						}
 					}
-				}
 
+				}
 			}
 		});
 	}

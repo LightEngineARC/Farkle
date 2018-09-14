@@ -89,6 +89,8 @@ public class computer
 
 				}
 			}
+			sets = new int[]
+			{ 0, 0, 0, 0, 0, 0 };
 
 		}
 		System.out.println("computer has finished checking this set \ncomputer rolls");
