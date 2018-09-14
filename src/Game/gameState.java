@@ -67,7 +67,7 @@ public class gameState
 																										// bank
 			{
 				System.out.println(printDice());
-				GameGUI.setDiceIcons(dice, dieLabels);
+				GameGUI.setDiceIcons(dice, GameGUI.getDieLabels());
 				System.out.println("computer banks " + runningScore + " points");
 				computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 			}

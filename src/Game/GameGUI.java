@@ -28,6 +28,7 @@ public class GameGUI extends JFrame
 	private JTextField txtRunning;
 	private JTextField txtPlayer;
 	private JTextField txtComputer;
+	private static JLabel[] dieLabels;
 
 	/**
 	 * Launch the application.
@@ -322,19 +323,17 @@ public class GameGUI extends JFrame
 						setDiceIcons(aGame.getDice(), dieLabels);
 
 					}
-					if(aGame.winCondition())
+					if (aGame.winCondition())
 					{
-						if(aGame.getPlayerScore() > aGame.getComputerScore())
+						if (aGame.getPlayerScore() > aGame.getComputerScore())
 						{
 							lblPlayerScore.setText("Winner!");
 							lblComputerScore.setText("Loser!");
-						}
-						else if(aGame.getPlayerScore() < aGame.getComputerScore())
+						} else if (aGame.getPlayerScore() < aGame.getComputerScore())
 						{
 							lblPlayerScore.setText("Loser!");
 							lblComputerScore.setText("Winner!");
-						}
-						else
+						} else
 						{
 							lblPlayerScore.setText("Tie!");
 							lblComputerScore.setText("Tie!");
@@ -620,5 +619,10 @@ public class GameGUI extends JFrame
 
 		}
 	}
-	
+
+	public static JLabel[] getDieLabels()
+	{
+		return dieLabels;
+	}
+
 }
