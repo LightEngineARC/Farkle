@@ -113,7 +113,6 @@ public class computer
 		}
 		sets = new int[]
 		{ 0, 0, 0, 0, 0, 0 };
-		System.out.println("computer has finished checking this set");
 		System.out.println("the computer locks: ");
 		System.out.println(printLockedDice());
 
@@ -128,18 +127,18 @@ public class computer
 		{
 			if (runningScore >= 500)
 			{
-				System.out.println("computer now has the points to bank");
+				System.out.println("computer now has the points to bank: " + runningScore);
 				return true;
 			} else
 			{
-				System.out.println("Computer doesn't have the points to bank");
+				System.out.println("Computer doesn't have the points to bank" + runningScore);
 				return false;
 			}
 
 		}
 		for (int i = 0; i < 6; i++)
 		{
-			if (rolledDice[i] > 1)
+			if (rolledDice[i] < 0)
 			{
 				diceUsed++;
 			}
@@ -179,7 +178,7 @@ public class computer
 			{
 				toPrint = toPrint + s + " ";
 			} else
-				toPrint = toPrint + "_" + "";
+				toPrint = toPrint + "_ ";
 		}
 		return toPrint;
 	}
