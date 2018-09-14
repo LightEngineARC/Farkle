@@ -317,6 +317,24 @@ public class GameGUI extends JFrame
 						setDiceIcons(aGame, dieLabels);
 
 					}
+					if(aGame.winCondition())
+					{
+						if(aGame.getPlayerScore() > aGame.getComputerScore())
+						{
+							txtPlayer.setText("Winner!");
+							txtComputer.setText("Loser!");
+						}
+						else if(aGame.getPlayerScore() < aGame.getComputerScore())
+						{
+							txtPlayer.setText("Loser!");
+							txtComputer.setText("Winner!");
+						}
+						else
+						{
+							txtPlayer.setText("Tie!");
+							txtComputer.setText("Tie!");
+						}
+					}
 				}
 			}
 		});
