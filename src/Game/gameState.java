@@ -19,7 +19,7 @@ package Game;
 import java.util.Scanner;
 
 /**
- * @author Ashton
+ * @author Ashton and Sam
  *
  */
 public class gameState
@@ -40,8 +40,9 @@ public class gameState
 	public gameState()
 	{
 		rollDice();
-		this.playerScore = 9000;
-		this.computerScore = 9000;
+
+		this.playerScore = 9500;
+		this.computerScore = 9500;
 		computer = new computer(dice, this.computerScore);
 
 	}
@@ -82,8 +83,8 @@ public class gameState
 
 	private void bankPoints(int[] dice)
 	{
-		// TODO get dice that have been clicked
-		// TODO score dice
+		// get dice that have been clicked
+		// score dice
 		if (computerTurn)
 		{
 			if (computerScore > 500 || scoring.scoreDice(dice) > 500)
