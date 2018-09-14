@@ -218,38 +218,8 @@ public class GameGUI extends JFrame
 		 */
 		gameState aGame = new gameState();
 		aGame.rollDice();
-		for (int i = 0; i < dieLabels.length; i++)
-		{
+		setDiceIcons(aGame, dieLabels);
 
-			switch (aGame.getDiceAtIndex(i))
-			{
-			case 1:
-				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
-				break;
-			case 2:
-				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
-				break;
-			case 3:
-				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
-				break;
-			case 4:
-				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
-				break;
-			case 5:
-				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
-				break;
-			case 6:
-				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
-				break;
-			case -1:
-				break;
-			default:
-				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("")));
-				break;
-
-			}
-
-		}
 		if (scoring.scoreDice(aGame.getDice()) == 0)
 		{
 			txtRunning.setText("Farkle!");
