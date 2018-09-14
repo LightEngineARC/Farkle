@@ -215,6 +215,8 @@ public class GameGUI extends JFrame
 
 			txtComputer.setText("" + aGame.getComputerScore());
 			txtRunning.setText("0");
+			
+			winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
 			setDiceIcons(aGame.getDice(), dieLabels);
 		}
@@ -297,6 +299,9 @@ public class GameGUI extends JFrame
 						txtRunning.setText("0");
 
 						setDiceIcons(aGame.getDice(), dieLabels);
+
+						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
+
 					}
 				}
 			}
@@ -339,26 +344,13 @@ public class GameGUI extends JFrame
 						txtRunning.setText("0");
 
 						setDiceIcons(aGame.getDice(), dieLabels);
+						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
 					}
-					if (aGame.winCondition())
-					{
-						if (aGame.getPlayerScore() > aGame.getComputerScore())
-						{
-							lblPlayerScore.setText("Winner!");
-							lblComputerScore.setText("Loser!");
-						} else if (aGame.getPlayerScore() < aGame.getComputerScore())
-						{
-							lblPlayerScore.setText("Loser!");
-							lblComputerScore.setText("Winner!");
-						} else
-						{
-							lblPlayerScore.setText("Tie!");
-							lblComputerScore.setText("Tie!");
-						}
-					}
+					winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 				}
 			}
+
 		});
 
 		lblDie1.addMouseListener(new MouseAdapter()
@@ -655,4 +647,23 @@ public class GameGUI extends JFrame
 		return dieLabels;
 	}
 
+	public static void winnerGUI(gameState aGame, JLabel lblPlayerScore, JLabel lblComputerScore)
+	{
+		if (aGame.winCondition())
+		{
+			if (aGame.getPlayerScore() > aGame.getComputerScore())
+			{
+				lblPlayerScore.setText("Winner!");
+				lblComputerScore.setText("Loser!");
+			} else if (aGame.getPlayerScore() < aGame.getComputerScore())
+			{
+				lblPlayerScore.setText("Loser!");
+				lblComputerScore.setText("Winner!");
+			} else
+			{
+				lblPlayerScore.setText("Tie!");
+				lblComputerScore.setText("Tie!");
+			}
+		}
+	}
 }

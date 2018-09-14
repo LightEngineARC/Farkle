@@ -45,8 +45,8 @@ public class gameState
 	{
 		rollDice();
 
-		this.playerScore = 500;
-		this.computerScore = 500;
+		this.playerScore = 9500;
+		this.computerScore = 9500;
 		computer = new computer(dice, this.computerScore);
 
 	}
@@ -102,6 +102,7 @@ public class gameState
 		} else
 		{
 			System.out.println("We have a winner!");
+
 		}
 
 		this.computerTurn = false;
