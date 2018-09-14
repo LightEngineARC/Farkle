@@ -17,6 +17,10 @@
 package Game;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author Ashton and Sam
@@ -24,7 +28,8 @@ import java.util.Scanner;
  */
 public class gameState
 {
-
+	final Lock lock = new ReentrantLock();
+	final Condition notEmpty = lock.newCondition(); 
 	int[] dice =
 	{ 0, 0, 0, 0, 0, 0 };
 	int[] diceToggle =
@@ -55,20 +60,27 @@ public class gameState
 	 * Parameters : none.
 	 *
 	 * Returns : void
+	 * @throws InterruptedException 
 	 */
-	public void computerTurn()
+	public void computerTurn() throws InterruptedException
 	{
 		if (computerTurn && scoring.scoreDice(this.dice) != 0)
 		{
 			System.out.println("computer turn beginning");
 			computer.setDice(dice);// give computer the dice
+			System.out.println(printDice());
+			Thread.sleep(3000);
 			diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
+			Thread.sleep(3000);
 			if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))// decide to
 																										// bank
 			{
 				System.out.println(printDice());
+				Thread.sleep(3000);
 				GameGUI.setDiceIcons(dice, GameGUI.getDieLabels());
-				System.out.println("computer banks " + runningScore + " points");
+				Thread.sleep(3000);
+				System.out.println("computer banks " + runningScore +scoring.scoreDice(diceToggle) + " points");
+				Thread.sleep(3000);
 				computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 			}
 		}

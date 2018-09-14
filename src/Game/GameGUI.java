@@ -184,8 +184,8 @@ public class GameGUI extends JFrame
 		lblRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlTop.add(lblRunning);
 
-		GameGUI.dieLabels = new JLabel[]
-		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		GameGUI.dieLabels = new JLabel[] {lblDie1,lblDie2,lblDie3,lblDie4,lblDie5,lblDie6};
+		
 
 		/**
 		 * Start a Game state
@@ -204,7 +204,14 @@ public class GameGUI extends JFrame
 			aGame.setDice(z);
 			aGame.rollDice();
 			aGame.setComputerTurn(true);
-			aGame.computerTurn();
+			try
+			{
+				aGame.computerTurn();
+			} catch (InterruptedException e1)
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 			txtComputer.setText("" + aGame.getComputerScore());
 			txtRunning.setText("0");
@@ -279,7 +286,14 @@ public class GameGUI extends JFrame
 						aGame.setDice(z);
 						aGame.rollDice();
 						aGame.setComputerTurn(true);
-						aGame.computerTurn();
+						try
+						{
+							aGame.computerTurn();
+						} catch (InterruptedException e1)
+						{
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
@@ -315,7 +329,14 @@ public class GameGUI extends JFrame
 					if (aGame.getPlayerScore() != 0)
 					{
 						aGame.setComputerTurn(true);
-						aGame.computerTurn();
+						try
+						{
+							aGame.computerTurn();
+						} catch (InterruptedException e1)
+						{
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
@@ -471,7 +492,7 @@ public class GameGUI extends JFrame
 		});
 	}
 
-	public static void computerTurn(gameState aGame)
+	public static void computerTurn(gameState aGame) throws InterruptedException
 	{
 		while (aGame.computerTurn)
 			aGame.computerTurn();
@@ -580,7 +601,7 @@ public class GameGUI extends JFrame
 	 */
 	public static void setDiceIcons(int[] dice, JLabel[] dieLabels)
 	{
-		for (int i = 0; i < dieLabels.length; i++)
+		for (int i = 0; i < 6; i++)
 		{
 
 			switch (dice[i])
