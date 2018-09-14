@@ -69,18 +69,18 @@ public class gameState
 			System.out.println("computer turn beginning");
 			computer.setDice(dice);// give computer the dice
 			System.out.println(printDice());
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 			diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 			if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))// decide to
 																										// bank
 			{
 				System.out.println(printDice());
-				Thread.sleep(3000);
+				Thread.sleep(1000);
 				GameGUI.setDiceIcons(dice, GameGUI.getDieLabels());
-				Thread.sleep(3000);
+				Thread.sleep(1000);
 				System.out.println("computer banks " + runningScore +scoring.scoreDice(diceToggle) + " points");
-				Thread.sleep(3000);
+				Thread.sleep(1000);
 				computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 			}
 		}
