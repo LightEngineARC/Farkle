@@ -40,13 +40,12 @@ public class computer
 	public int[] chooseDice()
 	{
 
-		// TODO decide which dice to lock
+		// decide which dice to lock
 		for (int i = 0; i < 6; i++)
 		{
 			if (this.dice[i] == 1 || this.dice[i] == 5)
 			{
 				diceToLock[i] = this.dice[i];
-				System.out.println("computer found a " + this.dice[i]);
 			}
 			switch (this.dice[i])
 			{
@@ -75,12 +74,16 @@ public class computer
 				if (sets[j] > 2)
 				{
 					System.out.println("computer found a set of " + (j + 1) + "'s");
+					for (int s : dice)
+					{
+						System.out.print(s + " ");
+					}
+					System.out.println();
 					for (int k = 0; k < 6; k++)
 					{// loop through dice and check if the value of dice == int j +1
 						if (dice[k] == (j + 1))
 						{
 							diceToLock[k] = this.dice[k];
-							System.out.println("computer locks a " + this.dice[k]);
 						}
 					}
 
@@ -105,7 +108,7 @@ public class computer
 				return true;
 			} else
 			{
-				System.out.println("Computer doen't have the points to bank");
+				System.out.println("Computer doesn't have the points to bank");
 				return false;
 			}
 
