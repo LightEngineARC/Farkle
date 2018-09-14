@@ -45,7 +45,7 @@ public class gameState
 	{
 		rollDice();
 
-		this.playerScore = 500;
+		this.playerScore = 9500;
 		this.computerScore = 9500;
 		computer = new computer(dice, this.computerScore);
 
@@ -70,12 +70,13 @@ public class gameState
 			{
 				if (scoring.scoreDice(this.dice) != 0)
 				{
-					System.out.println("computer turn beginning");
+					System.out.println("computer is choosing dice");
 					computer.setDice(dice);// give computer the dice
 					System.out.println(printDice());
 					Thread.sleep(1000);
 					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
 					Thread.sleep(1000);
+
 					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))// decide
 																												// to
 																												// bank
@@ -88,6 +89,10 @@ public class gameState
 						Thread.sleep(1000);
 						computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 						this.computerTurn = false;
+					} else
+					{
+						rollDice();
+						System.out.println(dice);
 					}
 				} else
 				{

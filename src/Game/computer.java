@@ -89,11 +89,27 @@ public class computer
 
 				}
 			}
-			sets = new int[]
-			{ 0, 0, 0, 0, 0, 0 };
+			if (sets[0] == 1 && sets[5] == 1 && sets[1] == 1 && sets[2] == 1 && sets[3] == 1 && sets[4] == 1)
+			{
+				diceToLock = this.dice;
+			}
+			int doubleCount = 0;
+			for (int t = 0; t < 6; t++)
+			{
+				if (sets[t] == 2)
+				{
+					doubleCount++;
+				}
+			}
+			if (doubleCount == 3)
+			{
+				diceToLock = this.dice;
+			}
 
 		}
-		System.out.println("computer has finished checking this set \ncomputer rolls");
+		sets = new int[]
+		{ 0, 0, 0, 0, 0, 0 };
+		System.out.println("computer has finished checking this set");
 
 		return this.diceToLock;
 
