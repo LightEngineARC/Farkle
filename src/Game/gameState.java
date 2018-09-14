@@ -65,7 +65,8 @@ public class gameState
 			if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))// decide to
 																										// bank
 			{
-				System.out.println("computer banks it's points");
+				System.out.println(printDice());
+				System.out.println("computer banks " + runningScore + " points");
 				computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 			}
 		}
@@ -151,7 +152,7 @@ public class gameState
 		String theDice = "";
 		for (int i = 0; i < 6; i++)
 		{
-			theDice = theDice + " " + dice[i] + "\n";
+			theDice = theDice + " " + dice[i];
 		}
 		return theDice;
 
