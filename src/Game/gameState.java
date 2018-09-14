@@ -45,8 +45,8 @@ public class gameState
 	{
 		rollDice();
 
-		this.playerScore = 9500;
-		this.computerScore = 9500;
+		this.playerScore = 500;
+		this.computerScore = 500;
 		computer = new computer(dice, this.computerScore);
 
 	}
@@ -111,6 +111,12 @@ public class gameState
 		this.dice = new int[]
 		{ 0, 0, 0, 0, 0, 0 };
 		this.rollDice();
+		System.out.println(printDice());
+		if (scoring.scoreDice(dice) == 0)
+		{
+			System.out.println("Player FARKLE");
+			this.computerTurn = true;
+		}
 
 	}
 
