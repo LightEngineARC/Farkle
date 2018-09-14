@@ -21,8 +21,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import javax.swing.JLabel;
-
 /**
  * @author Ashton and Sam
  *
@@ -31,8 +29,10 @@ public class gameState
 {
 	final Lock lock = new ReentrantLock();
 	final Condition notEmpty = lock.newCondition();
-	int[] dice = { 0, 0, 0, 0, 0, 0 };
-	int[] diceToggle = { -1, -1, -1, -1, -1, -1 };
+	int[] dice =
+	{ 0, 0, 0, 0, 0, 0 };
+	int[] diceToggle =
+	{ -1, -1, -1, -1, -1, -1 };
 
 	int playerScore = 0;
 	int computerScore = 0;
@@ -45,8 +45,8 @@ public class gameState
 	{
 		rollDice();
 
-		this.playerScore = 9500;
-		this.computerScore = 9500;
+		this.playerScore = 0;
+		this.computerScore = 0;
 		computer = new computer(dice, this.computerScore);
 
 	}
@@ -72,7 +72,7 @@ public class gameState
 				{
 					System.out.println("computer is choosing dice");
 					computer.setDice(dice);// give computer the dice
-					//GameGUI.setDiceIcons(dice, GameGUI.getDieLabels());
+					// GameGUI.setDiceIcons(dice, GameGUI.getDieLabels());
 					System.out.println(printDice());
 					Thread.sleep(1000);
 					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
@@ -99,21 +99,23 @@ public class gameState
 					this.computerTurn = false;
 				}
 			}
+			this.computerTurn = false;
+			this.diceToggle = new int[]
+			{ -1, -1, -1, -1, -1, -1 };
+			this.dice = new int[]
+			{ 0, 0, 0, 0, 0, 0 };
+			this.rollDice();
+			System.out.println(printDice());
+			if (scoring.scoreDice(dice) == 0)
+			{
+				System.out.println("Player FARKLE");
+				this.computerTurn = true;
+			}
+
 		} else
 		{
 			System.out.println("We have a winner!");
 
-		}
-
-		this.computerTurn = false;
-		this.diceToggle = new int[] { -1, -1, -1, -1, -1, -1 };
-		this.dice = new int[] { 0, 0, 0, 0, 0, 0 };
-		this.rollDice();
-		System.out.println(printDice());
-		if (scoring.scoreDice(dice) == 0)
-		{
-			System.out.println("Player FARKLE");
-			this.computerTurn = true;
 		}
 
 	}
