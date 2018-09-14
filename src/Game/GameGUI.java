@@ -183,40 +183,13 @@ public class GameGUI extends JFrame
 		lblRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlTop.add(lblRunning);
 
-		/**
-		 * Makes Icons for different Die
-		 */
-		// Icon die1 = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png"));
-		// Icon die1b = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1b.png"));
-		// Icon die2 = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png"));
-		// Icon die2b = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2b.png"));
-		// Icon die3 = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png"));
-		// Icon die3b = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3b.png"));
-		// Icon die4 = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png"));
-		// Icon die4b = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4b.png"));
-		// Icon die5 = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png"));
-		// Icon die5b = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5b.png"));
-		// Icon die6 = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png"));
-		// Icon die6b = new
-		// ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6b.png"));
-
 		JLabel[] dieLabels = { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
 		 */
 		gameState aGame = new gameState();
+		
 		aGame.rollDice();
 		setDiceIcons(aGame, dieLabels);
 
@@ -224,18 +197,23 @@ public class GameGUI extends JFrame
 		{
 			txtRunning.setText("Farkle!");
 			aGame.setRunningScore(0);
+			int[] z = { 1, 2, 3, 4, 5, 6 };
+			aGame.setDice(z);
+			aGame.rollDice();
 			aGame.setComputerTurn(true);
 			aGame.computerTurn();
-			// int[] z = {1,2,3,4,5,6};
-			// aGame.setDice(z);
-			// aGame.rollDice();
+
+			txtComputer.setText("" + aGame.getComputerScore());
+			txtRunning.setText("0");
+
+			setDiceIcons(aGame, dieLabels);
 		}
 
-		aGame.computerTurn();
-		txtComputer.setText("" + aGame.getComputerScore());
-		txtRunning.setText("0");
-
-		setDiceIcons(aGame, dieLabels);
+//		aGame.computerTurn();
+//		txtComputer.setText("" + aGame.getComputerScore());
+//		txtRunning.setText("0");
+//
+//		setDiceIcons(aGame, dieLabels);
 
 		/**
 		 * Rolls Dice
@@ -246,7 +224,6 @@ public class GameGUI extends JFrame
 			{
 				// rolls dice and sets icon to respective dice
 
-				// TODO check to see if dice is "rollable"
 
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
@@ -303,8 +280,6 @@ public class GameGUI extends JFrame
 						txtRunning.setText("0");
 
 						setDiceIcons(aGame, dieLabels);
-
-
 					}
 				}
 			}
@@ -317,8 +292,7 @@ public class GameGUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				// TODO change to properly check whose turn it is
-				if (!aGame.isComputerTurn())
+				if (!aGame.isComputerTurn() && aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) > 0)
 				{
 					if (aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) >= 500
 							|| aGame.getPlayerScore() > 0)
@@ -501,6 +475,12 @@ public class GameGUI extends JFrame
 
 	}
 
+	/**
+	 * Sets the clicked die to it's respective locked or unlocked icon.
+	 * @param die
+	 * @param dieString
+	 * @return
+	 */
 	public static String changeIcon(int die, String dieString)
 	{
 		String ret = "";
@@ -569,6 +549,11 @@ public class GameGUI extends JFrame
 		return ret;
 
 	}
+	/**
+	 * Sets the dice labels to their proper icons.
+	 * @param aGame
+	 * @param dieLabels
+	 */
 	public static void setDiceIcons(gameState aGame, JLabel[] dieLabels)
 	{
 		for (int i = 0; i < dieLabels.length; i++)
