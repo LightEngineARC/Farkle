@@ -70,17 +70,16 @@ public class gameState
 			{
 				if (scoring.scoreDice(this.dice) != 0)
 				{
-					System.out.println("computer is choosing dice");
+					System.out.println("computer rolls these dice: " + printDice());
 					computer.setDice(dice);// give computer the dice
-					// GameGUI.setDiceIcons(dice, GameGUI.getDieLabels());
-					System.out.println(printDice());
 					Thread.sleep(1000);
 					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
+					theAllToggle();
+					System.out.println(printDice());
 					Thread.sleep(1000);
 
-					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))// decide
-																												// to
-																												// bank
+					// Decide to bank
+					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))
 					{
 						Thread.sleep(1000);
 						System.out
@@ -91,7 +90,7 @@ public class gameState
 					} else
 					{
 						rollDice();
-						System.out.println(dice);
+						System.out.println(printDice());
 					}
 				} else
 				{
@@ -327,6 +326,17 @@ public class gameState
 	public void setDiceToggle(int[] diceToggle)
 	{
 		this.diceToggle = diceToggle;
+	}
+
+	public void theAllToggle()
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			if (this.diceToggle[i] > 0)
+			{
+				this.dice[i] = (-1);
+			}
+		}
 	}
 
 }

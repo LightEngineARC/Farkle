@@ -175,7 +175,11 @@ public class computer
 		String toPrint = "";
 		for (int s : this.diceToLock)
 		{
-			toPrint = toPrint + s + " ";
+			if (s != -1)
+			{
+				toPrint = toPrint + s + " ";
+			} else
+				toPrint = toPrint + "_" + "";
 		}
 		return toPrint;
 	}
