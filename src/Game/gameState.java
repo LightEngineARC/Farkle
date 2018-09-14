@@ -17,7 +17,6 @@
 package Game;
 
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -29,7 +28,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class gameState
 {
 	final Lock lock = new ReentrantLock();
-	final Condition notEmpty = lock.newCondition(); 
+	final Condition notEmpty = lock.newCondition();
 	int[] dice =
 	{ 0, 0, 0, 0, 0, 0 };
 	int[] diceToggle =
@@ -46,7 +45,7 @@ public class gameState
 	{
 		rollDice();
 
-		this.playerScore = 9500;
+		this.playerScore = 500;
 		this.computerScore = 9500;
 		computer = new computer(dice, this.computerScore);
 
@@ -60,30 +59,47 @@ public class gameState
 	 * Parameters : none.
 	 *
 	 * Returns : void
-	 * @throws InterruptedException 
+	 * 
+	 * @throws InterruptedException
 	 */
 	public void computerTurn() throws InterruptedException
 	{
-		if (computerTurn && scoring.scoreDice(this.dice) != 0)
+		if (!winCondition())
 		{
-			System.out.println("computer turn beginning");
-			computer.setDice(dice);// give computer the dice
-			System.out.println(printDice());
-			Thread.sleep(1000);
-			diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
-			Thread.sleep(1000);
-			if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))// decide to
-																										// bank
+			while (computerTurn)
 			{
-				System.out.println(printDice());
-				Thread.sleep(1000);
-				GameGUI.setDiceIcons(dice, GameGUI.getDieLabels());
-				Thread.sleep(1000);
-				System.out.println("computer banks " + runningScore +scoring.scoreDice(diceToggle) + " points");
-				Thread.sleep(1000);
-				computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
+				if (scoring.scoreDice(this.dice) != 0)
+				{
+					System.out.println("computer turn beginning");
+					computer.setDice(dice);// give computer the dice
+					System.out.println(printDice());
+					Thread.sleep(1000);
+					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
+					Thread.sleep(1000);
+					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))// decide
+																												// to
+																												// bank
+					{
+						Thread.sleep(1000);
+						GameGUI.setDiceIcons(dice, GameGUI.getDieLabels());
+						Thread.sleep(1000);
+						System.out
+								.println("computer banks " + runningScore + scoring.scoreDice(diceToggle) + " points");
+						Thread.sleep(1000);
+						computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
+						this.computerTurn = false;
+					}
+				} else
+				{
+					System.out.println("FARKLE");
+					this.computerTurn = false;
+				}
 			}
+		} else
+		{
+			System.out.println("We have a winner!");
 		}
+
 		this.computerTurn = false;
 		this.diceToggle = new int[]
 		{ -1, -1, -1, -1, -1, -1 };
@@ -113,16 +129,6 @@ public class gameState
 
 	}
 
-	private boolean resetTurn(boolean computerTurns)
-	{
-		if (computerTurns)
-		{
-			return false;
-		} else
-			return true;
-
-	}
-
 	public int[] lockDice(int[] dice)
 	{
 		// TODO lock the dice on the GUI
@@ -144,17 +150,20 @@ public class gameState
 
 	public boolean winCondition()
 	{
-		if (computerTurn)
+		if (computerScore >= 10000 || playerScore >= 10000)
 		{
-			if (computerScore >= 10000)
+			if (computerTurn)
 			{
-				return true;
-			}
-		} else
-		{
-			if (playerScore >= 10000)
+				if (computerScore >= 10000)
+				{
+					return true;
+				}
+			} else
 			{
-				return true;
+				if (playerScore >= 10000)
+				{
+					return true;
+				}
 			}
 		}
 		return false;
