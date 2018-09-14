@@ -183,13 +183,14 @@ public class GameGUI extends JFrame
 		lblRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlTop.add(lblRunning);
 
-		JLabel[] dieLabels = { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		JLabel[] dieLabels =
+		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
 		 */
 		gameState aGame = new gameState();
-		
+
 		aGame.rollDice();
 		setDiceIcons(aGame, dieLabels);
 
@@ -197,7 +198,8 @@ public class GameGUI extends JFrame
 		{
 			txtRunning.setText("Farkle!");
 			aGame.setRunningScore(0);
-			int[] z = { 1, 2, 3, 4, 5, 6 };
+			int[] z =
+			{ 1, 2, 3, 4, 5, 6 };
 			aGame.setDice(z);
 			aGame.rollDice();
 			aGame.setComputerTurn(true);
@@ -209,11 +211,11 @@ public class GameGUI extends JFrame
 			setDiceIcons(aGame, dieLabels);
 		}
 
-//		aGame.computerTurn();
-//		txtComputer.setText("" + aGame.getComputerScore());
-//		txtRunning.setText("0");
-//
-//		setDiceIcons(aGame, dieLabels);
+		// aGame.computerTurn();
+		// txtComputer.setText("" + aGame.getComputerScore());
+		// txtRunning.setText("0");
+		//
+		// setDiceIcons(aGame, dieLabels);
 
 		/**
 		 * Rolls Dice
@@ -223,7 +225,6 @@ public class GameGUI extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				// rolls dice and sets icon to respective dice
-
 
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
@@ -251,8 +252,10 @@ public class GameGUI extends JFrame
 					}
 					if (full)
 					{
-						aGame.setDiceToggle(new int[] { -1, -1, -1, -1, -1, -1 });
-						aGame.setDice(new int[] { 0, 0, 0, 0, 0, 0 });
+						aGame.setDiceToggle(new int[]
+						{ -1, -1, -1, -1, -1, -1 });
+						aGame.setDice(new int[]
+						{ 0, 0, 0, 0, 0, 0 });
 					}
 					aGame.rollDice();
 					for (int k = 0; k < 6; k++)
@@ -270,7 +273,8 @@ public class GameGUI extends JFrame
 					{
 						txtRunning.setText("Farkle!");
 						aGame.setRunningScore(0);
-						int[] z = { 1, 2, 3, 4, 5, 6 };
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 						aGame.setComputerTurn(true);
@@ -302,7 +306,8 @@ public class GameGUI extends JFrame
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
-						int[] z = { 1, 2, 3, 4, 5, 6 };
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 					}
@@ -453,7 +458,6 @@ public class GameGUI extends JFrame
 	{
 		while (aGame.computerTurn)
 			aGame.computerTurn();
-
 	}
 
 	/**
@@ -477,6 +481,7 @@ public class GameGUI extends JFrame
 
 	/**
 	 * Sets the clicked die to it's respective locked or unlocked icon.
+	 * 
 	 * @param die
 	 * @param dieString
 	 * @return
@@ -549,8 +554,10 @@ public class GameGUI extends JFrame
 		return ret;
 
 	}
+
 	/**
 	 * Sets the dice labels to their proper icons.
+	 * 
 	 * @param aGame
 	 * @param dieLabels
 	 */
