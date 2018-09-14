@@ -40,8 +40,8 @@ public class gameState
 	public gameState()
 	{
 		rollDice();
-		this.playerScore = 0;
-		this.computerScore = 0;
+		this.playerScore = 9000;
+		this.computerScore = 9000;
 		computer = new computer(dice, this.computerScore);
 
 	}
@@ -66,6 +66,7 @@ public class gameState
 																										// bank
 			{
 				System.out.println(printDice());
+				GameGUI.setDiceIcons(dice, dieLabels);
 				System.out.println("computer banks " + runningScore + " points");
 				computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 			}

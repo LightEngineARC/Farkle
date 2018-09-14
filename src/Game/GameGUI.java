@@ -192,7 +192,7 @@ public class GameGUI extends JFrame
 		gameState aGame = new gameState();
 
 		aGame.rollDice();
-		setDiceIcons(aGame, dieLabels);
+		setDiceIcons(aGame.getDice(), dieLabels);
 
 		if (scoring.scoreDice(aGame.getDice()) == 0)
 		{
@@ -208,7 +208,7 @@ public class GameGUI extends JFrame
 			txtComputer.setText("" + aGame.getComputerScore());
 			txtRunning.setText("0");
 
-			setDiceIcons(aGame, dieLabels);
+			setDiceIcons(aGame.getDice(), dieLabels);
 		}
 
 		// aGame.computerTurn();
@@ -266,7 +266,7 @@ public class GameGUI extends JFrame
 							aGame.setToggleDiceAtIndex(k, -1);
 						}
 					}
-					setDiceIcons(aGame, dieLabels);
+					setDiceIcons(aGame.getDice(), dieLabels);
 
 					// checking dice array score after roll.
 					if (scoring.scoreDice(aGame.getDice()) == 0)
@@ -283,7 +283,7 @@ public class GameGUI extends JFrame
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
 
-						setDiceIcons(aGame, dieLabels);
+						setDiceIcons(aGame.getDice(), dieLabels);
 					}
 				}
 			}
@@ -319,7 +319,7 @@ public class GameGUI extends JFrame
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
 
-						setDiceIcons(aGame, dieLabels);
+						setDiceIcons(aGame.getDice(), dieLabels);
 
 					}
 					if(aGame.winCondition())
@@ -579,12 +579,12 @@ public class GameGUI extends JFrame
 	 * @param aGame
 	 * @param dieLabels
 	 */
-	public static void setDiceIcons(gameState aGame, JLabel[] dieLabels)
+	public static void setDiceIcons(int[] dice, JLabel[] dieLabels)
 	{
 		for (int i = 0; i < dieLabels.length; i++)
 		{
 
-			switch (aGame.getDiceAtIndex(i))
+			switch (dice[i])
 			{
 			case 1:
 				dieLabels[i].setIcon(
@@ -620,4 +620,5 @@ public class GameGUI extends JFrame
 
 		}
 	}
+	
 }
