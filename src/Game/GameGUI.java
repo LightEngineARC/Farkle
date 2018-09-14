@@ -321,18 +321,18 @@ public class GameGUI extends JFrame
 					{
 						if(aGame.getPlayerScore() > aGame.getComputerScore())
 						{
-							txtPlayer.setText("Winner!");
-							txtComputer.setText("Loser!");
+							lblPlayerScore.setText("Winner!");
+							lblComputerScore.setText("Loser!");
 						}
 						else if(aGame.getPlayerScore() < aGame.getComputerScore())
 						{
-							txtPlayer.setText("Loser!");
-							txtComputer.setText("Winner!");
+							lblPlayerScore.setText("Loser!");
+							lblComputerScore.setText("Winner!");
 						}
 						else
 						{
-							txtPlayer.setText("Tie!");
-							txtComputer.setText("Tie!");
+							lblPlayerScore.setText("Tie!");
+							lblComputerScore.setText("Tie!");
 						}
 					}
 				}
