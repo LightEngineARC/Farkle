@@ -184,8 +184,7 @@ public class GameGUI extends JFrame
 		lblRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlTop.add(lblRunning);
 
-		GameGUI.dieLabels = new JLabel[]
-		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		GameGUI.dieLabels = new JLabel[] { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
@@ -201,8 +200,7 @@ public class GameGUI extends JFrame
 			System.out.println("Player Farkle!");
 
 			aGame.setRunningScore(0);
-			int[] z =
-			{ 1, 2, 3, 4, 5, 6 };
+			int[] z = { 1, 2, 3, 4, 5, 6 };
 			aGame.setDice(z);
 			aGame.rollDice();
 			aGame.setComputerTurn(true);
@@ -262,10 +260,8 @@ public class GameGUI extends JFrame
 					}
 					if (full)
 					{
-						aGame.setDiceToggle(new int[]
-						{ -1, -1, -1, -1, -1, -1 });
-						aGame.setDice(new int[]
-						{ 0, 0, 0, 0, 0, 0 });
+						aGame.setDiceToggle(new int[] { -1, -1, -1, -1, -1, -1 });
+						aGame.setDice(new int[] { 0, 0, 0, 0, 0, 0 });
 					}
 					aGame.rollDice();
 					for (int k = 0; k < 6; k++)
@@ -284,8 +280,7 @@ public class GameGUI extends JFrame
 						txtRunning.setText("Farkle!");
 						System.out.println("Player Farkle!");
 						aGame.setRunningScore(0);
-						int[] z =
-						{ 1, 2, 3, 4, 5, 6 };
+						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 						aGame.setComputerTurn(true);
@@ -324,8 +319,7 @@ public class GameGUI extends JFrame
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
-						int[] z =
-						{ 1, 2, 3, 4, 5, 6 };
+						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 					}
@@ -383,9 +377,8 @@ public class GameGUI extends JFrame
 							int toggleScore = theToggler(aGame, index);
 							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-							lblDie1.setIcon(new ImageIcon(GameGUI.class
-									.getResource(
-											changeIcon(aGame.getDiceAtIndex(index), lblDie1.getIcon().toString()))));
+							lblDie1.setIcon(new ImageIcon(GameGUI.class.getResource(
+									changeIcon(aGame.getDiceAtIndex(index), lblDie1.getIcon().toString()))));
 						}
 					}
 				}
@@ -408,9 +401,8 @@ public class GameGUI extends JFrame
 							int toggleScore = theToggler(aGame, index);
 							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-							lblDie2.setIcon(new ImageIcon(GameGUI.class
-									.getResource(
-											changeIcon(aGame.getDiceAtIndex(index), lblDie2.getIcon().toString()))));
+							lblDie2.setIcon(new ImageIcon(GameGUI.class.getResource(
+									changeIcon(aGame.getDiceAtIndex(index), lblDie2.getIcon().toString()))));
 						}
 					}
 				}
@@ -433,9 +425,8 @@ public class GameGUI extends JFrame
 							int toggleScore = theToggler(aGame, index);
 							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-							lblDie3.setIcon(new ImageIcon(GameGUI.class
-									.getResource(
-											changeIcon(aGame.getDiceAtIndex(index), lblDie3.getIcon().toString()))));
+							lblDie3.setIcon(new ImageIcon(GameGUI.class.getResource(
+									changeIcon(aGame.getDiceAtIndex(index), lblDie3.getIcon().toString()))));
 						}
 					}
 				}
@@ -458,9 +449,8 @@ public class GameGUI extends JFrame
 							int toggleScore = theToggler(aGame, index);
 							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-							lblDie4.setIcon(new ImageIcon(GameGUI.class
-									.getResource(
-											changeIcon(aGame.getDiceAtIndex(index), lblDie4.getIcon().toString()))));
+							lblDie4.setIcon(new ImageIcon(GameGUI.class.getResource(
+									changeIcon(aGame.getDiceAtIndex(index), lblDie4.getIcon().toString()))));
 						}
 					}
 				}
@@ -483,9 +473,8 @@ public class GameGUI extends JFrame
 							int toggleScore = theToggler(aGame, index);
 							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-							lblDie5.setIcon(new ImageIcon(GameGUI.class
-									.getResource(
-											changeIcon(aGame.getDiceAtIndex(index), lblDie5.getIcon().toString()))));
+							lblDie5.setIcon(new ImageIcon(GameGUI.class.getResource(
+									changeIcon(aGame.getDiceAtIndex(index), lblDie5.getIcon().toString()))));
 						}
 					}
 				}
@@ -508,9 +497,8 @@ public class GameGUI extends JFrame
 							int toggleScore = theToggler(aGame, index);
 							txtRunning.setText("" + (toggleScore + aGame.getRunningScore()));
 
-							lblDie6.setIcon(new ImageIcon(GameGUI.class
-									.getResource(
-											changeIcon(aGame.getDiceAtIndex(index), lblDie6.getIcon().toString()))));
+							lblDie6.setIcon(new ImageIcon(GameGUI.class.getResource(
+									changeIcon(aGame.getDiceAtIndex(index), lblDie6.getIcon().toString()))));
 						}
 					}
 
@@ -634,28 +622,22 @@ public class GameGUI extends JFrame
 			switch (dice[i])
 			{
 			case 1:
-				dieLabels[i].setIcon(
-						new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
+				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-1.png")));
 				break;
 			case 2:
-				dieLabels[i].setIcon(
-						new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
+				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-2.png")));
 				break;
 			case 3:
-				dieLabels[i].setIcon(
-						new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
+				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-3.png")));
 				break;
 			case 4:
-				dieLabels[i].setIcon(
-						new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
+				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-4.png")));
 				break;
 			case 5:
-				dieLabels[i].setIcon(
-						new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
+				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-5.png")));
 				break;
 			case 6:
-				dieLabels[i].setIcon(
-						new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
+				dieLabels[i].setIcon(new ImageIcon(GameGUI.class.getResource("/Game/images/die-red-6.png")));
 				break;
 			case -1:
 				break;
