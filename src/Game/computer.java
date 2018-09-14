@@ -39,6 +39,10 @@ public class computer
 
 	public int[] chooseDice()
 	{
+		this.sets = new int[]
+		{ 0, 0, 0, 0, 0, 0 };
+		this.diceToLock = new int[]
+		{ -1, -1, -1, -1, -1, -1 };
 
 		// decide which dice to lock
 		for (int i = 0; i < 6; i++)
@@ -73,7 +77,7 @@ public class computer
 			{// loop through sets and look for values greater than 2
 				if (sets[j] > 2)
 				{
-					System.out.println("computer found a set of " + (j + 1) + "'s");
+					System.out.println("computer found a set of " + sets[j] + " " + (j + 1) + "'s");
 					for (int s : dice)
 					{
 						System.out.print(s + " ");
@@ -110,6 +114,8 @@ public class computer
 		sets = new int[]
 		{ 0, 0, 0, 0, 0, 0 };
 		System.out.println("computer has finished checking this set");
+		System.out.println("the computer locks: ");
+		System.out.println(printLockedDice());
 
 		return this.diceToLock;
 
@@ -162,6 +168,16 @@ public class computer
 	public void setDice(int[] dice)
 	{
 		this.dice = dice;
+	}
+
+	public String printLockedDice()
+	{
+		String toPrint = "";
+		for (int s : this.diceToLock)
+		{
+			toPrint = toPrint + s + " ";
+		}
+		return toPrint;
 	}
 
 }
