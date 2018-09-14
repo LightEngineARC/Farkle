@@ -78,7 +78,7 @@ public class scoring
 			{
 				score = 2000;
 				// check for singles
-				score = checkSingles(j, diceToScore, score);
+				score = checkSingles(j, diceToScore, score, multiRollArray);
 			} else if (multiRollArray[j] == 4)
 			{
 				score = 1000;
@@ -92,32 +92,12 @@ public class scoring
 				}
 				if (score < 1500)
 				{
-					score = checkSingles(j, diceToScore, score);
+					score = checkSingles(j, diceToScore, score, multiRollArray);
 				}
 			}
 			if (multiRollArray[j] == 3)
 			{
 				// check for ones and fives.
-				if (j != 0)
-				{
-					for (int m = 0; m < 6; m++)
-					{
-						if (diceToScore[m] == 1)
-						{
-							score = score + 100;
-						}
-					}
-				} else if (j != 4)
-				{
-					for (int m = 0; m < 6; m++)
-					{
-						if (diceToScore[m] == 5)
-						{
-							score = score + 50;
-						}
-					}
-				}
-
 				switch (j)
 				{
 				case 0:
@@ -140,6 +120,7 @@ public class scoring
 					break;
 
 				}
+				score = checkSingles(j, diceToScore, score, multiRollArray);
 
 			}
 		}
@@ -179,17 +160,23 @@ public class scoring
 		{
 			score = 1500;
 		}
-		// check for ones and fives.
-		if (score < 300)
+		// check for ones and fives. but not if there is a set of ones or fives
+		if (score < 200)
 		{
 			for (int m = 0; m < 6; m++)
 			{
 				if (diceToScore[m] == 1)
 				{
-					score = score + 100;
+					if (multiRollArray[0] < 3)
+					{
+						score = score + 100;
+					}
 				} else if (diceToScore[m] == 5)
 				{
-					score = score + 50;
+					if (multiRollArray[4] < 3)
+					{
+						score = score + 50;
+					}
 				}
 			}
 		}
@@ -198,22 +185,26 @@ public class scoring
 
 	}
 
-	private static int checkSingles(int j, int[] diceToScore, int score)
+	private static int checkSingles(int j, int[] diceToScore, int score, int[] multiRollArray)
 	{
-		// TODO Auto-generated method stub
-		if (j != 0 && j != 4)
+
+		for (int n = 0; n < 6; n++)
 		{
-			for (int n = 0; n < 6; n++)
+			if (diceToScore[n] == 5)
 			{
-				if (diceToScore[n] == 5)
+				if (multiRollArray[4] < 3)
 				{
 					score += 50;
-				} else if (diceToScore[n] == 1)
+				}
+			} else if (diceToScore[n] == 1)
+			{
+				if (multiRollArray[0] < 3)
 				{
 					score += 100;
 				}
 			}
 		}
+
 		if (score == 0)
 		{
 			System.out.println("FARKLE!");
