@@ -386,6 +386,7 @@ public class GameGUI extends JFrame
 						}
 					}
 				}
+				lblPlayerScore.setText("Player Score");
 			}
 		});
 
@@ -410,6 +411,7 @@ public class GameGUI extends JFrame
 						}
 					}
 				}
+				lblPlayerScore.setText("Player Score");
 			}
 		});
 
@@ -434,6 +436,7 @@ public class GameGUI extends JFrame
 						}
 					}
 				}
+				lblPlayerScore.setText("Player Score");
 			}
 		});
 
@@ -458,6 +461,7 @@ public class GameGUI extends JFrame
 						}
 					}
 				}
+				lblPlayerScore.setText("Player Score");
 			}
 		});
 
@@ -482,6 +486,7 @@ public class GameGUI extends JFrame
 						}
 					}
 				}
+				lblPlayerScore.setText("Player Score");
 			}
 		});
 
@@ -507,6 +512,7 @@ public class GameGUI extends JFrame
 					}
 
 				}
+				lblPlayerScore.setText("Player Score");
 			}
 		});
 	}
