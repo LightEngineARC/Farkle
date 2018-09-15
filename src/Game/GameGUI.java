@@ -29,6 +29,8 @@ public class GameGUI extends JFrame
 	private JTextField txtPlayer;
 	private JTextField txtComputer;
 	private static JLabel[] dieLabels;
+	public static JLabel lblComputerScore;
+	public static JLabel lblPlayerScore;
 
 	/**
 	 * Launch the application.
@@ -127,7 +129,7 @@ public class GameGUI extends JFrame
 		pnlBtmLeft.add(txtPlayer);
 		txtPlayer.setColumns(10);
 
-		JLabel lblPlayerScore = new JLabel("Player Score");
+		lblPlayerScore = new JLabel("Player Score");
 		lblPlayerScore.setFont(new Font("Arial Black", Font.PLAIN, 28));
 		lblPlayerScore.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlBtmLeft.add(lblPlayerScore);
@@ -146,7 +148,7 @@ public class GameGUI extends JFrame
 		pnlBtmRight.add(txtComputer);
 		txtComputer.setColumns(10);
 
-		JLabel lblComputerScore = new JLabel("Computer Score");
+		lblComputerScore = new JLabel("Computer Score");
 		lblComputerScore.setFont(new Font("Arial Black", Font.PLAIN, 26));
 		lblComputerScore.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlBtmRight.add(lblComputerScore);
@@ -242,6 +244,8 @@ public class GameGUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e)
 			{
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				// rolls dice and sets icon to respective dice
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
@@ -286,8 +290,6 @@ public class GameGUI extends JFrame
 					// checking dice array score after roll.
 					if (scoring.scoreDice(aGame.getDice()) == 0)
 					{
-
-						txtRunning.setText("Farkle!");
 						lblPlayerScore.setText("FARKLE!");
 						System.out.println("Player Farkle!");
 						setDiceIcons(aGame.getDice(), dieLabels);
@@ -331,6 +333,8 @@ public class GameGUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e)
 			{
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.isComputerTurn() && aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) > 0)
 				{
 					if (aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) >= 500

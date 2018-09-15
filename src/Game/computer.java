@@ -76,7 +76,10 @@ public class computer
 
 			if (sets[0] == 1 && sets[5] == 1 && sets[1] == 1 && sets[2] == 1 && sets[3] == 1 && sets[4] == 1)
 			{
-				diceToLock = this.dice;
+				for (int k = 0; k < 6; k++)
+				{
+					diceToLock[k] = this.dice[k];
+				}
 				System.out.println("Computer found a Run of Six!");
 			}
 			int doubleCount = 0;
@@ -89,7 +92,10 @@ public class computer
 			}
 			if (doubleCount == 3)
 			{
-				diceToLock = this.dice;
+				for (int k = 0; k < 6; k++)
+				{
+					diceToLock[k] = this.dice[k];
+				}
 				System.out.println("Computer found Three Pair!");
 			}
 
