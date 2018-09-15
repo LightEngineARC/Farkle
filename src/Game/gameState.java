@@ -99,6 +99,7 @@ public class gameState
 				{
 					System.out.println(printDice());
 					System.out.println("\nComputer FARKLE\n");
+					GameGUI.lblComputerScore.setText("FARKLE");
 					this.runningScore = 0;
 					this.computerTurn = false;
 					this.dice = new int[]
