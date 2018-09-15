@@ -41,6 +41,8 @@ public class gameState
 	computer computer;
 	Scanner scanner = new Scanner(System.in);
 
+	String cString;
+	
 	public gameState()
 	{
 		rollDice();
@@ -66,6 +68,7 @@ public class gameState
 	{
 		if (!winCondition())
 		{
+			setComputerString("Computer Played");
 			while (computerTurn)
 			{
 				if (scoring.scoreDice(this.dice) != 0)
@@ -129,11 +132,19 @@ public class gameState
 		} else
 		{
 			System.out.println("We have a winner!");
-
 		}
 
 	}
 
+	public void setComputerString(String s)
+	{
+		cString = s;
+	}
+	public String getComputerString()
+	{
+		return cString;
+	}
+	
 	private void bankPoints(int[] dice)
 	{
 		// get dice that have been clicked

@@ -32,6 +32,7 @@ public class GameGUI extends JFrame
 	private static JLabel[] dieLabels;
 	public static JLabel lblComputerScore;
 	public static JLabel lblPlayerScore;
+	private JTextField txtComputerSteps;
 
 	/**
 	 * Launch the application.
@@ -169,6 +170,13 @@ public class GameGUI extends JFrame
 		JButton btnBank = new JButton("Bank");
 		btnBank.setFont(new Font("Arial Black", Font.PLAIN, 26));
 		pnlBtmBtm.add(btnBank);
+		
+		txtComputerSteps = new JTextField();
+		txtComputerSteps.setFont(new Font("Arial Black", Font.PLAIN, 18));
+		txtComputerSteps.setHorizontalAlignment(SwingConstants.CENTER);
+		txtComputerSteps.setEditable(false);
+		pnlBtm.add(txtComputerSteps, BorderLayout.CENTER);
+		txtComputerSteps.setColumns(10);
 
 		JPanel pnlTop = new JPanel();
 		pnlTop.setOpaque(false);
@@ -233,6 +241,8 @@ public class GameGUI extends JFrame
 			winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
 			setDiceIcons(aGame.getDice(), dieLabels);
+			
+			txtComputerSteps.setText(aGame.getComputerString());
 		}
 
 		// aGame.computerTurn();
@@ -326,6 +336,7 @@ public class GameGUI extends JFrame
 
 						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
+						txtComputerSteps.setText(aGame.getComputerString());
 					}
 				}
 			}
@@ -383,7 +394,8 @@ public class GameGUI extends JFrame
 
 						setDiceIcons(aGame.getDice(), dieLabels);
 						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
-
+						
+						txtComputerSteps.setText(aGame.getComputerString());
 					}
 					winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 				}
