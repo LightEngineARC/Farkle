@@ -419,10 +419,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				lblComputerScore.setText("Computer Score");
-				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 1;
@@ -444,10 +444,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				lblComputerScore.setText("Computer Score");
-				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 2;
@@ -469,10 +469,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				lblComputerScore.setText("Computer Score");
-				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 3;
@@ -494,10 +494,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				lblComputerScore.setText("Computer Score");
-				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 4;
@@ -519,10 +519,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				lblComputerScore.setText("Computer Score");
-				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 5;
