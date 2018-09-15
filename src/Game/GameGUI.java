@@ -208,7 +208,7 @@ public class GameGUI extends JFrame
 			aGame.setComputerTurn(true);
 			try
 			{
-				aGame.computerTurn();
+				turn(aGame);
 			} catch (InterruptedException e1)
 			{
 				// TODO Auto-generated catch block
@@ -302,7 +302,7 @@ public class GameGUI extends JFrame
 						aGame.setComputerTurn(true);
 						try
 						{
-							aGame.computerTurn();
+							turn(aGame);
 						} catch (InterruptedException e1)
 						{
 							// TODO Auto-generated catch block
@@ -348,7 +348,7 @@ public class GameGUI extends JFrame
 						aGame.setComputerTurn(true);
 						try
 						{
-							aGame.computerTurn();
+							turn(aGame);
 						} catch (InterruptedException e1)
 						{
 							// TODO Auto-generated catch block
@@ -514,11 +514,11 @@ public class GameGUI extends JFrame
 		});
 	}
 
-	public static void computerTurn(gameState aGame) throws InterruptedException
-	{
-		while (aGame.computerTurn)
-			aGame.computerTurn();
-	}
+	// public static void computerTurn(gameState aGame) throws InterruptedException
+	// {
+	// while (aGame.computerTurn)
+	// aGame.computerTurn();
+	// }
 
 	/**
 	 * 
