@@ -72,49 +72,53 @@ public class gameState
 				{
 					System.out.println("computer rolls these dice: " + printDice());
 					computer.setDice(dice);// give computer the dice
-					Thread.sleep(1000);
 					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
-					System.out.println(printDice());
 					theAllToggle();
-					Thread.sleep(1000);
 
 					// Decide to bank
 					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))
 					{
-						Thread.sleep(1000);
 						System.out
 								.println(
 										"computer banks " + (runningScore + scoring.scoreDice(diceToggle)) + " points");
-						Thread.sleep(1000);
 						computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 						runningScore = 0;
 						this.computerTurn = false;
 					} else
 					{
 						this.runningScore = this.runningScore + scoring.scoreDice(diceToggle);
-						rollDice();
-						System.out.println(printDice());
+						System.out.println("computer procedes");
 					}
 				} else
 				{
-					System.out.println("FARKLE");
+					System.out.println(printDice());
+					System.out.println("\nComputer FARKLE\n");
 					this.runningScore = 0;
 					this.computerTurn = false;
+					this.dice = new int[]
+					{ 0, 0, 0, 0, 0, 0 };
+					this.rollDice();
+					this.diceToggle = new int[]
+					{ -1, -1, -1, -1, -1, -1 };
 				}
-				// this through the if statement need to be in the while loop
-				this.computerTurn = false;
-				this.diceToggle = new int[]
-				{ -1, -1, -1, -1, -1, -1 };
-				this.dice = new int[]
-				{ 0, 0, 0, 0, 0, 0 };
-				this.rollDice();
-				System.out.println(printDice());
-				if (scoring.scoreDice(dice) == 0)
+				if (!this.computerTurn && scoring.scoreDice(dice) == 0)
 				{
-					System.out.println("Player FARKLE");
+					System.out.println("\nPlayer FARKLE\n");
+					this.dice = new int[]
+					{ 0, 0, 0, 0, 0, 0 };
+					this.rollDice();
+					this.diceToggle = new int[]
+					{ -1, -1, -1, -1, -1, -1 };
 					this.computerTurn = true;
 				}
 			}
+			this.computerTurn = false;
+			this.diceToggle = new int[]
+			{ -1, -1, -1, -1, -1, -1 };
+			this.dice = new int[]
+			{ 0, 0, 0, 0, 0, 0 };
+			this.rollDice();
+			System.out.println(printDice());
 
 		} else
 		{
@@ -190,7 +194,13 @@ public class gameState
 		String theDice = "";
 		for (int i = 0; i < 6; i++)
 		{
-			theDice = theDice + " " + dice[i];
+			if (dice[i] > 0)
+			{
+				theDice = theDice + dice[i] + " ";
+			} else
+			{
+				theDice = theDice + "_ ";
+			}
 		}
 		return theDice;
 

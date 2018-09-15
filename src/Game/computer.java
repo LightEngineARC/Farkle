@@ -73,29 +73,11 @@ public class computer
 			default:
 				break;
 			}
-			for (int j = 0; j < 6; j++)
-			{// loop through sets and look for values greater than 2
-				if (sets[j] > 2)
-				{
-					System.out.println("computer found a set of " + sets[j] + " " + (j + 1) + "'s");
-					for (int s : dice)
-					{
-						System.out.print(s + " ");
-					}
-					System.out.println();
-					for (int k = 0; k < 6; k++)
-					{// loop through dice and check if the value of dice == int j +1
-						if (dice[k] == (j + 1))
-						{
-							diceToLock[k] = this.dice[k];
-						}
-					}
 
-				}
-			}
 			if (sets[0] == 1 && sets[5] == 1 && sets[1] == 1 && sets[2] == 1 && sets[3] == 1 && sets[4] == 1)
 			{
 				diceToLock = this.dice;
+				System.out.println("Computer found a Run of Six!");
 			}
 			int doubleCount = 0;
 			for (int t = 0; t < 6; t++)
@@ -108,8 +90,24 @@ public class computer
 			if (doubleCount == 3)
 			{
 				diceToLock = this.dice;
+				System.out.println("Computer found Three Pair!");
 			}
 
+		}
+		for (int j = 0; j < 6; j++)
+		{// loop through sets and look for values greater than 2
+			if (sets[j] > 2)
+			{
+				System.out.println("computer found a set of " + sets[j] + " " + (j + 1) + "'s");
+				for (int k = 0; k < 6; k++)
+				{// loop through dice and check if the value of dice == int j +1
+					if (dice[k] == (j + 1))
+					{
+						diceToLock[k] = this.dice[k];
+					}
+				}
+
+			}
 		}
 		sets = new int[]
 		{ 0, 0, 0, 0, 0, 0 };
@@ -131,7 +129,7 @@ public class computer
 				return true;
 			} else
 			{
-				System.out.println("Computer doesn't have the points to bank" + runningScore);
+				System.out.println("Computer doesn't have the points to bank " + runningScore);
 				return false;
 			}
 
