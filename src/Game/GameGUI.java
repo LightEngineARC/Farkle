@@ -192,28 +192,30 @@ public class GameGUI extends JFrame
 		 */
 		gameState aGame = new gameState();
 				
-		ActionListener runComputer = new ActionListener()
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					aGame.computerTurn();
-				} catch (InterruptedException e1)
-				{
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				txtComputer.setText("" + aGame.getComputerScore());
-				txtRunning.setText("0");
-			}
-
-		};
+//		ActionListener runComputer = new ActionListener()
+//		{
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e)
+//			{
+//				try
+//				{
+//					aGame.computerTurn();
+//				} catch (InterruptedException e1)
+//				{
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//
+//				
+//				
+//				txtComputer.setText("" + aGame.getComputerScore());
+//				txtRunning.setText("0");
+//			}
+//
+//		};
 		
-		Timer timer = new Timer(2000 ,runComputer);
+//		Timer timer = new Timer(2000 ,runComputer);
 
 		aGame.rollDice();
 		setDiceIcons(aGame.getDice(), dieLabels);
@@ -229,8 +231,19 @@ public class GameGUI extends JFrame
 			aGame.rollDice();
 			aGame.setComputerTurn(true);
 
-	        timer.setRepeats(false);
-	        timer.start();
+			try
+			{
+				aGame.computerTurn();
+			} catch (InterruptedException e1)
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+//	        timer.setRepeats(false);
+//	        timer.start();
+			
+			txtComputer.setText("" + aGame.getComputerScore());
+			txtRunning.setText("0");
 	        
 			aGame.setRunningScore(0);
 
@@ -294,14 +307,27 @@ public class GameGUI extends JFrame
 						System.out.println("Player Farkle!");
 						setDiceIcons(aGame.getDice(), dieLabels);
 
-				        timer.setRepeats(false);
-				        timer.start();
+//				        timer.setRepeats(false);
+//				        timer.start();
 				        
+						aGame.setComputerTurn(true);
+
+						try
+						{
+							aGame.computerTurn();
+						} catch (InterruptedException e1)
+						{
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
+						txtComputer.setText("" + aGame.getComputerScore());
+						txtRunning.setText("0");
+						
 						aGame.setRunningScore(0);
 						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
-						aGame.setComputerTurn(true);
 
 						setDiceIcons(aGame.getDice(), dieLabels);
 
@@ -338,8 +364,20 @@ public class GameGUI extends JFrame
 					{
 						aGame.setComputerTurn(true);
 						
-				        timer.setRepeats(false);
-				        timer.start();
+//				        timer.setRepeats(false);
+//				        timer.start();
+						
+						try
+						{
+							aGame.computerTurn();
+						} catch (InterruptedException e1)
+						{
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
+						txtComputer.setText("" + aGame.getComputerScore());
+						txtRunning.setText("0");
 
 						setDiceIcons(aGame.getDice(), dieLabels);
 						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
