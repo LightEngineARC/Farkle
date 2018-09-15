@@ -223,7 +223,6 @@ public class GameGUI extends JFrame
 			if (aGame.getComputerScore() == compTemp)
 			{
 				lblComputerScore.setText("FARKLE!");
-				lblPlayerScore.setText("Player Score");
 			}
 
 			txtComputer.setText("" + aGame.getComputerScore());
@@ -317,7 +316,6 @@ public class GameGUI extends JFrame
 						if (aGame.getComputerScore() == compTemp)
 						{
 							lblComputerScore.setText("FARKLE!");
-							lblPlayerScore.setText("Player Score");
 						}
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
@@ -376,7 +374,6 @@ public class GameGUI extends JFrame
 						if (aGame.getComputerScore() == compTemp)
 						{
 							lblComputerScore.setText("FARKLE!");
-							lblPlayerScore.setText("Player Score");
 						}
 
 						txtComputer.setText("" + aGame.getComputerScore());
