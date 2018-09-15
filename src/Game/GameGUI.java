@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class GameGUI extends JFrame
 {
 
@@ -214,7 +215,6 @@ public class GameGUI extends JFrame
 				aGame.computerTurn();
 			} catch (InterruptedException e1)
 			{
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
@@ -307,7 +307,6 @@ public class GameGUI extends JFrame
 							aGame.computerTurn();
 						} catch (InterruptedException e1)
 						{
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						if (aGame.getComputerScore() == compTemp)
@@ -365,7 +364,6 @@ public class GameGUI extends JFrame
 							aGame.computerTurn();
 						} catch (InterruptedException e1)
 						{
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 
@@ -393,7 +391,8 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -419,7 +418,8 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -445,7 +445,8 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -471,7 +472,8 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -497,7 +499,8 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -523,7 +526,8 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
