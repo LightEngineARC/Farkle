@@ -184,8 +184,7 @@ public class GameGUI extends JFrame
 		lblRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlTop.add(lblRunning);
 
-		GameGUI.dieLabels = new JLabel[]
-		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		GameGUI.dieLabels = new JLabel[] { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
@@ -201,11 +200,13 @@ public class GameGUI extends JFrame
 			System.out.println("Player Farkle!");
 
 			aGame.setRunningScore(0);
-			int[] z =
-			{ 1, 2, 3, 4, 5, 6 };
+			int[] z = { 1, 2, 3, 4, 5, 6 };
 			aGame.setDice(z);
 			aGame.rollDice();
 			aGame.setComputerTurn(true);
+			
+			int compTemp = aGame.getComputerScore();
+			
 			try
 			{
 				aGame.computerTurn();
@@ -215,6 +216,11 @@ public class GameGUI extends JFrame
 				e1.printStackTrace();
 			}
 
+			if (aGame.getComputerScore() == compTemp)
+			{
+				lblComputerScore.setText("FARKLE!");
+			}
+			
 			txtComputer.setText("" + aGame.getComputerScore());
 			txtRunning.setText("0");
 
@@ -263,10 +269,8 @@ public class GameGUI extends JFrame
 					}
 					if (full)
 					{
-						aGame.setDiceToggle(new int[]
-						{ -1, -1, -1, -1, -1, -1 });
-						aGame.setDice(new int[]
-						{ 0, 0, 0, 0, 0, 0 });
+						aGame.setDiceToggle(new int[] { -1, -1, -1, -1, -1, -1 });
+						aGame.setDice(new int[] { 0, 0, 0, 0, 0, 0 });
 					}
 					aGame.rollDice();
 					for (int k = 0; k < 6; k++)
@@ -288,11 +292,13 @@ public class GameGUI extends JFrame
 						System.out.println("Player Farkle!");
 						setDiceIcons(aGame.getDice(), dieLabels);
 						aGame.setRunningScore(0);
-						int[] z =
-						{ 1, 2, 3, 4, 5, 6 };
+						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 						aGame.setComputerTurn(true);
+						
+						int compTemp = aGame.getComputerScore();
+						
 						try
 						{
 							aGame.computerTurn();
@@ -301,9 +307,13 @@ public class GameGUI extends JFrame
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-
+						if (aGame.getComputerScore() == compTemp)
+						{
+							lblComputerScore.setText("FARKLE!");
+						}
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
+						
 
 						setDiceIcons(aGame.getDice(), dieLabels);
 
@@ -333,16 +343,17 @@ public class GameGUI extends JFrame
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
-						int[] z =
-						{ 1, 2, 3, 4, 5, 6 };
+						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
-						aGame.diceToggle = new int[]
-						{ -1, -1, -1, -1, -1, -1 };
+						aGame.diceToggle = new int[] { -1, -1, -1, -1, -1, -1 };
 					}
 					if (aGame.getPlayerScore() != 0)
 					{
 						aGame.setComputerTurn(true);
+						
+						int compTemp = aGame.getComputerScore();
+						
 						try
 						{
 							aGame.computerTurn();
@@ -352,6 +363,11 @@ public class GameGUI extends JFrame
 							e1.printStackTrace();
 						}
 
+						if (aGame.getComputerScore() == compTemp)
+						{
+							lblComputerScore.setText("FARKLE!");
+						}
+						
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
 
@@ -387,6 +403,7 @@ public class GameGUI extends JFrame
 					}
 				}
 				lblPlayerScore.setText("Player Score");
+				lblComputerScore.setText("Computer Score");
 			}
 		});
 
@@ -412,6 +429,7 @@ public class GameGUI extends JFrame
 					}
 				}
 				lblPlayerScore.setText("Player Score");
+				lblComputerScore.setText("Computer Score");
 			}
 		});
 
@@ -437,6 +455,7 @@ public class GameGUI extends JFrame
 					}
 				}
 				lblPlayerScore.setText("Player Score");
+				lblComputerScore.setText("Computer Score");
 			}
 		});
 
@@ -462,6 +481,7 @@ public class GameGUI extends JFrame
 					}
 				}
 				lblPlayerScore.setText("Player Score");
+				lblComputerScore.setText("Computer Score");
 			}
 		});
 
@@ -487,6 +507,7 @@ public class GameGUI extends JFrame
 					}
 				}
 				lblPlayerScore.setText("Player Score");
+				lblComputerScore.setText("Computer Score");
 			}
 		});
 
@@ -513,6 +534,7 @@ public class GameGUI extends JFrame
 
 				}
 				lblPlayerScore.setText("Player Score");
+				lblComputerScore.setText("Computer Score");
 			}
 		});
 	}
