@@ -28,7 +28,7 @@ public class WelcomeGUI extends JFrame
 	{
 		setTitle("Farkle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 550);
+		setBounds(100, 100, 1000, 580);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 20, 5));

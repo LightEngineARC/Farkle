@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class GameGUI extends JFrame
@@ -32,7 +34,6 @@ public class GameGUI extends JFrame
 	private static JLabel[] dieLabels;
 	public static JLabel lblComputerScore;
 	public static JLabel lblPlayerScore;
-	private JTextField txtComputerSteps;
 
 	/**
 	 * Launch the application.
@@ -66,10 +67,10 @@ public class GameGUI extends JFrame
 		/**
 		 * Builds GUI
 		 */
-		setMinimumSize(new Dimension(1000, 550));
+		setMinimumSize(new Dimension(1000, 580));
 		setTitle("Farkle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 550);
+		setBounds(100, 100, 1000, 580);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -159,7 +160,7 @@ public class GameGUI extends JFrame
 
 		JPanel pnlBtmBtm = new JPanel();
 		pnlBtmBtm.setOpaque(false);
-		pnlBtmBtm.setBorder(new EmptyBorder(0, 350, 0, 350));
+		pnlBtmBtm.setBorder(new EmptyBorder(20, 350, 0, 350));
 		pnlBtm.add(pnlBtmBtm, BorderLayout.SOUTH);
 		pnlBtmBtm.setLayout(new GridLayout(0, 1, 0, 0));
 
@@ -171,12 +172,11 @@ public class GameGUI extends JFrame
 		btnBank.setFont(new Font("Arial Black", Font.PLAIN, 26));
 		pnlBtmBtm.add(btnBank);
 		
-		txtComputerSteps = new JTextField();
+		JTextArea txtComputerSteps = new JTextArea();
+		txtComputerSteps.setBorder(new EmptyBorder(10, 20, 10, 20));
 		txtComputerSteps.setFont(new Font("Arial Black", Font.PLAIN, 18));
-		txtComputerSteps.setHorizontalAlignment(SwingConstants.CENTER);
 		txtComputerSteps.setEditable(false);
 		pnlBtm.add(txtComputerSteps, BorderLayout.CENTER);
-		txtComputerSteps.setColumns(10);
 
 		JPanel pnlTop = new JPanel();
 		pnlTop.setOpaque(false);

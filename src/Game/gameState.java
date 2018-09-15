@@ -16,6 +16,7 @@
  ********************************************************/
 package Game;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -74,16 +75,21 @@ public class gameState
 				if (scoring.scoreDice(this.dice) != 0)
 				{
 					System.out.println("computer rolls these dice: " + printDice());
+					String diceHolder = printDice();
+					String computerStep = "";
 					computer.setDice(dice);// give computer the dice
 					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
 					theAllToggle();
-
+					computerStep += "Computer Rolled: " + diceHolder + "\n" + "Computer Locked: " + computer.printLockedDice() + "\n";
+					setComputerString(computerStep);
 					// Decide to bank
 					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))
 					{
 						System.out
 								.println(
 										"computer banks " + (runningScore + scoring.scoreDice(diceToggle)) + " points");
+						computerStep += "Computer Banks: " + (runningScore + scoring.scoreDice(diceToggle));
+						setComputerString(computerStep);
 						computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 						runningScore = 0;
 						this.dice = new int[]
@@ -103,6 +109,7 @@ public class gameState
 					System.out.println(printDice());
 					System.out.println("\nComputer FARKLE\n");
 					GameGUI.lblComputerScore.setText("FARKLE");
+					setComputerString("Computer Rolled and Farkled");
 					this.runningScore = 0;
 					this.computerTurn = false;
 					this.dice = new int[]
