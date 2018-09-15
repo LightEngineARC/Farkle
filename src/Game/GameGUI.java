@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class GameGUI extends JFrame
 {
 
@@ -211,7 +212,6 @@ public class GameGUI extends JFrame
 				turn(aGame);
 			} catch (InterruptedException e1)
 			{
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
@@ -291,7 +291,6 @@ public class GameGUI extends JFrame
 							Thread.sleep(3000);
 						} catch (InterruptedException e2)
 						{
-							// TODO Auto-generated catch block
 							e2.printStackTrace();
 						}
 						aGame.setRunningScore(0);
@@ -305,7 +304,6 @@ public class GameGUI extends JFrame
 							turn(aGame);
 						} catch (InterruptedException e1)
 						{
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 
@@ -342,7 +340,11 @@ public class GameGUI extends JFrame
 						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
+						// TODO Update the GUI
+						setDiceIcons(aGame.getDice(), dieLabels);
 					}
+					aGame.rollDice();
+					setDiceIcons(aGame.getDice(), dieLabels);
 					if (aGame.getPlayerScore() != 0)
 					{
 						aGame.setComputerTurn(true);
@@ -351,7 +353,6 @@ public class GameGUI extends JFrame
 							turn(aGame);
 						} catch (InterruptedException e1)
 						{
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 
@@ -373,7 +374,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				// check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -397,7 +398,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				// check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -421,7 +422,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				// to check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -445,7 +446,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				// check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -469,7 +470,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				// check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -493,7 +494,7 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				// check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -684,7 +685,8 @@ public class GameGUI extends JFrame
 
 	public void turn(gameState aGame) throws InterruptedException
 	{
-		if (aGame.winCondition())
+		aGame.setRunningScore(0);
+		if (!aGame.winCondition())
 		{
 			while (aGame.computerTurn)
 			{
@@ -692,22 +694,26 @@ public class GameGUI extends JFrame
 				{
 					System.out.println("computer rolls these dice: " + aGame.printDice());
 					aGame.computer.setDice(aGame.getDice());// give computer the dice
-					Thread.sleep(1000);
+					updateLockedDice(aGame.getDice());// update the dice on the GUI
+					repaint();
+
+					Thread.sleep(2000);
+
 					aGame.diceToggle = aGame.computer.chooseDice();// update the diceToggle based on computer logic
 					System.out.println(aGame.printDice());
 					aGame.theAllToggle();
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 
 					// Decide to bank
 					if (aGame.computer.toBank(aGame.runningScore + scoring.scoreDice(aGame.diceToggle), aGame.dice,
 							aGame.computerScore))
 					{
-						Thread.sleep(1000);
+						Thread.sleep(2000);
 						System.out
 								.println(
 										"computer banks " + (aGame.runningScore + scoring.scoreDice(aGame.diceToggle))
 												+ " points");
-						Thread.sleep(1000);
+						Thread.sleep(2000);
 						aGame.computerScore = aGame.computerScore + aGame.runningScore
 								+ scoring.scoreDice(aGame.diceToggle);
 						aGame.runningScore = 0;
@@ -731,11 +737,13 @@ public class GameGUI extends JFrame
 				aGame.dice = new int[]
 				{ 0, 0, 0, 0, 0, 0 };
 				aGame.rollDice();
+				aGame.setRunningScore(0);
 				System.out.println(aGame.printDice());
 				if (scoring.scoreDice(aGame.dice) == 0)
 				{
 					System.out.println("Player FARKLE");
 					aGame.computerTurn = true;
+					aGame.setRunningScore(0);
 				}
 			}
 
@@ -744,5 +752,32 @@ public class GameGUI extends JFrame
 			System.out.println("We have a winner!");
 
 		}
+	}
+
+	// Computer updates the visual dice
+	public static void updateLockedDice(int[] dice)
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			if (dice[i] == -1)
+			{
+				changeIcon(dice[i], "" + i + ".");
+			}
+
+		}
+	}
+
+	public void updateGUIstuff(int[] dice)
+	{
+		setDiceIcons(dice, dieLabels);
+		contentPane.repaint();
+		txtRunning.repaint();
+		txtPlayer.repaint();
+		txtComputer.repaint();
+		for (int i = 0; i < 6; i++)
+		{
+			dieLabels[i].repaint();
+		}
+
 	}
 }

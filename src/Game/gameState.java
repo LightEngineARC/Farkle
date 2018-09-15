@@ -64,68 +64,67 @@ public class gameState
 	 */
 	// public void computerTurn() throws InterruptedException
 	// {
-	// // if (!winCondition())
-	// // {
-	// // while (computerTurn)
-	// // {
-	// // if (scoring.scoreDice(this.dice) != 0)
-	// // {
-	// // System.out.println("computer rolls these dice: " + printDice());
-	// // computer.setDice(dice);// give computer the dice
-	// // Thread.sleep(1000);
-	// // diceToggle = computer.chooseDice();// update the diceToggle based on
-	// computer
-	// // logic
-	// // System.out.println(printDice());
-	// // theAllToggle();
-	// // Thread.sleep(1000);
-	// //
-	// // // Decide to bank
-	// // if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice,
-	// // this.computerScore))
-	// // {
-	// // Thread.sleep(1000);
-	// // System.out
-	// // .println(
-	// // "computer banks " + (runningScore + scoring.scoreDice(diceToggle)) + "
-	// // points");
-	// // Thread.sleep(1000);
-	// // computerScore = computerScore + runningScore +
+	// if (!winCondition())
+	// {
+	// while (computerTurn)
+	// {
+	// if (scoring.scoreDice(this.dice) != 0)
+	// {
+	// System.out.println("computer rolls these dice: " + printDice());
+	// computer.setDice(dice);// give computer the dice
+	// Thread.sleep(1000);
+	// diceToggle = computer.chooseDice();// update the diceToggle based on
+	// // computer logic
+	// System.out.println(printDice());
+	// theAllToggle();
+	// Thread.sleep(1000);
+	//
+	// // Decide to bank
+	// if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice,
+	// this.computerScore))
+	// {
+	// Thread.sleep(1000);
+	// System.out
+	// .println(
+	// "computer banks " + (runningScore + scoring.scoreDice(diceToggle)) +
+	// "points");
+	// Thread.sleep(1000);
+	// computerScore = computerScore + runningScore +
 	// scoring.scoreDice(diceToggle);
-	// // runningScore = 0;
-	// // this.computerTurn = false;
-	// // } else
-	// // {
-	// // this.runningScore = this.runningScore + scoring.scoreDice(diceToggle);
-	// // rollDice();
-	// // System.out.println(printDice());
-	// // }
-	// // } else
-	// // {
-	// // System.out.println("FARKLE");
-	// // this.runningScore = 0;
-	// // this.computerTurn = false;
-	// // }
-	// // // this through the if statement need to be in the while loop
-	// // this.computerTurn = false;
-	// // this.diceToggle = new int[]
-	// // { -1, -1, -1, -1, -1, -1 };
-	// // this.dice = new int[]
-	// // { 0, 0, 0, 0, 0, 0 };
-	// // this.rollDice();
-	// // System.out.println(printDice());
-	// // if (scoring.scoreDice(dice) == 0)
-	// // {
-	// // System.out.println("Player FARKLE");
-	// // this.computerTurn = true;
-	// // }
-	// // }
-	// //
-	// // } else
-	// // {
-	// // System.out.println("We have a winner!");
-	// //
-	// // }
+	// runningScore = 0;
+	// this.computerTurn = false;
+	// } else
+	// {
+	// this.runningScore = this.runningScore + scoring.scoreDice(diceToggle);
+	// rollDice();
+	// System.out.println(printDice());
+	// }
+	// } else
+	// {
+	// System.out.println("FARKLE");
+	// this.runningScore = 0;
+	// this.computerTurn = false;
+	// }
+	// // this through the if statement need to be in the while loop
+	// this.computerTurn = false;
+	// this.diceToggle = new int[]
+	// { -1, -1, -1, -1, -1, -1 };
+	// this.dice = new int[]
+	// { 0, 0, 0, 0, 0, 0 };
+	// this.rollDice();
+	// System.out.println(printDice());
+	// if (scoring.scoreDice(dice) == 0)
+	// {
+	// System.out.println("Player FARKLE");
+	// this.computerTurn = true;
+	// }
+	// }
+	//
+	// } else
+	// {
+	// System.out.println("We have a winner!");
+	//
+	// }
 	//
 	// }
 
