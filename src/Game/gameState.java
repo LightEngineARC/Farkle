@@ -101,24 +101,25 @@ public class gameState
 					this.runningScore = 0;
 					this.computerTurn = false;
 				}
-			}
-			this.computerTurn = false;
-			this.diceToggle = new int[]
-			{ -1, -1, -1, -1, -1, -1 };
-			this.dice = new int[]
-			{ 0, 0, 0, 0, 0, 0 };
-			this.rollDice();
-			System.out.println(printDice());
-			if (scoring.scoreDice(dice) == 0)
-			{
-				System.out.println("Player FARKLE");
-				this.computerTurn = true;
+				// this through the if statement need to be in the while loop
+				this.computerTurn = false;
+				this.diceToggle = new int[]
+				{ -1, -1, -1, -1, -1, -1 };
+				this.dice = new int[]
+				{ 0, 0, 0, 0, 0, 0 };
+				this.rollDice();
+				System.out.println(printDice());
+				if (scoring.scoreDice(dice) == 0)
+				{
+					System.out.println("Player FARKLE");
+					this.computerTurn = true;
+				}
 			}
 
 		} else
 		{
 			System.out.println("We have a winner!");
-			
+
 		}
 
 	}
