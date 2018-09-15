@@ -46,6 +46,8 @@ public class GameGUI extends JFrame
 				{
 					GameGUI frame = new GameGUI();
 					frame.setVisible(true);
+					WelcomeGUI wFrame = new WelcomeGUI();
+					wFrame.setVisible(true);
 				} catch (Exception e)
 				{
 					e.printStackTrace();
