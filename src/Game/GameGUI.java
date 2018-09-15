@@ -198,7 +198,7 @@ public class GameGUI extends JFrame
 		{
 			txtRunning.setText("Farkle!");
 			System.out.println("Player Farkle!");
-
+						
 			aGame.setRunningScore(0);
 			int[] z = { 1, 2, 3, 4, 5, 6 };
 			aGame.setDice(z);
@@ -235,7 +235,6 @@ public class GameGUI extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				// rolls dice and sets icon to respective dice
-
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
 					// add score of selected dice
@@ -281,6 +280,16 @@ public class GameGUI extends JFrame
 					{
 						txtRunning.setText("Farkle!");
 						System.out.println("Player Farkle!");
+						setDiceIcons(aGame.getDice(), dieLabels);
+						
+						try
+						{
+							Thread.sleep(3000);
+						} catch (InterruptedException e2)
+						{
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
 						aGame.setRunningScore(0);
 						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);

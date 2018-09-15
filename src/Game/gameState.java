@@ -102,7 +102,7 @@ public class gameState
 		} else
 		{
 			System.out.println("We have a winner!");
-
+			
 		}
 
 		this.computerTurn = false;
