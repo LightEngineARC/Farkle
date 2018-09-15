@@ -282,18 +282,11 @@ public class GameGUI extends JFrame
 					// checking dice array score after roll.
 					if (scoring.scoreDice(aGame.getDice()) == 0)
 					{
+
 						txtRunning.setText("Farkle!");
+						lblPlayerScore.setText("FARKLE!");
 						System.out.println("Player Farkle!");
 						setDiceIcons(aGame.getDice(), dieLabels);
-
-						try
-						{
-							Thread.sleep(3000);
-						} catch (InterruptedException e2)
-						{
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
 						aGame.setRunningScore(0);
 						int[] z =
 						{ 1, 2, 3, 4, 5, 6 };
