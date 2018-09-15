@@ -83,11 +83,17 @@ public class gameState
 										"computer banks " + (runningScore + scoring.scoreDice(diceToggle)) + " points");
 						computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 						runningScore = 0;
+						this.dice = new int[]
+						{ 1, 1, 1, 1, 1, 1 };
+						this.diceToggle = new int[]
+						{ -1, -1, -1, -1, -1, -1 };
+						this.rollDice();
 						this.computerTurn = false;
 					} else
 					{
 						this.runningScore = this.runningScore + scoring.scoreDice(diceToggle);
 						System.out.println("computer procedes");
+						this.rollDice();
 					}
 				} else
 				{
@@ -96,23 +102,22 @@ public class gameState
 					this.runningScore = 0;
 					this.computerTurn = false;
 					this.dice = new int[]
-					{ 0, 0, 0, 0, 0, 0 };
-					this.rollDice();
+					{ 1, 1, 1, 1, 1, 1 };
 					this.diceToggle = new int[]
 					{ -1, -1, -1, -1, -1, -1 };
+					this.rollDice();
 				}
-				if (!this.computerTurn && scoring.scoreDice(dice) == 0)
+				if (!computerTurn && scoring.scoreDice(dice) == 0)
 				{
-					System.out.println("\nPlayer FARKLE\n");
+					System.out.println("\nPlayer FARKLE on first roll\n");
 					this.dice = new int[]
 					{ 0, 0, 0, 0, 0, 0 };
-					this.rollDice();
 					this.diceToggle = new int[]
 					{ -1, -1, -1, -1, -1, -1 };
 					this.computerTurn = true;
+					this.rollDice();
 				}
 			}
-			this.computerTurn = false;
 			this.diceToggle = new int[]
 			{ -1, -1, -1, -1, -1, -1 };
 			this.dice = new int[]
@@ -155,14 +160,24 @@ public class gameState
 
 	}
 
-	// returns array with random numbers if the current number is not -1
+	// returns array with random numbers if the current number is not -1 or all of
+	// them if the dice are all used
 	public void rollDice()
 	{
+		int used = 0;
 		for (int i = 0; i < 6; i++)
 		{
 			if (dice[i] != -1)
 			{
 				dice[i] = (int) (Math.random() * 6 + 1);
+
+			} else
+				used++;
+			if (used == 6)
+			{
+				this.dice = new int[]
+				{ 0, 0, 0, 0, 0, 0 };
+				rollDice();
 			}
 		}
 	}
