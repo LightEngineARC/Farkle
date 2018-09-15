@@ -184,7 +184,8 @@ public class GameGUI extends JFrame
 		lblRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlTop.add(lblRunning);
 
-		GameGUI.dieLabels = new JLabel[] { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		GameGUI.dieLabels = new JLabel[]
+		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
@@ -198,9 +199,10 @@ public class GameGUI extends JFrame
 		{
 			txtRunning.setText("Farkle!");
 			System.out.println("Player Farkle!");
-						
+
 			aGame.setRunningScore(0);
-			int[] z = { 1, 2, 3, 4, 5, 6 };
+			int[] z =
+			{ 1, 2, 3, 4, 5, 6 };
 			aGame.setDice(z);
 			aGame.rollDice();
 			aGame.setComputerTurn(true);
@@ -215,7 +217,7 @@ public class GameGUI extends JFrame
 
 			txtComputer.setText("" + aGame.getComputerScore());
 			txtRunning.setText("0");
-			
+
 			winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
 			setDiceIcons(aGame.getDice(), dieLabels);
@@ -261,8 +263,10 @@ public class GameGUI extends JFrame
 					}
 					if (full)
 					{
-						aGame.setDiceToggle(new int[] { -1, -1, -1, -1, -1, -1 });
-						aGame.setDice(new int[] { 0, 0, 0, 0, 0, 0 });
+						aGame.setDiceToggle(new int[]
+						{ -1, -1, -1, -1, -1, -1 });
+						aGame.setDice(new int[]
+						{ 0, 0, 0, 0, 0, 0 });
 					}
 					aGame.rollDice();
 					for (int k = 0; k < 6; k++)
@@ -281,7 +285,7 @@ public class GameGUI extends JFrame
 						txtRunning.setText("Farkle!");
 						System.out.println("Player Farkle!");
 						setDiceIcons(aGame.getDice(), dieLabels);
-						
+
 						try
 						{
 							Thread.sleep(3000);
@@ -291,7 +295,8 @@ public class GameGUI extends JFrame
 							e2.printStackTrace();
 						}
 						aGame.setRunningScore(0);
-						int[] z = { 1, 2, 3, 4, 5, 6 };
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 						aGame.setComputerTurn(true);
@@ -333,7 +338,8 @@ public class GameGUI extends JFrame
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
-						int[] z = { 1, 2, 3, 4, 5, 6 };
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 					}
@@ -673,6 +679,70 @@ public class GameGUI extends JFrame
 				lblPlayerScore.setText("Tie!");
 				lblComputerScore.setText("Tie!");
 			}
+		}
+	}
+
+	public void turn(gameState aGame) throws InterruptedException
+	{
+		if (aGame.winCondition())
+		{
+			while (aGame.computerTurn)
+			{
+				if (scoring.scoreDice(aGame.getDice()) != 0)
+				{
+					System.out.println("computer rolls these dice: " + aGame.printDice());
+					aGame.computer.setDice(aGame.getDice());// give computer the dice
+					Thread.sleep(1000);
+					aGame.diceToggle = aGame.computer.chooseDice();// update the diceToggle based on computer logic
+					System.out.println(aGame.printDice());
+					aGame.theAllToggle();
+					Thread.sleep(1000);
+
+					// Decide to bank
+					if (aGame.computer.toBank(aGame.runningScore + scoring.scoreDice(aGame.diceToggle), aGame.dice,
+							aGame.computerScore))
+					{
+						Thread.sleep(1000);
+						System.out
+								.println(
+										"computer banks " + (aGame.runningScore + scoring.scoreDice(aGame.diceToggle))
+												+ " points");
+						Thread.sleep(1000);
+						aGame.computerScore = aGame.computerScore + aGame.runningScore
+								+ scoring.scoreDice(aGame.diceToggle);
+						aGame.runningScore = 0;
+						aGame.computerTurn = false;
+					} else
+					{
+						aGame.runningScore = aGame.runningScore + scoring.scoreDice(aGame.diceToggle);
+						aGame.rollDice();
+						System.out.println(aGame.printDice());
+					}
+				} else
+				{
+					System.out.println("FARKLE");
+					aGame.runningScore = 0;
+					aGame.computerTurn = false;
+				}
+				// this through the if statement need to be in the while loop
+				aGame.computerTurn = false;
+				aGame.diceToggle = new int[]
+				{ -1, -1, -1, -1, -1, -1 };
+				aGame.dice = new int[]
+				{ 0, 0, 0, 0, 0, 0 };
+				aGame.rollDice();
+				System.out.println(aGame.printDice());
+				if (scoring.scoreDice(aGame.dice) == 0)
+				{
+					System.out.println("Player FARKLE");
+					aGame.computerTurn = true;
+				}
+			}
+
+		} else
+		{
+			System.out.println("We have a winner!");
+
 		}
 	}
 }
