@@ -286,13 +286,13 @@ public class GameGUI extends JFrame
 						System.out.println("Player Farkle!");
 						setDiceIcons(aGame.getDice(), dieLabels);
 
-						try
-						{
-							Thread.sleep(3000);
-						} catch (InterruptedException e2)
-						{
-							e2.printStackTrace();
-						}
+						// try
+						// {
+						// Thread.sleep(3000);
+						// } catch (InterruptedException e2)
+						// {
+						// e2.printStackTrace();
+						// }
 						aGame.setRunningScore(0);
 						int[] z =
 						{ 1, 2, 3, 4, 5, 6 };
@@ -326,6 +326,7 @@ public class GameGUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e)
 			{
+
 				if (!aGame.isComputerTurn() && aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) > 0)
 				{
 					if (aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) >= 500
@@ -340,14 +341,10 @@ public class GameGUI extends JFrame
 						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
+						aGame.setComputerTurn(true);
 						// TODO Update the GUI
 						setDiceIcons(aGame.getDice(), dieLabels);
-					}
-					aGame.rollDice();
-					setDiceIcons(aGame.getDice(), dieLabels);
-					if (aGame.getPlayerScore() != 0)
-					{
-						aGame.setComputerTurn(true);
+
 						try
 						{
 							turn(aGame);
@@ -363,6 +360,25 @@ public class GameGUI extends JFrame
 						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
 					}
+					// if (aGame.getPlayerScore() != 0)
+					// {
+					// aGame.setComputerTurn(true);
+					//
+					// try
+					// {
+					// turn(aGame);
+					// } catch (InterruptedException e1)
+					// {
+					// e1.printStackTrace();
+					// }
+					//
+					// txtComputer.setText("" + aGame.getComputerScore());
+					// txtRunning.setText("0");
+					//
+					// setDiceIcons(aGame.getDice(), dieLabels);
+					// winnerGUI(aGame, lblPlayerScore, lblComputerScore);
+					//
+					// }
 					winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 				}
 			}
@@ -697,23 +713,23 @@ public class GameGUI extends JFrame
 					updateLockedDice(aGame.getDice());// update the dice on the GUI
 					repaint();
 
-					Thread.sleep(2000);
+					// Thread.sleep(2000);
 
 					aGame.diceToggle = aGame.computer.chooseDice();// update the diceToggle based on computer logic
 					System.out.println(aGame.printDice());
 					aGame.theAllToggle();
-					Thread.sleep(2000);
+					// Thread.sleep(2000);
 
 					// Decide to bank
 					if (aGame.computer.toBank(aGame.runningScore + scoring.scoreDice(aGame.diceToggle), aGame.dice,
 							aGame.computerScore))
 					{
-						Thread.sleep(2000);
+						// Thread.sleep(2000);
 						System.out
 								.println(
 										"computer banks " + (aGame.runningScore + scoring.scoreDice(aGame.diceToggle))
 												+ " points");
-						Thread.sleep(2000);
+						// Thread.sleep(2000);
 						aGame.computerScore = aGame.computerScore + aGame.runningScore
 								+ scoring.scoreDice(aGame.diceToggle);
 						aGame.runningScore = 0;
@@ -770,12 +786,16 @@ public class GameGUI extends JFrame
 	public void updateGUIstuff(int[] dice)
 	{
 		setDiceIcons(dice, dieLabels);
-		contentPane.repaint();
+		txtRunning.revalidate();
 		txtRunning.repaint();
+		txtPlayer.revalidate();
 		txtPlayer.repaint();
+		txtComputer.revalidate();
 		txtComputer.repaint();
+
 		for (int i = 0; i < 6; i++)
 		{
+			dieLabels[i].revalidate();
 			dieLabels[i].repaint();
 		}
 

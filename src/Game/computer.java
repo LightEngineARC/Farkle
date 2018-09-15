@@ -39,6 +39,13 @@ public class computer
 
 	public int[] chooseDice()
 	{
+		try
+		{
+			Thread.sleep(4000);
+		} catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
 		this.sets = new int[]
 		{ 0, 0, 0, 0, 0, 0 };
 		this.diceToLock = new int[]
@@ -122,16 +129,22 @@ public class computer
 
 	public boolean toBank(int runningScore, int[] rolledDice, int computerScore)
 	{
+		try
+		{
+			Thread.sleep(3000);
+		} catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
 		int diceUsed = 0;
 		if (computerScore == 0)
 		{
 			if (runningScore >= 500)
 			{
-				System.out.println("computer now has the points to bank: " + runningScore);
+				System.out.println("computer has the points to bank: " + runningScore);
 				return true;
 			} else
 			{
-				System.out.println("Computer doesn't have the points to bank" + runningScore);
 				return false;
 			}
 
@@ -143,7 +156,7 @@ public class computer
 				diceUsed++;
 			}
 		}
-		if (diceUsed >= 3)
+		if (diceUsed >= 3 && diceUsed < 6)
 		{
 
 			/*
