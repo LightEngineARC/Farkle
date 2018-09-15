@@ -29,10 +29,8 @@ public class gameState
 {
 	final Lock lock = new ReentrantLock();
 	final Condition notEmpty = lock.newCondition();
-	int[] dice =
-	{ 0, 0, 0, 0, 0, 0 };
-	int[] diceToggle =
-	{ -1, -1, -1, -1, -1, -1 };
+	int[] dice = { 0, 0, 0, 0, 0, 0 };
+	int[] diceToggle = { -1, -1, -1, -1, -1, -1 };
 
 	int playerScore = 0;
 	int computerScore = 0;
@@ -72,20 +70,19 @@ public class gameState
 				{
 					System.out.println("computer rolls these dice: " + printDice());
 					computer.setDice(dice);// give computer the dice
-					Thread.sleep(1000);
+//					Thread.sleep(1000);
 					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
 					System.out.println(printDice());
 					theAllToggle();
-					Thread.sleep(1000);
+//					Thread.sleep(1000);
 
 					// Decide to bank
 					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))
 					{
-						Thread.sleep(1000);
-						System.out
-								.println(
-										"computer banks " + (runningScore + scoring.scoreDice(diceToggle)) + " points");
-						Thread.sleep(1000);
+//						Thread.sleep(1000);
+						System.out.println(
+								"computer banks " + (runningScore + scoring.scoreDice(diceToggle)) + " points");
+//						Thread.sleep(1000);
 						computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 						runningScore = 0;
 						this.computerTurn = false;
@@ -103,10 +100,8 @@ public class gameState
 				}
 				// this through the if statement need to be in the while loop
 				this.computerTurn = false;
-				this.diceToggle = new int[]
-				{ -1, -1, -1, -1, -1, -1 };
-				this.dice = new int[]
-				{ 0, 0, 0, 0, 0, 0 };
+				this.diceToggle = new int[] { -1, -1, -1, -1, -1, -1 };
+				this.dice = new int[] { 0, 0, 0, 0, 0, 0 };
 				this.rollDice();
 				System.out.println(printDice());
 				if (scoring.scoreDice(dice) == 0)
@@ -354,8 +349,7 @@ public class gameState
 			this.runningScore = this.runningScore + scoring.scoreDice(diceToggle);
 			rollDice();
 			System.out.println(printDice());
-			this.diceToggle = new int[]
-			{ -1, -1, -1, -1, -1, -1 };
+			this.diceToggle = new int[] { -1, -1, -1, -1, -1, -1 };
 		}
 	}
 

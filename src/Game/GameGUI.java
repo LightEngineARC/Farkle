@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 public class GameGUI extends JFrame
@@ -190,42 +191,53 @@ public class GameGUI extends JFrame
 		 * Start a Game state
 		 */
 		gameState aGame = new gameState();
+				
+		ActionListener runComputer = new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					aGame.computerTurn();
+				} catch (InterruptedException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				txtComputer.setText("" + aGame.getComputerScore());
+				txtRunning.setText("0");
+			}
+
+		};
+		
+		Timer timer = new Timer(2000 ,runComputer);
 
 		aGame.rollDice();
 		setDiceIcons(aGame.getDice(), dieLabels);
-
+		
 		if (scoring.scoreDice(aGame.getDice()) == 0)
 		{
 			txtRunning.setText("Farkle!");
 			System.out.println("Player Farkle!");
-						
+
 			aGame.setRunningScore(0);
 			int[] z = { 1, 2, 3, 4, 5, 6 };
 			aGame.setDice(z);
 			aGame.rollDice();
 			aGame.setComputerTurn(true);
-			try
-			{
-				aGame.computerTurn();
-			} catch (InterruptedException e1)
-			{
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 
-			txtComputer.setText("" + aGame.getComputerScore());
-			txtRunning.setText("0");
-			
+	        timer.setRepeats(false);
+	        timer.start();
+	        
+			aGame.setRunningScore(0);
+
 			winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
 			setDiceIcons(aGame.getDice(), dieLabels);
 		}
-
-		// aGame.computerTurn();
-		// txtComputer.setText("" + aGame.getComputerScore());
-		// txtRunning.setText("0");
-		//
-		// setDiceIcons(aGame, dieLabels);
 
 		/**
 		 * Rolls Dice
@@ -281,31 +293,15 @@ public class GameGUI extends JFrame
 						txtRunning.setText("Farkle!");
 						System.out.println("Player Farkle!");
 						setDiceIcons(aGame.getDice(), dieLabels);
-						
-						try
-						{
-							Thread.sleep(3000);
-						} catch (InterruptedException e2)
-						{
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
+
+				        timer.setRepeats(false);
+				        timer.start();
+				        
 						aGame.setRunningScore(0);
 						int[] z = { 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
 						aGame.setComputerTurn(true);
-						try
-						{
-							aGame.computerTurn();
-						} catch (InterruptedException e1)
-						{
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-						txtComputer.setText("" + aGame.getComputerScore());
-						txtRunning.setText("0");
 
 						setDiceIcons(aGame.getDice(), dieLabels);
 
@@ -313,6 +309,7 @@ public class GameGUI extends JFrame
 
 					}
 				}
+				
 			}
 		});
 
@@ -340,17 +337,9 @@ public class GameGUI extends JFrame
 					if (aGame.getPlayerScore() != 0)
 					{
 						aGame.setComputerTurn(true);
-						try
-						{
-							aGame.computerTurn();
-						} catch (InterruptedException e1)
-						{
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-
-						txtComputer.setText("" + aGame.getComputerScore());
-						txtRunning.setText("0");
+						
+				        timer.setRepeats(false);
+				        timer.start();
 
 						setDiceIcons(aGame.getDice(), dieLabels);
 						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
