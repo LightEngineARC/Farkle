@@ -1,3 +1,6 @@
+/*
+ *By Ashton Chatelain and Sam Smith 
+ */
 package Game;
 
 import java.awt.BorderLayout;
@@ -66,10 +69,10 @@ public class GameGUI extends JFrame
 		/**
 		 * Builds GUI
 		 */
-		setMinimumSize(new Dimension(1000, 640));
+		setMinimumSize(new Dimension(1000, 660));
 		setTitle("Farkle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 640);
+		setBounds(100, 100, 1000, 660);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

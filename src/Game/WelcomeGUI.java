@@ -2,6 +2,9 @@ package Game;
 
 import java.awt.BorderLayout;
 
+/*
+ *By Ashton Chatelain and Sam Smith 
+ */
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -28,7 +31,7 @@ public class WelcomeGUI extends JFrame
 	{
 		setTitle("Farkle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 640);
+		setBounds(100, 100, 1000, 660);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 20, 5));
