@@ -69,6 +69,7 @@ public class gameState
 	{
 		if (!winCondition())
 		{
+			String computerStep = "";
 			setComputerString("Computer Played");
 			while (computerTurn)
 			{
@@ -76,7 +77,6 @@ public class gameState
 				{
 					System.out.println("computer rolls these dice: " + printDice());
 					String diceHolder = printDice();
-					String computerStep = "";
 					computer.setDice(dice);// give computer the dice
 					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
 					theAllToggle();

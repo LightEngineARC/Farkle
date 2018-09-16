@@ -174,7 +174,7 @@ public class GameGUI extends JFrame
 		
 		JTextArea txtComputerSteps = new JTextArea();
 		txtComputerSteps.setBorder(new EmptyBorder(10, 20, 10, 20));
-		txtComputerSteps.setFont(new Font("Arial Black", Font.PLAIN, 18));
+		txtComputerSteps.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		txtComputerSteps.setEditable(false);
 		pnlBtm.add(txtComputerSteps, BorderLayout.CENTER);
 
