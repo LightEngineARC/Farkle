@@ -173,6 +173,7 @@ public class GameGUI extends JFrame
 		pnlBtmBtm.add(btnBank);
 		
 		JTextArea txtComputerSteps = new JTextArea();
+		txtComputerSteps.setRows(8);
 		txtComputerSteps.setBorder(new EmptyBorder(5, 20, 5, 20));
 		txtComputerSteps.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		txtComputerSteps.setEditable(false);
