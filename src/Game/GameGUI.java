@@ -20,7 +20,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
@@ -67,10 +66,10 @@ public class GameGUI extends JFrame
 		/**
 		 * Builds GUI
 		 */
-		setMinimumSize(new Dimension(1000, 620));
+		setMinimumSize(new Dimension(1000, 640));
 		setTitle("Farkle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 620);
+		setBounds(100, 100, 1000, 640);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -173,7 +172,7 @@ public class GameGUI extends JFrame
 		pnlBtmBtm.add(btnBank);
 		
 		JTextArea txtComputerSteps = new JTextArea();
-		txtComputerSteps.setRows(8);
+		txtComputerSteps.setRows(9);
 		txtComputerSteps.setBorder(new EmptyBorder(5, 20, 5, 20));
 		txtComputerSteps.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		txtComputerSteps.setEditable(false);

@@ -16,7 +16,6 @@
  ********************************************************/
 package Game;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -153,6 +152,7 @@ public class gameState
 		return cString;
 	}
 	
+	@SuppressWarnings("unused")
 	private void bankPoints(int[] dice)
 	{
 		// get dice that have been clicked

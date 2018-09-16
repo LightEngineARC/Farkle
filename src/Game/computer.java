@@ -29,6 +29,7 @@ public class computer
 	{ -1, -1, -1, -1, -1, -1 };
 	int[] sets =
 	{ 0, 0, 0, 0, 0, 0 };
+	@SuppressWarnings("unused")
 	private int score;
 
 	public computer(int[] dice, int score)
