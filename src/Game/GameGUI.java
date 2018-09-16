@@ -69,10 +69,10 @@ public class GameGUI extends JFrame
 		/**
 		 * Builds GUI
 		 */
-		setMinimumSize(new Dimension(1000, 660));
+		setMinimumSize(new Dimension(1000, 680));
 		setTitle("Farkle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 660);
+		setBounds(100, 100, 1000, 680);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -175,7 +175,7 @@ public class GameGUI extends JFrame
 		pnlBtmBtm.add(btnBank);
 		
 		JTextArea txtComputerSteps = new JTextArea();
-		txtComputerSteps.setRows(9);
+		txtComputerSteps.setRows(8);
 		txtComputerSteps.setBorder(new EmptyBorder(5, 20, 5, 20));
 		txtComputerSteps.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		txtComputerSteps.setEditable(false);
@@ -183,7 +183,7 @@ public class GameGUI extends JFrame
 
 		JPanel pnlTop = new JPanel();
 		pnlTop.setOpaque(false);
-		pnlTop.setBorder(new EmptyBorder(20, 350, 20, 350));
+		pnlTop.setBorder(new EmptyBorder(10, 350, 20, 350));
 		contentPane.add(pnlTop, BorderLayout.NORTH);
 		pnlTop.setLayout(new GridLayout(0, 1, 0, 0));
 
