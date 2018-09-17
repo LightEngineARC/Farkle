@@ -42,7 +42,7 @@ public class gameState
 	Scanner scanner = new Scanner(System.in);
 
 	String cString;
-	
+
 	public gameState()
 	{
 		rollDice();
@@ -76,11 +76,15 @@ public class gameState
 				{
 					System.out.println("computer rolls these dice: " + printDice());
 					String diceHolder = printDice();
+
 					computer.setDice(dice);// give computer the dice
 					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
 					theAllToggle();
-					computerStep += "Computer Rolled: " + diceHolder + "\n" + "Computer Locked: " + computer.printLockedDice() + "\n";
+
+					computerStep += "Computer Rolled: " + diceHolder + "\n" + "Computer Locked: "
+							+ computer.printLockedDice() + "\n";
 					setComputerString(computerStep);
+
 					// Decide to bank
 					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))
 					{
@@ -89,16 +93,37 @@ public class gameState
 										"computer banks " + (runningScore + scoring.scoreDice(diceToggle)) + " points");
 						computerStep += "Computer Banks: " + (runningScore + scoring.scoreDice(diceToggle));
 						setComputerString(computerStep);
+
 						computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 						runningScore = 0;
+
 						this.dice = new int[]
 						{ 1, 1, 1, 1, 1, 1 };
 						this.diceToggle = new int[]
 						{ -1, -1, -1, -1, -1, -1 };
 						this.rollDice();
 						this.computerTurn = false;
+
 					} else
 					{
+						// check to see if all dice are used
+						int count = 0;
+						for (int i = 0; i < 6; i++)
+						{
+							if (this.diceToggle[i] == -1)
+							{
+								count++;
+								if (count == -6)
+								{
+									this.dice = new int[]
+									{ 1, 1, 1, 1, 1, 1 };
+									this.diceToggle = new int[]
+									{ -1, -1, -1, -1, -1, -1 };
+									i = 6;
+								}
+
+							}
+						}
 						this.runningScore = this.runningScore + scoring.scoreDice(diceToggle);
 						System.out.println("computer procedes");
 						this.rollDice();
@@ -147,11 +172,12 @@ public class gameState
 	{
 		cString = s;
 	}
+
 	public String getComputerString()
 	{
 		return cString;
 	}
-	
+
 	@SuppressWarnings("unused")
 	private void bankPoints(int[] dice)
 	{
@@ -170,13 +196,6 @@ public class gameState
 				playerScore = +scoring.scoreDice(dice);
 			}
 		}
-
-	}
-
-	public int[] lockDice(int[] dice)
-	{
-		// TODO lock the dice on the GUI
-		return dice;
 
 	}
 

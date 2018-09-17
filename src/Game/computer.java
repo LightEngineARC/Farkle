@@ -46,6 +46,7 @@ public class computer
 		{ -1, -1, -1, -1, -1, -1 };
 
 		// decide which dice to lock
+		// TODO check for single die that can be locked to roll more dice
 		for (int i = 0; i < 6; i++)
 		{
 			if (this.dice[i] == 1 || this.dice[i] == 5)
@@ -128,19 +129,6 @@ public class computer
 	public boolean toBank(int runningScore, int[] rolledDice, int computerScore)
 	{
 		int diceUsed = 0;
-		if (computerScore == 0)
-		{
-			if (runningScore >= 500)
-			{
-				System.out.println("computer now has the points to bank: " + runningScore);
-				return true;
-			} else
-			{
-				System.out.println("Computer doesn't have the points to bank " + runningScore);
-				return false;
-			}
-
-		}
 		for (int i = 0; i < 6; i++)
 		{
 			if (rolledDice[i] < 0)
@@ -148,16 +136,27 @@ public class computer
 				diceUsed++;
 			}
 		}
-		if (diceUsed >= 3)
+		if (computerScore == 0)
 		{
+			if (runningScore >= 500 && diceUsed <= 6)
+			{
+				System.out.println("computer now has the points to bank: " + runningScore);
+				return true;
+			} else if (runningScore < 500)
+			{
+				System.out.println("Computer doesn't have the points to bank " + runningScore);
+				return false;
+			} else
+			{
+				System.out.println("Coomputer rolls all dice again");
+				return false;
+			}
 
-			/*
-			 * int decide = 0; decide = (int) (Math.random() * 2); if (decide > 0) {
-			 * System.out.println("computer decides to bank"); return true; } else {
-			 * System.out.println("computer decides to risk a roll"); return false; }
-			 */
+		}
+
+		if (diceUsed >= 3 && diceUsed < 6)
+		{
 			return true;
-
 		}
 		System.out.println("Computer decided to roll");
 
