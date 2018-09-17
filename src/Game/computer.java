@@ -138,7 +138,7 @@ public class computer
 		}
 		if (computerScore == 0)
 		{
-			if (runningScore >= 500 && diceUsed <= 6)
+			if (runningScore >= 500 && diceUsed < 6)
 			{
 				System.out.println("computer now has the points to bank: " + runningScore);
 				return true;

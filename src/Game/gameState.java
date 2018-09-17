@@ -85,7 +85,7 @@ public class gameState
 							+ computer.printLockedDice() + "\n";
 					setComputerString(computerStep);
 
-					// Decide to bank
+					// Decide to bank TODO check palyer farkle condition on player roll
 					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))
 					{
 						System.out
@@ -143,11 +143,14 @@ public class gameState
 					{ -1, -1, -1, -1, -1, -1 };
 					this.rollDice();
 				}
+				// check if player roll is a farkle
 				if (!computerTurn && scoring.scoreDice(dice) == 0)
 				{
 					System.out.println("\nPlayer FARKLE on first roll\n");
+					computerStep = "/nPlayer FARKLE on first roll\n";
+
 					this.dice = new int[]
-					{ 0, 0, 0, 0, 0, 0 };
+					{ 1, 1, 1, 1, 1, 1 };
 					this.diceToggle = new int[]
 					{ -1, -1, -1, -1, -1, -1 };
 					this.computerTurn = true;
