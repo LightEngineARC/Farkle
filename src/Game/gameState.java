@@ -41,6 +41,8 @@ public class gameState
 	computer computer;
 	Scanner scanner = new Scanner(System.in);
 
+	String cString;
+
 	public gameState()
 	{
 		rollDice();
@@ -66,63 +68,123 @@ public class gameState
 	{
 		if (!winCondition())
 		{
+			String computerStep = "";
+			setComputerString("Computer Played");
 			while (computerTurn)
 			{
 				if (scoring.scoreDice(this.dice) != 0)
 				{
 					System.out.println("computer rolls these dice: " + printDice());
-					computer.setDice(dice);// give computer the dice
-					Thread.sleep(1000);
-					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
-					System.out.println(printDice());
-					theAllToggle();
-					Thread.sleep(1000);
+					String diceHolder = printDice();
 
-					// Decide to bank
+					computer.setDice(dice);// give computer the dice
+					diceToggle = computer.chooseDice();// update the diceToggle based on computer logic
+					theAllToggle();
+
+					computerStep += "Computer Rolled: " + diceHolder + "\n" + "Computer Locked: "
+							+ computer.printLockedDice() + "\n";
+					setComputerString(computerStep);
+
+					// Decide to bank TODO check palyer farkle condition on player roll
 					if (computer.toBank(runningScore + scoring.scoreDice(diceToggle), dice, this.computerScore))
 					{
-						Thread.sleep(1000);
 						System.out
 								.println(
 										"computer banks " + (runningScore + scoring.scoreDice(diceToggle)) + " points");
-						Thread.sleep(1000);
+						computerStep += "Computer Banks: " + (runningScore + scoring.scoreDice(diceToggle));
+						setComputerString(computerStep);
+
 						computerScore = computerScore + runningScore + scoring.scoreDice(diceToggle);
 						runningScore = 0;
+
+						this.dice = new int[]
+						{ 1, 1, 1, 1, 1, 1 };
+						this.diceToggle = new int[]
+						{ -1, -1, -1, -1, -1, -1 };
+						this.rollDice();
 						this.computerTurn = false;
+
 					} else
 					{
+						// check to see if all dice are used
+						int count = 0;
+						for (int i = 0; i < 6; i++)
+						{
+							if (this.diceToggle[i] == -1)
+							{
+								count++;
+								if (count == -6)
+								{
+									this.dice = new int[]
+									{ 1, 1, 1, 1, 1, 1 };
+									this.diceToggle = new int[]
+									{ -1, -1, -1, -1, -1, -1 };
+									i = 6;
+								}
+
+							}
+						}
 						this.runningScore = this.runningScore + scoring.scoreDice(diceToggle);
-						rollDice();
-						System.out.println(printDice());
+						System.out.println("computer procedes");
+						this.rollDice();
 					}
 				} else
 				{
-					System.out.println("FARKLE");
+					System.out.println(printDice());
+					System.out.println("\nComputer FARKLE\n");
+					GameGUI.lblComputerScore.setText("FARKLE");
+					computerStep += "Computer Farkled";
+					setComputerString(computerStep);
 					this.runningScore = 0;
 					this.computerTurn = false;
+					this.dice = new int[]
+					{ 1, 1, 1, 1, 1, 1 };
+					this.diceToggle = new int[]
+					{ -1, -1, -1, -1, -1, -1 };
+					this.rollDice();
 				}
+
+				// check if player roll is a farkle
+				if (!computerTurn && scoring.scoreDice(dice) == 0)
+				{
+					System.out.println("\nPlayer FARKLE on first roll\n");
+					computerStep = "/nPlayer FARKLE on first roll\n";
+
+					this.dice = new int[]
+					{ 1, 1, 1, 1, 1, 1 };
+					this.diceToggle = new int[]
+					{ -1, -1, -1, -1, -1, -1 };
+					this.computerTurn = true;
+					this.rollDice();
+				}
+
 			}
-			this.computerTurn = false;
 			this.diceToggle = new int[]
 			{ -1, -1, -1, -1, -1, -1 };
 			this.dice = new int[]
 			{ 0, 0, 0, 0, 0, 0 };
 			this.rollDice();
 			System.out.println(printDice());
-			if (scoring.scoreDice(dice) == 0)
-			{
-				System.out.println("Player FARKLE");
-				this.computerTurn = true;
-			}
 
 		} else
 		{
 			System.out.println("We have a winner!");
-			
+
 		}
 
 	}
 
+	public void setComputerString(String s)
+	{
+		cString = s;
+	}
+
+	public String getComputerString()
+	{
+		return cString;
+	}
+
+	@SuppressWarnings("unused")
 	private void bankPoints(int[] dice)
 	{
 		// get dice that have been clicked
@@ -143,21 +205,24 @@ public class gameState
 
 	}
 
-	public int[] lockDice(int[] dice)
-	{
-		// TODO lock the dice on the GUI
-		return dice;
-
-	}
-
-	// returns array with random numbers if the current number is not -1
+	// returns array with random numbers if the current number is not -1 or all of
+	// them if the dice are all used
 	public void rollDice()
 	{
+		int used = 0;
 		for (int i = 0; i < 6; i++)
 		{
 			if (dice[i] != -1)
 			{
 				dice[i] = (int) (Math.random() * 6 + 1);
+
+			} else
+				used++;
+			if (used == 6)
+			{
+				this.dice = new int[]
+				{ 0, 0, 0, 0, 0, 0 };
+				rollDice();
 			}
 		}
 	}
@@ -189,7 +254,13 @@ public class gameState
 		String theDice = "";
 		for (int i = 0; i < 6; i++)
 		{
-			theDice = theDice + " " + dice[i];
+			if (dice[i] > 0)
+			{
+				theDice = theDice + dice[i] + " ";
+			} else
+			{
+				theDice = theDice + "_ ";
+			}
 		}
 		return theDice;
 

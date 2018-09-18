@@ -29,6 +29,7 @@ public class computer
 	{ -1, -1, -1, -1, -1, -1 };
 	int[] sets =
 	{ 0, 0, 0, 0, 0, 0 };
+	@SuppressWarnings("unused")
 	private int score;
 
 	public computer(int[] dice, int score)
@@ -45,6 +46,7 @@ public class computer
 		{ -1, -1, -1, -1, -1, -1 };
 
 		// decide which dice to lock
+		// TODO check for single die that can be locked to roll more dice
 		for (int i = 0; i < 6; i++)
 		{
 			if (this.dice[i] == 1 || this.dice[i] == 5)
@@ -73,29 +75,14 @@ public class computer
 			default:
 				break;
 			}
-			for (int j = 0; j < 6; j++)
-			{// loop through sets and look for values greater than 2
-				if (sets[j] > 2)
-				{
-					System.out.println("computer found a set of " + sets[j] + " " + (j + 1) + "'s");
-					for (int s : dice)
-					{
-						System.out.print(s + " ");
-					}
-					System.out.println();
-					for (int k = 0; k < 6; k++)
-					{// loop through dice and check if the value of dice == int j +1
-						if (dice[k] == (j + 1))
-						{
-							diceToLock[k] = this.dice[k];
-						}
-					}
 
-				}
-			}
 			if (sets[0] == 1 && sets[5] == 1 && sets[1] == 1 && sets[2] == 1 && sets[3] == 1 && sets[4] == 1)
 			{
-				diceToLock = this.dice;
+				for (int k = 0; k < 6; k++)
+				{
+					diceToLock[k] = this.dice[k];
+				}
+				System.out.println("Computer found a Run of Six!");
 			}
 			int doubleCount = 0;
 			for (int t = 0; t < 6; t++)
@@ -107,9 +94,28 @@ public class computer
 			}
 			if (doubleCount == 3)
 			{
-				diceToLock = this.dice;
+				for (int k = 0; k < 6; k++)
+				{
+					diceToLock[k] = this.dice[k];
+				}
+				System.out.println("Computer found Three Pair!");
 			}
 
+		}
+		for (int j = 0; j < 6; j++)
+		{// loop through sets and look for values greater than 2
+			if (sets[j] > 2)
+			{
+				System.out.println("computer found a set of " + sets[j] + " " + (j + 1) + "'s");
+				for (int k = 0; k < 6; k++)
+				{// loop through dice and check if the value of dice == int j +1
+					if (dice[k] == (j + 1))
+					{
+						diceToLock[k] = this.dice[k];
+					}
+				}
+
+			}
 		}
 		sets = new int[]
 		{ 0, 0, 0, 0, 0, 0 };
@@ -123,19 +129,6 @@ public class computer
 	public boolean toBank(int runningScore, int[] rolledDice, int computerScore)
 	{
 		int diceUsed = 0;
-		if (computerScore == 0)
-		{
-			if (runningScore >= 500)
-			{
-				System.out.println("computer now has the points to bank: " + runningScore);
-				return true;
-			} else
-			{
-				System.out.println("Computer doesn't have the points to bank" + runningScore);
-				return false;
-			}
-
-		}
 		for (int i = 0; i < 6; i++)
 		{
 			if (rolledDice[i] < 0)
@@ -143,16 +136,27 @@ public class computer
 				diceUsed++;
 			}
 		}
-		if (diceUsed >= 3)
+		if (computerScore == 0)
 		{
+			if (runningScore >= 500 && diceUsed < 6)
+			{
+				System.out.println("computer now has the points to bank: " + runningScore);
+				return true;
+			} else if (runningScore < 500)
+			{
+				System.out.println("Computer doesn't have the points to bank " + runningScore);
+				return false;
+			} else
+			{
+				System.out.println("Coomputer rolls all dice again");
+				return false;
+			}
 
-			/*
-			 * int decide = 0; decide = (int) (Math.random() * 2); if (decide > 0) {
-			 * System.out.println("computer decides to bank"); return true; } else {
-			 * System.out.println("computer decides to risk a roll"); return false; }
-			 */
+		}
+
+		if (diceUsed >= 3 && diceUsed < 6)
+		{
 			return true;
-
 		}
 		System.out.println("Computer decided to roll");
 

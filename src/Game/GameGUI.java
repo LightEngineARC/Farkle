@@ -1,3 +1,6 @@
+/*
+ *By Ashton Chatelain and Sam Smith 
+ */
 package Game;
 
 import java.awt.BorderLayout;
@@ -17,11 +20,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class GameGUI extends JFrame
 {
 
@@ -30,6 +34,8 @@ public class GameGUI extends JFrame
 	private JTextField txtPlayer;
 	private JTextField txtComputer;
 	private static JLabel[] dieLabels;
+	public static JLabel lblComputerScore;
+	public static JLabel lblPlayerScore;
 
 	/**
 	 * Launch the application.
@@ -44,6 +50,8 @@ public class GameGUI extends JFrame
 				{
 					GameGUI frame = new GameGUI();
 					frame.setVisible(true);
+					WelcomeGUI wFrame = new WelcomeGUI();
+					wFrame.setVisible(true);
 				} catch (Exception e)
 				{
 					e.printStackTrace();
@@ -61,10 +69,10 @@ public class GameGUI extends JFrame
 		/**
 		 * Builds GUI
 		 */
-		setMinimumSize(new Dimension(1000, 550));
+		setMinimumSize(new Dimension(1000, 680));
 		setTitle("Farkle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 550);
+		setBounds(100, 100, 1000, 680);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -128,7 +136,7 @@ public class GameGUI extends JFrame
 		pnlBtmLeft.add(txtPlayer);
 		txtPlayer.setColumns(10);
 
-		JLabel lblPlayerScore = new JLabel("Player Score");
+		lblPlayerScore = new JLabel("Player Score");
 		lblPlayerScore.setFont(new Font("Arial Black", Font.PLAIN, 28));
 		lblPlayerScore.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlBtmLeft.add(lblPlayerScore);
@@ -147,14 +155,14 @@ public class GameGUI extends JFrame
 		pnlBtmRight.add(txtComputer);
 		txtComputer.setColumns(10);
 
-		JLabel lblComputerScore = new JLabel("Computer Score");
+		lblComputerScore = new JLabel("Computer Score");
 		lblComputerScore.setFont(new Font("Arial Black", Font.PLAIN, 26));
 		lblComputerScore.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlBtmRight.add(lblComputerScore);
 
 		JPanel pnlBtmBtm = new JPanel();
 		pnlBtmBtm.setOpaque(false);
-		pnlBtmBtm.setBorder(new EmptyBorder(0, 350, 0, 350));
+		pnlBtmBtm.setBorder(new EmptyBorder(20, 350, 0, 350));
 		pnlBtm.add(pnlBtmBtm, BorderLayout.SOUTH);
 		pnlBtmBtm.setLayout(new GridLayout(0, 1, 0, 0));
 
@@ -166,9 +174,16 @@ public class GameGUI extends JFrame
 		btnBank.setFont(new Font("Arial Black", Font.PLAIN, 26));
 		pnlBtmBtm.add(btnBank);
 
+		JTextArea txtComputerSteps = new JTextArea();
+		txtComputerSteps.setRows(8);
+		txtComputerSteps.setBorder(new EmptyBorder(5, 20, 5, 20));
+		txtComputerSteps.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		txtComputerSteps.setEditable(false);
+		pnlBtm.add(txtComputerSteps, BorderLayout.CENTER);
+
 		JPanel pnlTop = new JPanel();
 		pnlTop.setOpaque(false);
-		pnlTop.setBorder(new EmptyBorder(20, 350, 20, 350));
+		pnlTop.setBorder(new EmptyBorder(10, 350, 20, 350));
 		contentPane.add(pnlTop, BorderLayout.NORTH);
 		pnlTop.setLayout(new GridLayout(0, 1, 0, 0));
 
@@ -185,71 +200,85 @@ public class GameGUI extends JFrame
 		lblRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlTop.add(lblRunning);
 
-		GameGUI.dieLabels = new JLabel[] { lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
+		GameGUI.dieLabels = new JLabel[]
+		{ lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6 };
 
 		/**
 		 * Start a Game state
 		 */
 		gameState aGame = new gameState();
-				
-//		ActionListener runComputer = new ActionListener()
-//		{
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e)
-//			{
-//				try
-//				{
-//					aGame.computerTurn();
-//				} catch (InterruptedException e1)
-//				{
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//
-//				
-//				
-//				txtComputer.setText("" + aGame.getComputerScore());
-//				txtRunning.setText("0");
-//			}
-//
-//		};
-		
-//		Timer timer = new Timer(2000 ,runComputer);
+
+		// ActionListener runComputer = new ActionListener()
+		// {
+		//
+		// @Override
+		// public void actionPerformed(ActionEvent e)
+		// {
+		// try
+		// {
+		// aGame.computerTurn();
+		// } catch (InterruptedException e1)
+		// {
+		// // TODO Auto-generated catch block
+		// e1.printStackTrace();
+		// }
+		//
+		//
+		//
+		// txtComputer.setText("" + aGame.getComputerScore());
+		// txtRunning.setText("0");
+		// }
+		//
+		// };
+
+		// Timer timer = new Timer(2000 ,runComputer);
 
 		aGame.rollDice();
 		setDiceIcons(aGame.getDice(), dieLabels);
-		
+
 		if (scoring.scoreDice(aGame.getDice()) == 0)
 		{
 			txtRunning.setText("Farkle!");
 			System.out.println("Player Farkle!");
 
 			aGame.setRunningScore(0);
-			int[] z = { 1, 2, 3, 4, 5, 6 };
+			int[] z =
+			{ 1, 2, 3, 4, 5, 6 };
 			aGame.setDice(z);
 			aGame.rollDice();
 			aGame.setComputerTurn(true);
+
+			int compTemp = aGame.getComputerScore();
 
 			try
 			{
 				aGame.computerTurn();
 			} catch (InterruptedException e1)
 			{
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-//	        timer.setRepeats(false);
-//	        timer.start();
-			
+
+			// timer.setRepeats(false);
+			// timer.start();
+			//
+			// txtComputer.setText("" + aGame.getComputerScore());
+			// txtRunning.setText("0");
+			//
+			// aGame.setRunningScore(0);
+
+			if (aGame.getComputerScore() == compTemp)
+			{
+				lblComputerScore.setText("FARKLE!");
+			}
+
 			txtComputer.setText("" + aGame.getComputerScore());
 			txtRunning.setText("0");
-	        
-			aGame.setRunningScore(0);
 
 			winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
 			setDiceIcons(aGame.getDice(), dieLabels);
+
+			txtComputerSteps.setText(aGame.getComputerString());
 		}
 
 		/**
@@ -259,6 +288,8 @@ public class GameGUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e)
 			{
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				// rolls dice and sets icon to respective dice
 				if (scoring.scoreDice(aGame.getDiceToggle()) > 0 && !aGame.isComputerTurn())
 				{
@@ -286,8 +317,10 @@ public class GameGUI extends JFrame
 					}
 					if (full)
 					{
-						aGame.setDiceToggle(new int[] { -1, -1, -1, -1, -1, -1 });
-						aGame.setDice(new int[] { 0, 0, 0, 0, 0, 0 });
+						aGame.setDiceToggle(new int[]
+						{ -1, -1, -1, -1, -1, -1 });
+						aGame.setDice(new int[]
+						{ 0, 0, 0, 0, 0, 0 });
 					}
 					aGame.rollDice();
 					for (int k = 0; k < 6; k++)
@@ -303,39 +336,48 @@ public class GameGUI extends JFrame
 					// checking dice array score after roll.
 					if (scoring.scoreDice(aGame.getDice()) == 0)
 					{
-						txtRunning.setText("Farkle!");
+						lblPlayerScore.setText("FARKLE!");
 						System.out.println("Player Farkle!");
 						setDiceIcons(aGame.getDice(), dieLabels);
 
-//				        timer.setRepeats(false);
-//				        timer.start();
-				        
+						// timer.setRepeats(false);
+						// timer.start();
+
+						// aGame.setComputerTurn(true);
+
+						aGame.setRunningScore(0);
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
+						aGame.setDice(z);
+						aGame.rollDice();
 						aGame.setComputerTurn(true);
+
+						int compTemp = aGame.getComputerScore();
 
 						try
 						{
 							aGame.computerTurn();
 						} catch (InterruptedException e1)
 						{
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						
+
+						if (aGame.getComputerScore() == compTemp)
+						{
+							lblComputerScore.setText("FARKLE!");
+						}
+
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
-						
-						aGame.setRunningScore(0);
-						int[] z = { 1, 2, 3, 4, 5, 6 };
-						aGame.setDice(z);
-						aGame.rollDice();
 
 						setDiceIcons(aGame.getDice(), dieLabels);
 
 						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
+						txtComputerSteps.setText(aGame.getComputerString());
 					}
 				}
-				
+
 			}
 		});
 
@@ -346,42 +388,56 @@ public class GameGUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e)
 			{
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.isComputerTurn() && aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) > 0)
 				{
 					if (aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle()) >= 500
 							|| aGame.getPlayerScore() > 0)
 					{
+						System.out.println("Player banks: "
+								+ (aGame.getRunningScore() + scoring.scoreDice(aGame.getDiceToggle())) + " points.\n");
 						aGame.setPlayerScore(aGame.getPlayerScore() + aGame.getRunningScore()
 								+ scoring.scoreDice(aGame.getDiceToggle()));
 						txtPlayer.setText("" + aGame.getPlayerScore());
 						txtRunning.setText("0");
 						aGame.setRunningScore(0);
-						int[] z = { 1, 2, 3, 4, 5, 6 };
+						int[] z =
+						{ 1, 2, 3, 4, 5, 6 };
 						aGame.setDice(z);
 						aGame.rollDice();
+						aGame.diceToggle = new int[]
+						{ -1, -1, -1, -1, -1, -1 };
 					}
 					if (aGame.getPlayerScore() != 0)
 					{
 						aGame.setComputerTurn(true);
-						
-//				        timer.setRepeats(false);
-//				        timer.start();
-						
+
+						// timer.setRepeats(false);
+						// timer.start();
+
+						int compTemp = aGame.getComputerScore();
+
 						try
 						{
 							aGame.computerTurn();
 						} catch (InterruptedException e1)
 						{
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						
+
+						if (aGame.getComputerScore() == compTemp)
+						{
+							lblComputerScore.setText("FARKLE!");
+						}
+
 						txtComputer.setText("" + aGame.getComputerScore());
 						txtRunning.setText("0");
 
 						setDiceIcons(aGame.getDice(), dieLabels);
 						winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 
+						txtComputerSteps.setText(aGame.getComputerString());
 					}
 					winnerGUI(aGame, lblPlayerScore, lblComputerScore);
 				}
@@ -394,7 +450,8 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
+				lblComputerScore.setText("Computer Score");
+				lblPlayerScore.setText("Player Score");
 				if (!aGame.winCondition())
 				{
 					if (!aGame.isComputerTurn())
@@ -418,9 +475,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 1;
@@ -442,9 +500,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 2;
@@ -466,9 +525,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 3;
@@ -490,9 +550,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 4;
@@ -514,9 +575,10 @@ public class GameGUI extends JFrame
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				// TODO set to check if dice is "clickable" or "locked"
 				if (!aGame.winCondition())
 				{
+					lblComputerScore.setText("Computer Score");
+					lblPlayerScore.setText("Player Score");
 					if (!aGame.isComputerTurn())
 					{
 						int index = 5;
